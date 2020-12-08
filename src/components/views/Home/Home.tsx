@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import styled, { keyframes } from 'styled-components';
+import Polygons from "./Polygons";
 
 const Wiggle = keyframes`
   0% { transform: rotate(4deg); }
@@ -108,30 +109,16 @@ const Div = styled.section`
 
 class Home extends Component {
     render() {
-        return (
-            <section className="hero is-fullheight has-bg-img">
+        return(
 
-                <div className="hero-body">s
-                    <div className="container">
-                        <section className="hero-text">
-                            <h2 className="hero-h2">
-                                Hi, I'm Morten Dæhli Aslesen
-                                <span role="img" aria-label="waving hand">👋</span>
-                            </h2>
-                            <p className="">
-                                I am an AI and data engineer working as a consultant for Bouvet. Powered by an endless curiosity I explore every part of the tech universe and I'm always looking into something new.
-                            </p>
-                            <p className="">
-                                Got any questions? <a href="mailto:post@daehli.no">Contact me.</a>
-                            </p>
-                        </section>
-                        <h1 className="title is-large"> </h1>
-                        <h2 className="subtitle is-siez-5">
-
-                        </h2>
-                    </div>
-                </div>
-            </section>
+            <Div>
+                <Polygons />
+                <h2>Hi, I'm Morten Dæhli Aslesen <Hand role="img" aria-label="waving hand">👋</Hand></h2>
+                <p>I am an AI and data engineer working as a consultant for Bouvet.
+                    Powered by an endless curiosity and coffee, I embarc on new
+                    projects and I'm always looking to expand my horizons.</p>
+                <p>Got any questions? <a href="mailto:post@daehli.no">Contact me.</a></p>
+            </Div>
         )
     }
 }
