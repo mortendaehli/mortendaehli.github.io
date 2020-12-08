@@ -44,3 +44,17 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
+
+
+## To do
+
+Add [Bulma](https://bulma.io/)
+
+## Deployment
+
+[How to host your react app on gihub pages for free](https://medium.com/better-programming/how-to-host-your-react-app-on-github-pages-for-free-919ad201a4cb)
+
+### `npm run deploy`
+or
+### `gh-pages -d build`
+
