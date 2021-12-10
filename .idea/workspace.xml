@@ -2,58 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="03333be9-1f6c-44d2-af11-5e407ba62ab5" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitmodules" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/content/page/about.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/content/page/contact.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/content/post/creating-a-new-theme.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/content/post/goisforlovers.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/content/post/hugoisforlovers.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/content/post/migrate-from-jekyll.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/content/project/my-awesome-project.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/themes/ghostwriter/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/themes/ghostwriter/LICENSE.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/themes/ghostwriter/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/themes/ghostwriter/archetypes/default.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/themes/ghostwriter/layouts/404.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/themes/ghostwriter/layouts/_default/list.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/themes/ghostwriter/layouts/_default/single.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/themes/ghostwriter/layouts/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/themes/ghostwriter/layouts/page/single.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/themes/ghostwriter/layouts/partials/disqus.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/themes/ghostwriter/layouts/partials/exponea.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/themes/ghostwriter/layouts/partials/extra-in-head.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/themes/ghostwriter/layouts/partials/fathom.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/themes/ghostwriter/layouts/partials/footer.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/themes/ghostwriter/layouts/partials/header.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/themes/ghostwriter/layouts/partials/intro.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/themes/ghostwriter/layouts/partials/navigation.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/themes/ghostwriter/layouts/partials/opengraph.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/themes/ghostwriter/layouts/partials/page-content.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/themes/ghostwriter/layouts/partials/page-header.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/themes/ghostwriter/layouts/partials/page-stub.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/themes/ghostwriter/layouts/partials/pagination.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/themes/ghostwriter/layouts/partials/plausible.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/themes/ghostwriter/layouts/partials/post-content.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/themes/ghostwriter/layouts/partials/post-footer.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/themes/ghostwriter/layouts/partials/post-header.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/themes/ghostwriter/layouts/partials/post-stub.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/themes/ghostwriter/layouts/partials/tag-pagination.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/themes/ghostwriter/layouts/post/list.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/themes/ghostwriter/layouts/post/single.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/themes/ghostwriter/layouts/tag/list.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/themes/ghostwriter/package-lock.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/themes/ghostwriter/package.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/themes/ghostwriter/static/dist/site.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/themes/ghostwriter/static/dist/syntax.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/themes/ghostwriter/static/js/jquery-1.11.3.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/themes/ghostwriter/static/js/jquery.fitvids.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/themes/ghostwriter/static/js/scripts.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/themes/ghostwriter/static/styles/site/index.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/themes/ghostwriter/static/styles/site/style.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/themes/ghostwriter/static/styles/syntax/index.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/themes/ghostwriter/theme.toml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/themes/ghostwriter/webpack.config.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.github/workflows/gh-pages.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -107,7 +56,7 @@
       <workItem from="1607435089287" duration="836000" />
       <workItem from="1607436079715" duration="11806000" />
       <workItem from="1607449338804" duration="4004000" />
-      <workItem from="1639155264188" duration="1236000" />
+      <workItem from="1639155264188" duration="1364000" />
     </task>
     <servers />
   </component>
