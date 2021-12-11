@@ -1,8 +1,8 @@
 +++
 title = "How to get started with your personal Hugo blog on GitHub Pages"
-description = "This is how you get started with your very own Hugo blog"
+description = ""
 author = "Morten Dæhli Aslesen"
-date = 2021-12-11T19:30:08.000Z
+date = 2021-12-11T20:10:21+01:00
 tags = ["Blog", "Hugo", "goLang"]
 draft = false
 +++
