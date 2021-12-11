@@ -1,6 +1,0 @@
-[submodule "daehlidotno/themes/hugo-book"]
-	path = daehlidotno/themes/hugo-book
-	url = https://github.com/alex-shpak/hugo-book
-[submodule "themes/ghostwriter"]
-	path = themes/ghostwriter
-	url = https://github.com/roryg/ghostwriter
