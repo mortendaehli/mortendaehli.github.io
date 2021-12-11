@@ -37,10 +37,10 @@ params:
     - post
   intro: true
   headline: Morten Dæhli Aslesen
-  description: 👋 Welcome to my developer an thinkerer blog!
-  github: "https://github.com/mortedaehli"
+  description: 👋 Welcome to my tech tinkering blog!
+  github: "https://github.com/mortedaehli/"
   linkedin: "https://www.linkedin.com/in/morten-d%C3%A6hli-aslesen-50765164/"
-  facebook: "https://www.facebook.com/morten.aslesen"
+  facebook: "https://www.facebook.com/morten.aslesen/"
   email: post@daehli.no
   opengraph: true
   shareTwitter: true

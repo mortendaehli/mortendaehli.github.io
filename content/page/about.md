@@ -1,14 +1,17 @@
 +++
 title = "About"
-date = 2015-04-03T02:13:50Z
-author = "My Name"
+date = 2021-12-07T17:37:00Z
+author = "Morten Dæhli Aslesen"
 description = "Things about me."
 +++
 
-## About
+![](/images/2021/03/this-is-me.jpeg)This is me
+👋 Hi, I’m Morten Dæhli Aslesen, and I'm currently working as an IT-consultant at [Bouvet Norway ASA](https://www.bouvet.no) where I've been since 2020. My background is in Economics and Nanotechnology, but my professional career has been focused on advanced data analytics.
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean nec dolor in magna lobortis egestas. Suspendisse eu erat tempor, tristique neque eu, convallis nulla. Curabitur vel bibendum lacus, at semper mauris. Suspendisse aliquet commodo ex, sed sagittis metus aliquam id. Maecenas feugiat rutrum lorem vel imperdiet. Nullam ornare lectus ut enim finibus, et porttitor mi tincidunt. Aenean lacinia, leo quis vehicula eleifend, quam libero sagittis erat, at euismod augue mauris et sapien. Sed id vehicula lectus, sit amet auctor ipsum. Nunc sed massa vel ex condimentum aliquam in a enim. Cras enim sem, tristique eu enim ac, congue commodo mi. Integer quis orci at dolor blandit eleifend.
+My primary focus at the moment is building cloud-based data platforms. I'm an avid DevOps practitioner - to be honest, who doesn't like to just automate all the boring stuff and make sure it just works? In my spare time, I'm always working on something new. Solving something, learning something, creating something... Lately, I've been working on full-stack web applications, developed a [webshop for our family business](https://www.minsymaskin.no) and now I'm starting this blog to share with you all.
 
-## School
+When I'm not hanging out with friends and family, and when I'm not in the digital world. Then I enjoy rock climbing, surfing, hiking, and generally everything that has to do with the great outdoors.
 
-Sed quis pulvinar nisi, sed dapibus lacus. Mauris tempus ex ut ipsum facilisis interdum. Integer feugiat urna sed feugiat tempor. Quisque dictum vestibulum feugiat. Nunc nec est volutpat lorem imperdiet egestas sit amet ut orci. Aliquam venenatis neque ipsum, a placerat lectus cursus at. Donec pellentesque tellus hendrerit faucibus posuere. Etiam gravida consequat lectus, volutpat consectetur velit convallis nec. Praesent sagittis luctus dignissim.
+Check out my [Github profile](https://github.com/settings/profile) if you are curious about what I’m up to!
+
+**This is my private blog and does not represent my employer in any form.**

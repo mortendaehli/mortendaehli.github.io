@@ -1,20 +1,23 @@
 +++
-title = "My awesome project"
-description = "Description of my awesome project."
-date = 2014-11-18T02:13:50Z
-author = "My name"
+title = "Advent of Code 2021"
+description = "This is my advent coding journey 2021."
+date = 2021-12-07T18:06:50Z
+author = "Morten Dæhli Aslesen"
+draft = false
 +++
 
 ## About project
 
-Aenean ipsum justo, semper eu nisl ut, pretium tincidunt sem. Praesent et diam sit amet lacus lobortis dictum a id lacus. Quisque hendrerit sit amet turpis eu varius. Ut id lorem ac felis ultrices tincidunt. Pellentesque consequat arcu ac fringilla imperdiet. Phasellus pellentesque, sapien non pulvinar blandit, sapien ante aliquet felis, vel porttitor sapien ante in lacus. Fusce non urna aliquet, malesuada nibh vel, luctus urna. Phasellus ut lacus molestie, varius purus quis, malesuada lorem.
+This is an effort to solve Advent of Code 2021 if I get the time! You will find my code adventure at [GitHub Advent of Code 2021](https://github.com/mortendaehli/advent-of-code-2021)
 
 ## Install
 
+I am solving this using mostly python 3.9, but in order to build a proper environment you need to install [Poetry](https://python-poetry.org/) and run
+
 ```bash
-go get -u -v github.com/spf13/hugo
+git clone git@github.com:mortendaehli/advent-of-code-2021.git
+cd advent-of-code-2021
+poetry install
 ```
 
-## Docs
-
-https://godoc.org/github.com/spf13/hugo
+Then you can explore each day in each sub-folder under advent_of_code_2021.
