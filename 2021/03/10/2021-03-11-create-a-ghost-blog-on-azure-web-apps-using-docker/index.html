@@ -1,0 +1,236 @@
+<!doctype html><html prefix="og: http://ogp.me/ns#">
+<head>
+<meta charset=utf-8>
+<meta http-equiv=x-ua-compatible content="IE=edge">
+<title>Create a Ghost Blog on Azure Web Apps Using Docker &#183; Morten Dæhli Aslesen</title>
+<meta name=description content="This is how you create a Ghost blog using Azure Web Apps and Docker">
+<meta name=HandheldFriendly content="True">
+<meta name=MobileOptimized content="320">
+<meta name=generator content="Hugo 0.90.1">
+<meta name=robots content="index,follow">
+<meta name=viewport content="width=device-width,initial-scale=1">
+<meta property="og:title" content="Create a Ghost Blog on Azure Web Apps Using Docker">
+<meta property="og:description" content="This is how you create a Ghost blog using Azure Web Apps and Docker">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://mortendaehli.github.io/2021/03/10/2021-03-11-create-a-ghost-blog-on-azure-web-apps-using-docker/">
+<link rel=stylesheet href=https://mortendaehli.github.io/dist/site.css>
+<link rel=stylesheet href=https://mortendaehli.github.io/dist/syntax.css>
+<link rel=stylesheet href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,600,700,300&subset=latin,cyrillic-ext,latin-ext,cyrillic">
+<link rel=stylesheet href=https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css integrity=sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN crossorigin=anonymous>
+</head>
+<body>
+<div id=wrapper>
+<header class=site-header>
+<div class=container>
+<div class=site-title-wrapper>
+<h1 class=site-title>
+<a href=https://mortendaehli.github.io/>Morten Dæhli Aslesen</a>
+</h1>
+<a class=button-square href=https://mortendaehli.github.io/index.xml aria-label=RSS><i class="fa fa-rss" aria-hidden=true></i></a>
+<a class="button-square button-social hint--top" data-hint=Facebook aria-label=Facebook href=https://www.facebook.com/morten.aslesen/ rel=me>
+<i class="fa fa-facebook" aria-hidden=true></i>
+</a>
+<a class="button-square button-social hint--top" data-hint=Github aria-label=Github href=https://github.com/mortedaehli/ rel=me>
+<i class="fa fa-github-alt" aria-hidden=true></i>
+</a>
+<a class="button-square button-social hint--top" data-hint=LinkedIn aria-label=LinkedIn href=https://www.linkedin.com/in/morten-d%C3%A6hli-aslesen-50765164/ rel=me>
+<i class="fa fa-linkedin" aria-hidden=true></i>
+</a>
+<a class="button-square button-social hint--top" data-hint=Email aria-label="Send an Email" href=mailto:post@daehli.no>
+<i class="fa fa-envelope" aria-hidden=true></i>
+</a>
+</div>
+<ul class=site-nav>
+<li class=site-nav-item>
+<a href=/>Blog</a>
+</li>
+<li class=site-nav-item>
+<a href=/project/>Projects</a>
+</li>
+<li class=site-nav-item>
+<a href=/page/contact/>Contact</a>
+</li>
+<li class=site-nav-item>
+<a href=/page/about/>About</a>
+</li>
+<li class=site-nav-item>
+<a href=/2014/04/02/hugoisforlovers/>Getting Started with Hugo</a>
+</li>
+</ul>
+</div>
+</header>
+<div id=container>
+<div class=container>
+<article class=post-container itemscope itemtype=http://schema.org/BlogPosting>
+<header class=post-header>
+<h1 class=post-title itemprop="name headline">Create a Ghost Blog on Azure Web Apps Using Docker</h1>
+<p class=post-description itemprop=description>This is how you create a Ghost blog using Azure Web Apps and Docker</p>
+<p class=post-date>
+<span>Published <time datetime=2021-03-10 itemprop=datePublished>Wed, Mar 10, 2021</time></span>
+<span>by</span>
+<span itemscope itemprop=author itemtype=https://schema.org/Person>
+<span itemprop=name>
+<a href=%f0%9f%91%8b%20Hi,%20I%e2%80%99m%20Morten%20D%c3%a6hli%20Aslesen,%20and%20I%27m%20currently%20working%20as%20an%20IT-consultant%20at%20Bouvet%20Norway%20ASA itemprop=url rel=author>Morten Dæhli Aslesen</a>
+</span>
+</span>
+</p>
+<p class="post-reading post-line">
+<span>Estimated reading time: 9 min</span>
+</p>
+</header>
+<div class="post-content clearfix" itemprop=articleBody>
+<p>Have you ever wondered how you can host your tech-blog? If you are like me, and you&rsquo;ve built countless prototypes from scratch. They all work and do what they are meant to do. But something is off. They just don&rsquo;t look any good, and they are not that user-friendly. I recently came across a solution, inspired by a fellow <a href=https://www.frodehus.dev/>Bouvet colleague</a>, I&rsquo;m now running my very own blog in the cloud. No more 1990s feel and lack of proper UX. This is the real deal for modern blogging and content publishing. It even comes with a bunch of easy to integrate applications - and you can easily monetize your content if that&rsquo;s your flavor.</p>
+<p>I&rsquo;m a pragmatic techie. I like to see results, and I love to adopt and contribute to open source when I find the opportunity. So why do it the hard way? There are two general options. You can pay for official managed to host such as <a href=https://ghost.org/>Ghost(Pro)</a>, or you can host it yourself and host it any way you like. The out of the box solutions are:</p>
+<ol>
+<li>Ubuntu server</li>
+<li><strong>Docker</strong></li>
+<li>Local install on macOS, Windows, or Linux</li>
+<li>Install Ghost Core from source</li>
+</ol>
+<p>Having hosted other web services myself, and being fully aware of the dangers lurking on the internet - I find it more convenient to run it and scale it as a containerized web service. The choice here is simple. I&rsquo;ll go for docker and Azure Web App Service. The Docker since it has a <a href=https://hub.docker.com/_/ghost/>Ghost Docker Official Image</a>. Azure since it&rsquo;s what I&rsquo;m currently using at work, and I already have a private subscription going.</p>
+<p>The Azure hosting costs will be approximately 10 USD per month.</p>
+<h1 id=testing-ghost-locally>Testing Ghost locally</h1>
+<p>Let us try to run the Ghost Docker Official Image locally. If you are running Windows, then you can easily install <a href=https://hub.docker.com/editions/community/docker-ce-desktop-windows>Docker Desktop for Windows from here</a>. If you run Linux, macOS, or something else - then you can go look for <a href=https://docs.docker.com/engine/install/>installation guides here</a>.</p>
+<p>With the Docker service running, all you have to do is to write the following in your terminal window:</p>
+<pre><code>docker run -d --name some-ghost -e url=http://localhost:3001 -p 3001:2368 ghost
+</code></pre>
+<p>Go to <a href=http://localhost:3001/>http://localhost:3001/</a> in your browser and you are up and running!
+<img src=/images/2021/03/ghost-local-docker.png alt>Ghost blog running locally in docker on http://localhost:3001/
+This is cool! You already have a Ghost blog, and there was almost no effort at all. Me being a pragmatic techie would call that a great win! This is now working, but there are a few drawbacks&mldr; Go ahead and set up your admin account at <a href=http://localhost:3001/ghost>http://localhost:3001/ghost</a> - try publishing some random text and some content. Go back to the main page and verify that your post is there. Then go ahead and restart the service using</p>
+<pre><code>docker restart some-ghost
+</code></pre>
+<p>Check your blog. What is the result? Ouch&mldr; it&rsquo;s all gone! What a disaster! 🤯</p>
+<p>Don&rsquo;t you worry? This is by design. The default Ghost configuration runs a local SQLite database - and running a Docker service means that everything is wiped when you restart the service. If your blog grows and you need to scale up to multiple containers - or your container fails - then you want to have storage outside of the container. Have a look at the <a href=https://12factor.net/>twelve-factor app</a> if you are interested in modern web applications and considerations when building one.</p>
+<p>On Azure, we will solve this by having static content (images, settings, themes) on an Azure Blog Storage and by manually backing up the database (the actual content such as blog posts). I&rsquo;ll also guide you on how to connect to a MySQL-database.</p>
+<h1 id=ghost-on-azure>Ghost on Azure</h1>
+<p>This is the process:</p>
+<ol>
+<li>Create an Azure account</li>
+<li>Create a Resource Group</li>
+<li>Create a Web App Service resource with Ghost Docker image</li>
+<li>Add an Azure storage account</li>
+<li>Add MySQL database (optional)</li>
+<li>Connect to your custom domain (optional)</li>
+<li>Add an SSL certificate for HTTPS</li>
+<li>Updating to the latest Ghost image</li>
+</ol>
+<p>Let&rsquo;s get going!</p>
+<h3 id=1-creating-an-azure-account>1. Creating an Azure account</h3>
+<p>The first thing you need is to <a href=https://azure.microsoft.com/en-us/free/>create an Azure account</a> if you don&rsquo;t already have one.</p>
+<h3 id=2-creating-a-resource-group>2. Creating a Resource Group</h3>
+<p>Then you create a resource group. This is a <a href=https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/manage-resource-groups-portal#what-is-a-resource-group>logical organization of resources that are created in Azure</a>. Alternatively, you can skip this because the next step will create one anyway. You simply click &lsquo;create&rsquo; as shown below.
+<img src=/images/2021/03/Create-resource-group.png alt>Create a new Azure resource group
+Then you create a name and chose a region. The name is prefixed with &ldquo;rg-&rdquo; as a best practice suggestion. The choice of the region does not have an impact on this project, but I prefer to choose the region closes to me. See the example below:
+<img src=/images/2021/03/Create-resource-group-2.png alt>Creating a resource group
+Click Review + create, and then Create.</p>
+<h3 id=3-creating-the-web-app-service-with-ghost-docker-image>3. Creating the Web App Service with Ghost Docker image</h3>
+<p>On the <a href=https://portal.azure.com/#home>main page of the Azure portal, </a>you can create the Web App Service by clicking &ldquo;+ Create a resource&rdquo;
+<img src=/images/2021/03/create-resource.png alt>Create resource in Azure portal
+Search for Web App by Microsoft and click create:
+<img src=/images/2021/03/Microsoft-web-app.png alt>Create Web App in Azure portal
+Now is the time for some details:</p>
+<ol>
+<li><strong>Resource Group</strong>: the one you just created</li>
+<li><strong>Name</strong>:  Your unique name for your blog. The domain will be .azurewebsites.net</li>
+<li><strong>Publish</strong>: Docker Container</li>
+<li><strong>Operating System</strong>: Linux</li>
+<li><strong>Region</strong>: The same as for your Resource Group</li>
+</ol>
+<p>Then you click &lsquo;Create new&rsquo; under the Linux plan. I suggest you go for a &ldquo;Basic BI&rdquo; plan. It should look something like this:
+<img src=/images/2021/03/create-web-app.png alt>Create a Azure Web App
+Click next: Docker and go for **Option **Single Container. Select <strong>Image Source</strong> which should be Docker Hub. We are using the <strong>Access Type</strong> Public and **Tag **should be the <a href=https://hub.docker.com/_/ghost/>latest image for Ghost on Docker Hub</a> which at the moment is ghost:3.42. It should look something like this:
+<img src=/images/2021/03/create-web-app-docker.png alt>Selecting the official Ghost Docker Image on Docker Hub
+Go on to **Review and create **then <strong>Create</strong>. Your web app will deploy within a few minutes. You will find the status in the notification bar on top. Wait for it to finish, and click <strong>Go to resource</strong>. And click <strong>Browse</strong> to go directly to your new blog.
+<img src=/images/2021/03/image-1.png alt>
+It will take a few additional minutes before it&rsquo;s live. Exciting! It will look like this:
+<img src=/images/2021/03/ghost-live-on-azure.png alt>
+You can go on and create a blog post if you like - but unfortunately, we have the same problem here as we had earlier. If you restart the service, then all is lost. So let&rsquo;s solve this by adding a storage account and a database.</p>
+<h3 id=4-add-an-azure-storage-account>4. Add an Azure storage account</h3>
+<p><em><strong>Note</strong></em>*: Because of an update from Azure you will not be able to synch the SQLite database on a storage account. This had me waste some time because most sources will tell you to do the following steps differently. This changed in February 2021, so be aware! I hope Microsoft fixes this issue soon because it&rsquo;s quite convenient to use local SQLite databases for this kind of light web application, for prototyping and to get projects quickly going without a big production database.*</p>
+<p>Find your Resource Group and search for &lsquo;Blob&rsquo; - the first thing that pops up should be a **Storage Account **(This is annoying, but if I search for Storage Account I won&rsquo;t find it). Go on and click <strong>Create</strong>.
+<img src=/images/2021/03/create-storage-account.png alt>Create Azure Storage Account
+A few important details here. Fill in the same <strong>Resource group</strong> as before, and give your storage account a unique <strong>Storage account name</strong>. I suggest st01 as suggested by Microsoft. The **Location **should be the same as before, <strong>Performance</strong> can be Standard for now. The <strong>Account kind</strong> should be StorageV2 since this is the current version. <strong>Replication</strong> you can leave as standard. Everything else can be left as Standard so head on to <strong>Review + create</strong> and click <strong>Create.</strong></p>
+<p>Head over to the Storage Account you just created and create a new <strong>File share</strong> like this:
+<img src=/images/2021/03/create-file-share.png alt>Create File share in an Azure Storage Account
+I&rsquo;ve set the **Name to **ghost-file share and set the <strong>Quota</strong> at 10GB. I suggest you put a higher limit and change the Tier as needed.</p>
+<p>Head back to your Web App Service, and find the Configuration tab under <strong>Settings</strong>. Go to <strong>Path mappings</strong> and click <strong>New Azure Storage Mount</strong>. Here you will fill <strong>Name</strong> to something like ContentFilesVolume. Select the <strong>Storage Account</strong> you just created, select the **Storage container <em><em>and create the <strong>Mount path</strong></em>/var/lib/ghost/content_files</em> - this is an important path. This is where the Docker image will store the static content files such as images, settings, and themes. Click **OK. **See screenshot below:
+<img src=/images/2021/03/mount-storage.png alt>
+Move on to <strong>Application settings</strong> and click <strong>+ New application setting</strong>. Here we will add:</p>
+<ul>
+<li>**URL: **https://.azurewebsites.net or your custom domain</li>
+<li><em><strong>paths__contentPath</strong></em>: /var/lib/ghost/content_files/</li>
+<li><em><strong>privacy__useUpdateCheck</strong></em>: false</li>
+</ul>
+<p>The first, <em><strong>url</strong></em>, will make sure the internal URLs are correct. So change this to your domain later. <em><strong>paths__contentPath</strong></em> makes sure that Ghost writes content files to our mounted <strong>File share</strong>. <em><strong>privacy__useUpdateCheck</strong></em> we set this false to control updates ourselves. Make sure to click <strong>Save</strong>. These are all Environmental variables that will be passed and available in the Docker container. <a href=https://ghost.org/docs/config/>More configuration details can be found here</a>.</p>
+<p>Now. Restart the Web Application and you will see that it crashes. Ouch&mldr;
+<img src=/images/2021/03/ghost-casper-missing.png alt>Ghost complaining that the Casper theme is missing
+For some reason, Ghost does not migrate the default Casper theme when migrating over to an external File share. So we need to add this ourselves. Head back to the Storage account and click **Storage Explorer (preview) **or for a better user experience open the File share in the <a href=https://azure.microsoft.com/en-us/features/storage-explorer/>Azure Storage Explorer</a> app.</p>
+<p>Create a new folder called <strong>themes</strong> on your File share. Then head over to <a href=https://github.com/TryGhost/Casper>Github for the Casper theme files</a>. Place everything inside a folder called <strong>casper</strong> and restart the service. The folder should look like this:
+<img src=/images/2021/03/casper-theme-files.png alt>Adding the Casper theme files to the Files share
+The service should come back up and look as before. This time we are storing the content files externally on a Storage Account. This gives you everything you need in terms of redundancies, scaling, and backup abilities. Make sure that the blog is back up.</p>
+<h3 id=5-add-mysql-database-optional>5. Add MySQL database (optional)</h3>
+<p>To add a MySQL database you will head back to <strong>Application settings</strong> where you configures the File share and the url earlier. Now you will add the following</p>
+<ul>
+<li><strong>database__client</strong>: mysql</li>
+<li><strong>database__connection__database</strong>: </li>
+<li><strong>database__connection__host</strong>: </li>
+<li><strong>database__connection__password</strong>: </li>
+<li><strong>database__connection__port</strong>: </li>
+<li><strong>database__connection__user</strong>: @</li>
+</ul>
+<p>Restart the server. If everything is Okay, then you should see the ghost tables being created in the database within a few minutes.</p>
+<h3 id=6-connect-to-your-custom-domain-optional>6. Connect to your custom domain (optional)</h3>
+<p>Coming soon!</p>
+<h3 id=7-add-an-ssl-certificate-for-https>7. Add an SSL certificate for HTTPS</h3>
+<p>Coming soon!</p>
+<h3 id=8-update-to-the-latest-ghost-image>8. Update to the latest Ghost image</h3>
+<p>Coming soon!</p>
+<h2 id=finally>Finally</h2>
+<p>Now you are all set! Head on over to your newly created blog and register your admin account by going to /ghost.</p>
+<p>I hope you like it!</p>
+</div>
+<footer class="post-footer clearfix">
+<p class=post-tags>
+<span>Tagged:</span>
+<a href=/tags/azure/>Azure</a>,
+<a href=/tags/web/>Web</a>,
+<a href=/tags/apps/>Apps</a>,
+<a href=/tags/docker/>Docker</a>
+</p>
+<div class=share>
+<a class=icon-twitter href="https://twitter.com/share?text=Create%20a%20Ghost%20Blog%20on%20Azure%20Web%20Apps%20Using%20Docker&url=https%3a%2f%2fmortendaehli.github.io%2f2021%2f03%2f10%2f2021-03-11-create-a-ghost-blog-on-azure-web-apps-using-docker%2f" onclick="return window.open(this.href,'twitter-share','width=550,height=235'),!1" aria-label="Share on Twitter">
+<i class="fa fa-twitter" aria-hidden=true></i>
+</a>
+<a class=icon-facebook href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fmortendaehli.github.io%2f2021%2f03%2f10%2f2021-03-11-create-a-ghost-blog-on-azure-web-apps-using-docker%2f" onclick="return window.open(this.href,'facebook-share','width=580,height=296'),!1" aria-label="Share on Facebook">
+<i class="fa fa-facebook" aria-hidden=true></i>
+</a>
+</div>
+</footer>
+</article>
+</div>
+</div>
+</div>
+<footer class=footer>
+<div class=container>
+<div class=site-title-wrapper>
+<h1 class=site-title>
+<a href=https://mortendaehli.github.io/>Morten Dæhli Aslesen</a>
+</h1>
+<a class="button-square button-jump-top js-jump-top" href=# aria-label="Back to Top">
+<i class="fa fa-angle-up" aria-hidden=true></i>
+</a>
+</div>
+<p class=footer-copyright>
+<span>&copy; 2021 / Powered by <a href=https://gohugo.io/>Hugo</a></span>
+</p>
+<p class=footer-copyright>
+<span><a href=https://github.com/roryg/ghostwriter>Ghostwriter theme</a> By <a href=http://jollygoodthemes.com>JollyGoodThemes</a></span>
+<span>/ <a href=https://github.com/jbub/ghostwriter>Ported</a> to Hugo By <a href=https://github.com/jbub>jbub</a></span>
+</p>
+</div>
+</footer>
+<script src=https://mortendaehli.github.io/js/jquery-1.11.3.min.js></script>
+<script src=https://mortendaehli.github.io/js/jquery.fitvids.js></script>
+<script src=https://mortendaehli.github.io/js/scripts.js></script>
+</body>
+</html>
