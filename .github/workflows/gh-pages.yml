@@ -30,6 +30,7 @@ jobs:
         if: ${{ github.ref == 'refs/heads/master' }}
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: test-deploy  # default: gh-pages
           publish_dir: ./public
           cname: www.daehli.no
           allow_empty_commit: true
