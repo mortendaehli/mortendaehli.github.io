@@ -101,6 +101,6 @@ and replace "main" branch if you use "master" or similar.
 Go check that everything is working:
 - GitHub Actions should run when you push to GitHub [https://github.com/mortendaehli/mortendaehli.github.io/actions](https://github.com/mortendaehli/mortendaehli.github.io/actions)
 - Check that GitHub Pages has been activated [https://github.com/mortendaehli/mortendaehli.github.io/settings/pages](https://github.com/mortendaehli/mortendaehli.github.io/settings/pages)
-- Check our your GitHub Pages page [https://mortendaehli.github.io/](https://mortendaehli.github.io/) or in my case (https://www.daehli.no)[https://www.daehli.no]
+- Check our your GitHub Pages page [https://mortendaehli.github.io/](https://mortendaehli.github.io/) or in my case [https://www.daehli.no](https://www.daehli.no)
 
 Enjoy, and have fun!
