@@ -1,6 +1,6 @@
 +++
 title = "About"
-date = 2021-12-07T17:37:00Z
+date = 2021-12-07T17:37:01Z
 author = "Morten Dæhli Aslesen"
 description = "Things about me."
 +++
