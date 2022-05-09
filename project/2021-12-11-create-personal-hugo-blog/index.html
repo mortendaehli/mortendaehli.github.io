@@ -1,108 +1,20 @@
-<!doctype html><html prefix="og: http://ogp.me/ns#">
-<head>
-<meta charset=utf-8>
-<meta http-equiv=x-ua-compatible content="IE=edge">
-<title>How to get started with your personal Hugo blog on GitHub Pages &#183; Morten Dæhli Aslesen</title>
-<meta name=description content="Introduction This is a guide to create your own static Hugo blog platform. It will deploy automatically using GitHub Actions and be hosted on GitHub Pages. With one simple command you can also refer it to your own custom domain using a Canonical Name record (CNAME).
-Follow along and replace my username &ldquo;mortendaehli&rdquo; with your username, and my domain www.daehli.no with your domain if you chose to use your own custom domain.">
-<meta name=HandheldFriendly content="True">
-<meta name=MobileOptimized content="320">
-<meta name=generator content="Hugo 0.91.2">
-<meta name=robots content="index,follow">
-<meta name=viewport content="width=device-width,initial-scale=1">
-<meta property="og:title" content="How to get started with your personal Hugo blog on GitHub Pages">
-<meta property="og:description" content="Introduction This is a guide to create your own static Hugo blog platform. It will deploy automatically using GitHub Actions and be hosted on GitHub Pages. With one simple command you can also refer it to your own custom domain using a Canonical Name record (CNAME).
-Follow along and replace my username &ldquo;mortendaehli&rdquo; with your username, and my domain www.daehli.no with your domain if you chose to use your own custom domain.">
-<meta property="og:type" content="article">
-<meta property="og:url" content="https://www.daehli.no/project/2021-12-11-create-personal-hugo-blog/">
-<link rel=stylesheet href=https://www.daehli.no/dist/site.css>
-<link rel=stylesheet href=https://www.daehli.no/dist/syntax.css>
-<link rel=stylesheet href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,600,700,300&subset=latin,cyrillic-ext,latin-ext,cyrillic">
-<link rel=stylesheet href=https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css integrity=sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN crossorigin=anonymous>
-<link rel=icon type=image/x-icon href=/img/favicon.png>
-</head>
-<body>
-<div id=wrapper>
-<header class=site-header>
-<div class=container>
-<div class=site-title-wrapper>
-<h1 class=site-title>
-<a href=https://www.daehli.no/>Morten Dæhli Aslesen</a>
-</h1>
-<a class=button-square href=https://www.daehli.no/index.xml aria-label=RSS><i class="fa fa-rss" aria-hidden=true></i></a>
-<a class="button-square button-social hint--top" data-hint=Facebook aria-label=Facebook href=https://www.facebook.com/morten.aslesen/ rel=me>
-<i class="fa fa-facebook" aria-hidden=true></i>
-</a>
-<a class="button-square button-social hint--top" data-hint=Github aria-label=Github href=https://github.com/mortendaehli/ rel=me>
-<i class="fa fa-github-alt" aria-hidden=true></i>
-</a>
-<a class="button-square button-social hint--top" data-hint=LinkedIn aria-label=LinkedIn href=https://www.linkedin.com/in/morten-d%C3%A6hli-aslesen-50765164/ rel=me>
-<i class="fa fa-linkedin" aria-hidden=true></i>
-</a>
-<a class="button-square button-social hint--top" data-hint=Email aria-label="Send an Email" href=mailto:post@daehli.no>
-<i class="fa fa-envelope" aria-hidden=true></i>
-</a>
-</div>
-<ul class=site-nav>
-<li class=site-nav-item>
-<a href=/>Blog</a>
-</li>
-<li class=site-nav-item>
-<a href=/project/>Projects</a>
-</li>
-<li class=site-nav-item>
-<a href=/page/contact/>Contact</a>
-</li>
-<li class=site-nav-item>
-<a href=/page/about/>About</a>
-</li>
-</ul>
-</div>
-</header>
-<div id=container>
-<div class=container>
-<article class=post-container>
-<header class=post-header>
-<h1 class=post-title>How to get started with your personal Hugo blog on GitHub Pages</h1>
-</header>
-<div class="post-content clearfix">
-<h2 id=introduction>Introduction</h2>
-<p>This is a guide to create your own static Hugo blog platform. It will deploy automatically using GitHub Actions and
-be hosted on GitHub Pages. With one simple command you can also refer it to your own custom domain using a Canonical Name record (CNAME).</p>
-<p>Follow along and replace my username &ldquo;mortendaehli&rdquo; with your username, and my domain <a href=http://www.daehli.no>www.daehli.no</a> with your domain
-if you chose to use your own custom domain.</p>
-<h2 id=step-1-install-hugo>Step 1. Install Hugo</h2>
-<p>Goto <a href=https://gohugo.io/getting-started/installing>Hugo Install</a> and install the appropriate version according
-to your architecture. For MacOS you simply install Hugo using HomeBrew:</p>
-<pre><code>brew install hugo
-</code></pre>
-<h2 id=step-2-create-your-new-site>Step 2. Create your new site</h2>
-<p>To keep things simple I usually create a git repository on GitHub with a README, license and .gitignore.
-Then I clone the repo.</p>
-<pre><code>git clone https://github.com/mortendaehli/mortendaehli.github.io
+<!doctype html><html prefix="og: http://ogp.me/ns#"><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge"><title>How to get started with your personal Hugo blog on GitHub Pages &#183; Morten Dæhli Aslesen</title><meta name=description content="Introduction This is a guide to create your own static Hugo blog platform. It will deploy automatically using GitHub Actions and be hosted on GitHub Pages. With one simple command you can also refer it to your own custom domain using a Canonical Name record (CNAME).
+Follow along and replace my username &ldquo;mortendaehli&rdquo; with your username, and my domain www.daehli.no with your domain if you chose to use your own custom domain."><meta name=HandheldFriendly content="True"><meta name=MobileOptimized content="320"><meta name=generator content="Hugo 0.98.0"><meta name=robots content="index,follow"><meta name=viewport content="width=device-width,initial-scale=1"><meta property="og:title" content="How to get started with your personal Hugo blog on GitHub Pages"><meta property="og:description" content="Introduction This is a guide to create your own static Hugo blog platform. It will deploy automatically using GitHub Actions and be hosted on GitHub Pages. With one simple command you can also refer it to your own custom domain using a Canonical Name record (CNAME).
+Follow along and replace my username &ldquo;mortendaehli&rdquo; with your username, and my domain www.daehli.no with your domain if you chose to use your own custom domain."><meta property="og:type" content="article"><meta property="og:url" content="https://www.daehli.no/project/2021-12-11-create-personal-hugo-blog/"><link rel=stylesheet href=https://www.daehli.no/dist/site.css><link rel=stylesheet href=https://www.daehli.no/dist/syntax.css><link rel=stylesheet href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,600,700,300&subset=latin,cyrillic-ext,latin-ext,cyrillic"><link rel=stylesheet href=https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css integrity=sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN crossorigin=anonymous><link rel=icon type=image/x-icon href=/img/favicon.png></head><body><div id=wrapper><header class=site-header><div class=container><div class=site-title-wrapper><h1 class=site-title><a href=https://www.daehli.no/>Morten Dæhli Aslesen</a></h1><a class=button-square href=https://www.daehli.no/index.xml aria-label=RSS><i class="fa fa-rss" aria-hidden=true></i></a>
+<a class="button-square button-social hint--top" data-hint=Facebook aria-label=Facebook href=https://www.facebook.com/morten.aslesen/ rel=me><i class="fa fa-facebook" aria-hidden=true></i></a>
+<a class="button-square button-social hint--top" data-hint=Github aria-label=Github href=https://github.com/mortendaehli/ rel=me><i class="fa fa-github-alt" aria-hidden=true></i></a>
+<a class="button-square button-social hint--top" data-hint=LinkedIn aria-label=LinkedIn href=https://www.linkedin.com/in/morten-d%C3%A6hli-aslesen-50765164/ rel=me><i class="fa fa-linkedin" aria-hidden=true></i></a>
+<a class="button-square button-social hint--top" data-hint=Email aria-label="Send an Email" href=mailto:post@daehli.no><i class="fa fa-envelope" aria-hidden=true></i></a></div><ul class=site-nav><li class=site-nav-item><a href=/>Blog</a></li><li class=site-nav-item><a href=/project/>Projects</a></li><li class=site-nav-item><a href=/page/contact/>Contact</a></li><li class=site-nav-item><a href=/page/about/>About</a></li></ul></div></header><div id=container><div class=container><article class=post-container><header class=post-header><h1 class=post-title>How to get started with your personal Hugo blog on GitHub Pages</h1></header><div class="post-content clearfix"><h2 id=introduction>Introduction</h2><p>This is a guide to create your own static Hugo blog platform. It will deploy automatically using GitHub Actions and
+be hosted on GitHub Pages. With one simple command you can also refer it to your own custom domain using a Canonical Name record (CNAME).</p><p>Follow along and replace my username &ldquo;mortendaehli&rdquo; with your username, and my domain <a href=https://www.daehli.no>www.daehli.no</a> with your domain
+if you chose to use your own custom domain.</p><h2 id=step-1-install-hugo>Step 1. Install Hugo</h2><p>Goto <a href=https://gohugo.io/getting-started/installing>Hugo Install</a> and install the appropriate version according
+to your architecture. For MacOS you simply install Hugo using HomeBrew:</p><pre><code>brew install hugo
+</code></pre><h2 id=step-2-create-your-new-site>Step 2. Create your new site</h2><p>To keep things simple I usually create a git repository on GitHub with a README, license and .gitignore.
+Then I clone the repo.</p><pre><code>git clone https://github.com/mortendaehli/mortendaehli.github.io
 hugo new site mortendaehli.github.io --force
 cd mortendaehli.github.io.git
-</code></pre>
-<p>Note that we force &ldquo;hugo new site&rdquo; since the git repo already exists with that name. Replace &ldquo;mortendaehli&rdquo; with your GitHub
-user-name.</p>
-<h2 id=step-3-download-and-activate-a-theme>Step 3. Download and activate a theme</h2>
-<p>For this blog I used ghostwrite as a theme.</p>
-<ol>
-<li>Go to <a href=https://github.com/jbub/ghostwriter>Ghostwriter</a> and download the repository.</li>
-<li>Unzip the project and rename the folder to only &ldquo;ghostwriter&rdquo;.</li>
-<li>Copy the whole folder into themes.</li>
-<li>Copy the files from /themes/exampleSite into the root folder of your project.</li>
-<li>Configure config.yml to your liking</li>
-</ol>
-<h2 id=step-4-personalize--add-content>Step 4. Personalize / add content</h2>
-<p>Now you are free to either edit the existing example content or write your own content.</p>
-<p>All you need to do in order to launch the development server is:</p>
-<pre><code>hugo serve
-</code></pre>
-<p>You will now find you website at <a href=http://localhost:1313/>http://localhost:1313/</a></p>
-<h2 id=step-5-deploy-to-github-pages-using-github-actions>Step 5. Deploy to GitHub Pages using GitHub Actions</h2>
-<p>Write the following content into /.github/workflows/gh-pages.yml</p>
-<pre><code>name: GitHub Pages
+</code></pre><p>Note that we force &ldquo;hugo new site&rdquo; since the git repo already exists with that name. Replace &ldquo;mortendaehli&rdquo; with your GitHub
+user-name.</p><h2 id=step-3-download-and-activate-a-theme>Step 3. Download and activate a theme</h2><p>For this blog I used ghostwrite as a theme.</p><ol><li>Go to <a href=https://github.com/jbub/ghostwriter>Ghostwriter</a> and download the repository.</li><li>Unzip the project and rename the folder to only &ldquo;ghostwriter&rdquo;.</li><li>Copy the whole folder into themes.</li><li>Copy the files from /themes/exampleSite into the root folder of your project.</li><li>Configure config.yml to your liking</li></ol><h2 id=step-4-personalize--add-content>Step 4. Personalize / add content</h2><p>Now you are free to either edit the existing example content or write your own content.</p><p>All you need to do in order to launch the development server is:</p><pre><code>hugo serve
+</code></pre><p>You will now find you website at <a href=http://localhost:1313/>http://localhost:1313/</a></p><h2 id=step-5-deploy-to-github-pages-using-github-actions>Step 5. Deploy to GitHub Pages using GitHub Actions</h2><p>Write the following content into /.github/workflows/gh-pages.yml</p><pre><code>name: GitHub Pages
 
 on:
   push:
@@ -136,59 +48,12 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./public
           # cname: www.daehli.no
-</code></pre>
-<p>All you have to do is to uncomment # cname at the end to use a custom domain,
-and replace &ldquo;main&rdquo; branch if you use &ldquo;master&rdquo; or similar.</p>
-<h2 id=step-6-have-fun>Step 6. Have fun</h2>
-<p>Go check that everything is working:</p>
-<ul>
-<li>GitHub Actions should run when you push to GitHub <a href=https://github.com/mortendaehli/mortendaehli.github.io/actions>https://github.com/mortendaehli/mortendaehli.github.io/actions</a></li>
-<li>Check that GitHub Pages has been activated <a href=https://github.com/mortendaehli/mortendaehli.github.io/settings/pages>https://github.com/mortendaehli/mortendaehli.github.io/settings/pages</a></li>
-<li>Check our your GitHub Pages page <a href=https://mortendaehli.github.io/>https://mortendaehli.github.io/</a> or in my case <a href=https://www.daehli.no>https://www.daehli.no</a></li>
-</ul>
-<p>Enjoy, and have fun!</p>
-</div>
-<footer class="post-footer clearfix">
-<p class=post-tags>
-<span>Tagged:</span>
+</code></pre><p>All you have to do is to uncomment # cname at the end to use a custom domain,
+and replace &ldquo;main&rdquo; branch if you use &ldquo;master&rdquo; or similar.</p><h2 id=step-6-have-fun>Step 6. Have fun</h2><p>Go check that everything is working:</p><ul><li>GitHub Actions should run when you push to GitHub <a href=https://github.com/mortendaehli/mortendaehli.github.io/actions>https://github.com/mortendaehli/mortendaehli.github.io/actions</a></li><li>Check that GitHub Pages has been activated <a href=https://github.com/mortendaehli/mortendaehli.github.io/settings/pages>https://github.com/mortendaehli/mortendaehli.github.io/settings/pages</a></li><li>Check our your GitHub Pages page <a href=https://mortendaehli.github.io/>https://mortendaehli.github.io/</a> or in my case <a href=https://www.daehli.no>https://www.daehli.no</a></li></ul><p>Enjoy, and have fun!</p></div><footer class="post-footer clearfix"><p class=post-tags><span>Tagged:</span>
 <a href=/tags/blog/>Blog</a>,
 <a href=/tags/hugo/>Hugo</a>,
-<a href=/tags/golang/>goLang</a>
-</p>
-<div class=share>
-<a class=icon-twitter href="https://twitter.com/share?text=How%20to%20get%20started%20with%20your%20personal%20Hugo%20blog%20on%20GitHub%20Pages&url=https%3a%2f%2fwww.daehli.no%2fproject%2f2021-12-11-create-personal-hugo-blog%2f" onclick="return window.open(this.href,'twitter-share','width=550,height=235'),!1" aria-label="Share on Twitter">
-<i class="fa fa-twitter" aria-hidden=true></i>
-</a>
-<a class=icon-facebook href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fwww.daehli.no%2fproject%2f2021-12-11-create-personal-hugo-blog%2f" onclick="return window.open(this.href,'facebook-share','width=580,height=296'),!1" aria-label="Share on Facebook">
-<i class="fa fa-facebook" aria-hidden=true></i>
-</a>
-</div>
-</footer>
-</article>
-</div>
-</div>
-</div>
-<footer class=footer>
-<div class=container>
-<div class=site-title-wrapper>
-<h1 class=site-title>
-<a href=https://www.daehli.no/>Morten Dæhli Aslesen</a>
-</h1>
-<a class="button-square button-jump-top js-jump-top" href=# aria-label="Back to Top">
-<i class="fa fa-angle-up" aria-hidden=true></i>
-</a>
-</div>
-<p class=footer-copyright>
-<span>&copy; 2021 / Powered by <a href=https://gohugo.io/>Hugo</a></span>
-</p>
-<p class=footer-copyright>
-<span><a href=https://github.com/roryg/ghostwriter>Ghostwriter theme</a> By <a href=http://jollygoodthemes.com>JollyGoodThemes</a></span>
-<span>/ <a href=https://github.com/jbub/ghostwriter>Ported</a> to Hugo By <a href=https://github.com/jbub>jbub</a></span>
-</p>
-</div>
-</footer>
-<script src=https://www.daehli.no/js/jquery-1.11.3.min.js></script>
+<a href=/tags/golang/>goLang</a></p><div class=share><a class=icon-twitter href="https://twitter.com/share?text=How%20to%20get%20started%20with%20your%20personal%20Hugo%20blog%20on%20GitHub%20Pages&url=https%3a%2f%2fwww.daehli.no%2fproject%2f2021-12-11-create-personal-hugo-blog%2f" onclick='return window.open(this.href,"twitter-share","width=550,height=235"),!1' aria-label="Share on Twitter"><i class="fa fa-twitter" aria-hidden=true></i></a>
+<a class=icon-facebook href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fwww.daehli.no%2fproject%2f2021-12-11-create-personal-hugo-blog%2f" onclick='return window.open(this.href,"facebook-share","width=580,height=296"),!1' aria-label="Share on Facebook"><i class="fa fa-facebook" aria-hidden=true></i></a></div></footer></article></div></div></div><footer class=footer><div class=container><div class=site-title-wrapper><h1 class=site-title><a href=https://www.daehli.no/>Morten Dæhli Aslesen</a></h1><a class="button-square button-jump-top js-jump-top" href=# aria-label="Back to Top"><i class="fa fa-angle-up" aria-hidden=true></i></a></div><p class=footer-copyright><span>&copy; 2021 / Powered by <a href=https://gohugo.io/>Hugo</a></span></p><p class=footer-copyright><span><a href=https://github.com/roryg/ghostwriter>Ghostwriter theme</a> By <a href=http://jollygoodthemes.com>JollyGoodThemes</a></span>
+<span>/ <a href=https://github.com/jbub/ghostwriter>Ported</a> to Hugo By <a href=https://github.com/jbub>jbub</a></span></p></div></footer><script src=https://www.daehli.no/js/jquery-1.11.3.min.js></script>
 <script src=https://www.daehli.no/js/jquery.fitvids.js></script>
-<script src=https://www.daehli.no/js/scripts.js></script>
-</body>
-</html>
+<script src=https://www.daehli.no/js/scripts.js></script></body></html>

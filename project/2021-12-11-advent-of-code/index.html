@@ -1,113 +1,12 @@
-<!doctype html><html prefix="og: http://ogp.me/ns#">
-<head>
-<meta charset=utf-8>
-<meta http-equiv=x-ua-compatible content="IE=edge">
-<title>Advent of Code 2021 &#183; Morten Dæhli Aslesen</title>
-<meta name=description content="This is my advent coding journey 2021.">
-<meta name=HandheldFriendly content="True">
-<meta name=MobileOptimized content="320">
-<meta name=generator content="Hugo 0.91.2">
-<meta name=robots content="index,follow">
-<meta name=viewport content="width=device-width,initial-scale=1">
-<meta property="og:title" content="Advent of Code 2021">
-<meta property="og:description" content="This is my advent coding journey 2021.">
-<meta property="og:type" content="article">
-<meta property="og:url" content="https://www.daehli.no/project/2021-12-11-advent-of-code/">
-<link rel=stylesheet href=https://www.daehli.no/dist/site.css>
-<link rel=stylesheet href=https://www.daehli.no/dist/syntax.css>
-<link rel=stylesheet href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,600,700,300&subset=latin,cyrillic-ext,latin-ext,cyrillic">
-<link rel=stylesheet href=https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css integrity=sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN crossorigin=anonymous>
-<link rel=icon type=image/x-icon href=/img/favicon.png>
-</head>
-<body>
-<div id=wrapper>
-<header class=site-header>
-<div class=container>
-<div class=site-title-wrapper>
-<h1 class=site-title>
-<a href=https://www.daehli.no/>Morten Dæhli Aslesen</a>
-</h1>
-<a class=button-square href=https://www.daehli.no/index.xml aria-label=RSS><i class="fa fa-rss" aria-hidden=true></i></a>
-<a class="button-square button-social hint--top" data-hint=Facebook aria-label=Facebook href=https://www.facebook.com/morten.aslesen/ rel=me>
-<i class="fa fa-facebook" aria-hidden=true></i>
-</a>
-<a class="button-square button-social hint--top" data-hint=Github aria-label=Github href=https://github.com/mortendaehli/ rel=me>
-<i class="fa fa-github-alt" aria-hidden=true></i>
-</a>
-<a class="button-square button-social hint--top" data-hint=LinkedIn aria-label=LinkedIn href=https://www.linkedin.com/in/morten-d%C3%A6hli-aslesen-50765164/ rel=me>
-<i class="fa fa-linkedin" aria-hidden=true></i>
-</a>
-<a class="button-square button-social hint--top" data-hint=Email aria-label="Send an Email" href=mailto:post@daehli.no>
-<i class="fa fa-envelope" aria-hidden=true></i>
-</a>
-</div>
-<ul class=site-nav>
-<li class=site-nav-item>
-<a href=/>Blog</a>
-</li>
-<li class=site-nav-item>
-<a href=/project/>Projects</a>
-</li>
-<li class=site-nav-item>
-<a href=/page/contact/>Contact</a>
-</li>
-<li class=site-nav-item>
-<a href=/page/about/>About</a>
-</li>
-</ul>
-</div>
-</header>
-<div id=container>
-<div class=container>
-<article class=post-container>
-<header class=post-header>
-<h1 class=post-title>Advent of Code 2021</h1>
-<p class=post-description>This is my advent coding journey 2021.</p>
-</header>
-<div class="post-content clearfix">
-<h2 id=introduction>Introduction</h2>
-<p>This is an effort to solve Advent of Code 2021 if I get the time! You will find my code adventure at <a href=https://github.com/mortendaehli/advent-of-code-2021>GitHub Advent of Code 2021</a></p>
-<h2 id=development-setup>Development Setup</h2>
-<p>I am solving this using mostly python 3.9, but in order to build a proper environment you need to install <a href=https://python-poetry.org/>Poetry</a> and run</p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash>git clone git@github.com:mortendaehli/advent-of-code-2021.git
-<span class=nb>cd</span> advent-of-code-2021
-poetry install
-</code></pre></div><p>Then you can explore each day in each sub-folder under advent_of_code_2021.</p>
-</div>
-<footer class="post-footer clearfix"><div class=share>
-<a class=icon-twitter href="https://twitter.com/share?text=Advent%20of%20Code%202021&url=https%3a%2f%2fwww.daehli.no%2fproject%2f2021-12-11-advent-of-code%2f" onclick="return window.open(this.href,'twitter-share','width=550,height=235'),!1" aria-label="Share on Twitter">
-<i class="fa fa-twitter" aria-hidden=true></i>
-</a>
-<a class=icon-facebook href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fwww.daehli.no%2fproject%2f2021-12-11-advent-of-code%2f" onclick="return window.open(this.href,'facebook-share','width=580,height=296'),!1" aria-label="Share on Facebook">
-<i class="fa fa-facebook" aria-hidden=true></i>
-</a>
-</div>
-</footer>
-</article>
-</div>
-</div>
-</div>
-<footer class=footer>
-<div class=container>
-<div class=site-title-wrapper>
-<h1 class=site-title>
-<a href=https://www.daehli.no/>Morten Dæhli Aslesen</a>
-</h1>
-<a class="button-square button-jump-top js-jump-top" href=# aria-label="Back to Top">
-<i class="fa fa-angle-up" aria-hidden=true></i>
-</a>
-</div>
-<p class=footer-copyright>
-<span>&copy; 2021 / Powered by <a href=https://gohugo.io/>Hugo</a></span>
-</p>
-<p class=footer-copyright>
-<span><a href=https://github.com/roryg/ghostwriter>Ghostwriter theme</a> By <a href=http://jollygoodthemes.com>JollyGoodThemes</a></span>
-<span>/ <a href=https://github.com/jbub/ghostwriter>Ported</a> to Hugo By <a href=https://github.com/jbub>jbub</a></span>
-</p>
-</div>
-</footer>
-<script src=https://www.daehli.no/js/jquery-1.11.3.min.js></script>
+<!doctype html><html prefix="og: http://ogp.me/ns#"><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge"><title>Advent of Code 2021 &#183; Morten Dæhli Aslesen</title><meta name=description content="This is my advent coding journey 2021."><meta name=HandheldFriendly content="True"><meta name=MobileOptimized content="320"><meta name=generator content="Hugo 0.98.0"><meta name=robots content="index,follow"><meta name=viewport content="width=device-width,initial-scale=1"><meta property="og:title" content="Advent of Code 2021"><meta property="og:description" content="This is my advent coding journey 2021."><meta property="og:type" content="article"><meta property="og:url" content="https://www.daehli.no/project/2021-12-11-advent-of-code/"><link rel=stylesheet href=https://www.daehli.no/dist/site.css><link rel=stylesheet href=https://www.daehli.no/dist/syntax.css><link rel=stylesheet href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,600,700,300&subset=latin,cyrillic-ext,latin-ext,cyrillic"><link rel=stylesheet href=https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css integrity=sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN crossorigin=anonymous><link rel=icon type=image/x-icon href=/img/favicon.png></head><body><div id=wrapper><header class=site-header><div class=container><div class=site-title-wrapper><h1 class=site-title><a href=https://www.daehli.no/>Morten Dæhli Aslesen</a></h1><a class=button-square href=https://www.daehli.no/index.xml aria-label=RSS><i class="fa fa-rss" aria-hidden=true></i></a>
+<a class="button-square button-social hint--top" data-hint=Facebook aria-label=Facebook href=https://www.facebook.com/morten.aslesen/ rel=me><i class="fa fa-facebook" aria-hidden=true></i></a>
+<a class="button-square button-social hint--top" data-hint=Github aria-label=Github href=https://github.com/mortendaehli/ rel=me><i class="fa fa-github-alt" aria-hidden=true></i></a>
+<a class="button-square button-social hint--top" data-hint=LinkedIn aria-label=LinkedIn href=https://www.linkedin.com/in/morten-d%C3%A6hli-aslesen-50765164/ rel=me><i class="fa fa-linkedin" aria-hidden=true></i></a>
+<a class="button-square button-social hint--top" data-hint=Email aria-label="Send an Email" href=mailto:post@daehli.no><i class="fa fa-envelope" aria-hidden=true></i></a></div><ul class=site-nav><li class=site-nav-item><a href=/>Blog</a></li><li class=site-nav-item><a href=/project/>Projects</a></li><li class=site-nav-item><a href=/page/contact/>Contact</a></li><li class=site-nav-item><a href=/page/about/>About</a></li></ul></div></header><div id=container><div class=container><article class=post-container><header class=post-header><h1 class=post-title>Advent of Code 2021</h1><p class=post-description>This is my advent coding journey 2021.</p></header><div class="post-content clearfix"><h2 id=introduction>Introduction</h2><p>This is an effort to solve Advent of Code 2021 if I get the time! You will find my code adventure at <a href=https://github.com/mortendaehli/advent-of-code-2021>GitHub Advent of Code 2021</a></p><h2 id=development-setup>Development Setup</h2><p>I am solving this using mostly python 3.9, but in order to build a proper environment you need to install <a href=https://python-poetry.org/>Poetry</a> and run</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>git clone git@github.com:mortendaehli/advent-of-code-2021.git
+</span></span><span class=line><span class=cl><span class=nb>cd</span> advent-of-code-2021
+</span></span><span class=line><span class=cl>poetry install
+</span></span></code></pre></div><p>Then you can explore each day in each sub-folder under advent_of_code_2021.</p></div><footer class="post-footer clearfix"><div class=share><a class=icon-twitter href="https://twitter.com/share?text=Advent%20of%20Code%202021&url=https%3a%2f%2fwww.daehli.no%2fproject%2f2021-12-11-advent-of-code%2f" onclick='return window.open(this.href,"twitter-share","width=550,height=235"),!1' aria-label="Share on Twitter"><i class="fa fa-twitter" aria-hidden=true></i></a>
+<a class=icon-facebook href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fwww.daehli.no%2fproject%2f2021-12-11-advent-of-code%2f" onclick='return window.open(this.href,"facebook-share","width=580,height=296"),!1' aria-label="Share on Facebook"><i class="fa fa-facebook" aria-hidden=true></i></a></div></footer></article></div></div></div><footer class=footer><div class=container><div class=site-title-wrapper><h1 class=site-title><a href=https://www.daehli.no/>Morten Dæhli Aslesen</a></h1><a class="button-square button-jump-top js-jump-top" href=# aria-label="Back to Top"><i class="fa fa-angle-up" aria-hidden=true></i></a></div><p class=footer-copyright><span>&copy; 2021 / Powered by <a href=https://gohugo.io/>Hugo</a></span></p><p class=footer-copyright><span><a href=https://github.com/roryg/ghostwriter>Ghostwriter theme</a> By <a href=http://jollygoodthemes.com>JollyGoodThemes</a></span>
+<span>/ <a href=https://github.com/jbub/ghostwriter>Ported</a> to Hugo By <a href=https://github.com/jbub>jbub</a></span></p></div></footer><script src=https://www.daehli.no/js/jquery-1.11.3.min.js></script>
 <script src=https://www.daehli.no/js/jquery.fitvids.js></script>
-<script src=https://www.daehli.no/js/scripts.js></script>
-</body>
-</html>
+<script src=https://www.daehli.no/js/scripts.js></script></body></html>
