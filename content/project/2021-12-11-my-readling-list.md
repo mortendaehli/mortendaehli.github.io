@@ -20,7 +20,7 @@ This is a curated list of reading material and code projects that I enjoy and re
 - [Test-Driven Web Development with Python by Harry Percival](https://www.obeythetestinggoat.com/pages/book.html#toc)
 - [Python: Functional programming HOWTO by A. M. Kuchling](https://docs.python.org/3/howto/functional.html)
 - [Awesome scalability](https://github.com/binhnguyennus/awesome-scalability) An updated and organized reading list for illustrating the patterns of scalable, reliable, and performant large-scale systems.
-
+- [The C4 model for visualising software architecture - Context, Containers, Components, and Code](https://c4model.com/)
 ### General tech
 
 - [Stop Emailing Like A Rube - Jeffery Paul](https://sneak.berlin/20201029/stop-emailing-like-a-rube/)
@@ -36,6 +36,7 @@ This is a curated list of reading material and code projects that I enjoy and re
 
 ### Web
 - [HUGO - The world’s fastest framework for building websites](https://gohugo.io/)
+- [Streamlit - A faster way to build and share data apps](https://streamlit.io/)
 
 ### Machine learning
 - [Explainable AI with Shap - Scott Lundberg](https://github.com/slundberg/shap)
