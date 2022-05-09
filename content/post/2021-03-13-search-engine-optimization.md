@@ -3,7 +3,7 @@ title = "A complete Step-by-Step Google Search engine optimization guide"
 description = "This is how you do search engine optimization for an e-commerce site!"
 author = "Morten Dæhli Aslesen"
 date = 2021-03-13T14:00:08.000Z
-tags = ["SEO", "Digital" "marketing"]
+tags = ["SEO", "Digital", "marketing"]
 draft = false
 +++
 
