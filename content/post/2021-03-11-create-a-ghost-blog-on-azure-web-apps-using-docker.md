@@ -3,7 +3,7 @@ title = "Create a Ghost Blog on Azure Web Apps Using Docker"
 description = "This is how you create a Ghost blog using Azure Web Apps and Docker"
 author = "Morten Dæhli Aslesen"
 date = 2021-03-10T18:10:10.000Z
-tags = ["Azure", "Web" "Apps", "Docker"]
+tags = ["Azure", "Web", "Apps", "Docker"]
 draft = false
 +++
 
