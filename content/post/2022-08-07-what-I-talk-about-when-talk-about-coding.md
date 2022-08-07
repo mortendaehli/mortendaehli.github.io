@@ -1,5 +1,5 @@
 +++
-title = "What I think about when I talk about coding"
+title = "What I talk about when I talk about coding"
 description = "Coding as poetry"
 author = "Morten Dæhli Aslesen"
 date = 2022-08-07T11:37:30.000Z

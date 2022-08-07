@@ -12,7 +12,7 @@ Follow the [Hugo quick start guide](https://gohugo.io/getting-started/quick-star
 
 Then start the development server using:
 
-    hugo -D
+    hugo server -D
 
 ## CI/CD
 This blog is automatically deployed using GitHub Actions to GitHub Pages. See .github/workflows for details.
