@@ -1,19 +1,15 @@
 +++
-title = "My Readling List"
-description = "This is my reading list"
+title = "Reading list"
+date = 2022-08-07T11:33:00Z
 author = "Morten Dæhli Aslesen"
-date = 2021-12-11T19:03:06+01:00
+description = "This is my personal curated reading list"
 tags = ["tech", "reading"]
 draft = false
 +++
 
-## Introduction
-
 This is a curated list of reading material and code projects that I enjoy and recommend to others:
 
-## Reading
-
-### Coding
+### Coding philosophy
 
 - [Twelve-factor app](https://12factor.net/)
 - [Architecture Patterns with Python by Harry Percival, Bob Gregory](https://www.cosmicpython.com/book/preface.html)

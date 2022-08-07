@@ -41,12 +41,12 @@ params:
   github: "https://github.com/mortendaehli/"
   linkedin: "https://www.linkedin.com/in/morten-d%C3%A6hli-aslesen-50765164/"
   facebook: "https://www.facebook.com/morten.aslesen/"
-  email: post@daehli.no
+  email: mortendaehli@gmail.com
   opengraph: true
   shareTwitter: true
   rss: true
   shareFacebook: true
-  shareLinkedIn: false
+  shareLinkedIn: true
   dateFormat: "Mon, Jan 2, 2006"
   exponeaJsUrl: ""
   exponeaTarget: ""
@@ -68,9 +68,12 @@ menu:
     - name: Projects
       url: /project/
       weight: 2
+    - name: Reading list
+      url: /page/reading-list/
+      weight: 3
     - name: Contact
       url: /page/contact/
-      weight: 3
+      weight: 4
     - name: About
       url: /page/about/
-      weight: 4
+      weight: 5

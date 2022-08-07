@@ -1,13 +1,15 @@
 +++
-title = "Create a Ghost Blog on Azure Web Apps Using Docker"
-description = "This is how you create a Ghost blog using Azure Web Apps and Docker"
+title = "Create a Ghost Blog using Azure Web Apps"
+description = "Step-by-step guide to hosting your own tech-blog"
 author = "Morten Dæhli Aslesen"
 date = 2021-03-10T18:10:10.000Z
-tags = ["Azure", "Web", "Apps", "Docker"]
+tags = ["Azure", "Web", "Apps", "Docker", "Ghost"]
 draft = false
 +++
 
-Have you ever wondered how you can host your tech-blog? If you are like me, and you've built countless prototypes from scratch. They all work and do what they are meant to do. But something is off. They just don't look any good, and they are not that user-friendly. I recently came across a solution, inspired by a fellow [Bouvet colleague](https://www.frodehus.dev/), I'm now running my very own blog in the cloud. No more 1990s feel and lack of proper UX. This is the real deal for modern blogging and content publishing. It even comes with a bunch of easy to integrate applications - and you can easily monetize your content if that's your flavor.
+> ⚠️ **This guide is outdated**: Azure store account does not support this service anymore! So I've moved to [HUGO](https://gohugo.io/) using GitHub Pages. An easy to follow guide can be found in HUGO's own [Host on GitHub docs](https://gohugo.io/hosting-and-deployment/hosting-on-github/).
+
+Have you ever wondered how you can host your own tech-blog? If you are like me, and you've built countless prototypes from scratch. They all work and do what they are meant to do. But something is off. They just don't look any good, and they are not that user-friendly. I recently came across a solution, inspired by a fellow [Bouvet colleague](https://www.frodehus.dev/), I'm now running my very own blog in the cloud. No more 1990s feel and lack of good UX. This is the real deal for modern blogging and content publishing. It even comes with a bunch of easy to integrate applications - and you can easily monetize your content if that's your flavor.
 
 I'm a pragmatic techie. I like to see results, and I love to adopt and contribute to open source when I find the opportunity. So why do it the hard way? There are two general options. You can pay for official managed to host such as [Ghost(Pro)](https://ghost.org/), or you can host it yourself and host it any way you like. The out of the box solutions are:
 
@@ -136,15 +138,7 @@ Restart the server. If everything is Okay, then you should see the ghost tables 
 
 ### 6. Connect to your custom domain (optional)
 
-Coming soon!
-
-### 7. Add an SSL certificate for HTTPS
-
-Coming soon!
-
-### 8. Update to the latest Ghost image
-
-Coming soon!
+Go to your domain provider and register your Azure Web App. This depends on your hosting service. For general information check out the [Azure Static Web Apps Docs - Custom domain](https://docs.microsoft.com/en-us/azure/static-web-apps/custom-domain).
 
 ## Finally
 

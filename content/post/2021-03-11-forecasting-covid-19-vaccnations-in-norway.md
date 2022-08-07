@@ -7,13 +7,14 @@ tags = ["Machine learning", "Time series forecast", "Covid-19"]
 draft = false
 +++
 
-In this blog post, we will try to predict the Covid-19 vaccination race in Norway. Most of us are looking forward to getting "back to normal" - and vaccination is probably the only realistic solution.
+In this blog post, we will try to predict the Covid-19 vaccination race in Norway. We are all looking forward to getting "back to normal" - and wide vaccination coverage is probably the only realistic way to get there.
 
-The question we are trying to answer is - how are the outlooks towards summer 2021? I feel that the Norwegian government is pretty optimistic when it comes to vaccination rates. Below is a facsimile from the Norwegian national newspaper [VG](https://www.vg.no) visualizing prognosis data from the [Norwegian Institute of Public Health](https://www.fhi.no).
+The question we are trying to answer is - how is the vaccine coverage going to be during the summer of 2021? I feel that the Norwegian government is pretty optimistic when it comes to vaccination rates. Below is a facsimile from the Norwegian national newspaper [VG](https://www.vg.no) visualizing prognosis data from the [Norwegian Institute of Public Health](https://www.fhi.no).
 ![Cumulative forecast FHI vaccines Norway Covid-19 neutral](/images/2021/03/FHI-vaccine-prognosis.png)Cumulative forecast of arrived vaccine doses. Facsimile: www.vg.no
+
 # Bayesian time series forecasting with Facebook Prophet
 
-In this post, I would like to balance this prognosis by implementing a naïve time series forecast using [Facebook Prophet](https://facebook.github.io/prophet/) in python. Tweaking and optimizing the algorithm may be the basis of a future blog post. The algorithm is a time series forecast tool based on an additive model with non-linear trends fitted with yearly, weekly and daily seasonality. You can think about it as a Bayesian ARIMAX model but better and simpler to use. The highlights are:
+In this post, I would like to balance this prognosis by implementing a naïve time series forecast using [Facebook Prophet](https://facebook.github.io/prophet/) in python. Tweaking and optimizing the algorithm may be the basis of a future blog post. The algorithm is a time series forecast tool based on an additive model with non-linear trends fitted with yearly, weekly and daily seasonality. You can think about it as a Bayesian ARIMAX model but often better and simpler to use. The highlights are:
 
 - Fast and accurate with the computation done in C++ using the Stan framework
 - Fully automatic and fairly robust and accurate without any manual efforts
@@ -49,7 +50,7 @@ Based on this we know that we will get the relevant data using a GET request on 
 
 Reading data from VG.no Covid-19 data API
 The resulting data looks like this:
-![Raw data vaccines Covid-19 Norway historic](/images/2021/03/raw-data.png)Raw data parsed as as Pandas DataFrame
+![Raw data vaccines Covid-19 Norway historic](/images/2021/03/raw-data.png)Raw data parsed as a Pandas DataFrame
 On to do some machine learning!
 
 # Training the Prophet model
@@ -95,6 +96,12 @@ Without digging deep in the data underlying the official prognosis, I would expe
 
 I hope you like this!
 
-Update: The government just released a statement that the Oxford vaccine is reducing their estimates for deliveries in Q2. Maybe, unfortunately, the short history is telling us a bit about the future here? I hope I'm wrong!
+Here is the [Github Gists](https://gist.github.com/mortendaehli) if you want to run the complete code:
 
-Here is a complete gist on [Github Gists](https://gist.github.com/mortendaehli) if you want to run the complete code:
+## Update
+The government just released a statement that the Oxford vaccine is reducing their estimates for deliveries in Q2. Maybe, unfortunately, the short history is telling us a bit about the future here? I hope I'm wrong!
+
+## Update 2
+It seems like this forecast was spot on until June which was surprisingly good given the limited data available 3 months earlier.
+
+The moral of this story is that given enough heterogeneity in the underlying process, the history can in some cases tell us something about the future. But be careful. This experiment was on purpose very naive.
