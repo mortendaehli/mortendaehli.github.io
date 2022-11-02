@@ -4,7 +4,7 @@
 <a class="button-square button-social hint--top" data-hint=LinkedIn aria-label=LinkedIn href=https://www.linkedin.com/in/morten-d%C3%A6hli-aslesen-50765164/ rel=me><i class="fa fa-linkedin" aria-hidden=true></i></a>
 <a class="button-square button-social hint--top" data-hint=Email aria-label="Send an Email" href=mailto:mortendaehli@gmail.com><i class="fa fa-envelope" aria-hidden=true></i></a></div><ul class=site-nav><li class=site-nav-item><a href=/>Blog</a></li><li class=site-nav-item><a href=/project/>Projects</a></li><li class=site-nav-item><a href=/page/reading-list/>Reading list</a></li><li class=site-nav-item><a href=/page/contact/>Contact</a></li><li class=site-nav-item><a href=/page/about/>About</a></li></ul></div></header><div id=container><div class=container><article class=post-container itemscope itemtype=http://schema.org/BlogPosting><header class=post-header><h1 class=post-title itemprop="name headline">This is how you get a clean git history</h1><p class=post-description itemprop=description>Cleaning up your git history, and why it matters.</p><p class=post-date><span>Published <time datetime=2022-10-31 itemprop=datePublished>Mon, Oct 31, 2022</time></span>
 <span>by</span>
-<span itemscope itemprop=author itemtype=https://schema.org/Person><span itemprop=name><a href=%f0%9f%91%8b%20Hi,%20I%e2%80%99m%20Morten%20D%c3%a6hli%20Aslesen,%20and%20I%27m%20currently%20working%20as%20an%20IT-consultant%20at%20Bouvet%20Norway%20ASA itemprop=url rel=author>Morten Dæhli Aslesen</a></span></span></p><p class="post-reading post-line"><span>Estimated reading time: 5 min</span></p></header><div class="post-content clearfix" itemprop=articleBody><p>Communication is a core pillar when it comes to working as a team. Without good communication it is almost
+<span itemscope itemprop=author itemtype=https://schema.org/Person><span itemprop=name><a href=%f0%9f%91%8b%20Hi,%20I%e2%80%99m%20Morten%20D%c3%a6hli%20Aslesen,%20and%20I%27m%20currently%20working%20as%20an%20IT-consultant%20at%20Bouvet%20Norway%20ASA itemprop=url rel=author>Morten Dæhli Aslesen</a></span></span></p><p class="post-reading post-line"><span>Estimated reading time: 7 min</span></p></header><div class="post-content clearfix" itemprop=articleBody><p>Communication is a core pillar when it comes to working as a team. Without good communication it is almost
 impossible for a team to achieve great things. As developers, we are lucky to have many tools helping us to become great
 communicators and good team players. One of those tools are git. It&rsquo;s infamous for being counter-intuitive and easy to
 screw up. It&rsquo;s quite fitting that <a href=https://ohshitgit.com/>Oh Shit, Git!?!</a> has helped many developers in dire need of git
@@ -39,14 +39,48 @@ a prompt for you to write a commit message. If you want to change the commit mes
 can do it like so:</p><pre><code>git commit --amend -m &quot;my new commit message&quot;
 </code></pre><p>To change committed files. Let say you forgot to add a file, you can simply add the changes to the last commit by
 staging the additional changes before running:</p><pre><code>git commit --amend --no-edit
-</code></pre><p>The difference is that you do not edit the commit message, and it will look like you did the commit in a single go.</p><p>Remember to do a forced git push in order to push to the remote.</p><h3 id=squash-your-commits>Squash your commits</h3><p>It is also possible to change the history of your own branch by rebasing, also known as squashing your own commits. By
+</code></pre><p>The difference is that you do not edit the commit message, and it will look like you did the commit in a single go.</p><p>Remember to do a forced git push in order to push to the remote.</p><h3 id=rebase-squash-your-commits---the-ultimate-git-superpower>Rebase (squash) your commits - The ultimate git superpower!</h3><p>It is also possible to change the history of your own branch by rebasing, also known as squashing your own commits. By
 doing so, you will be able to edit, squash, remove and change the order of your commits. It is all done interactively.
 There are two ways of doing this. Either:</p><pre><code>git rebase -i HEAD~&lt;X&gt;
 </code></pre><p>Where is the number of commits you want to rebase. Or you can specifically target a commit has:</p><pre><code>git rebase -i &lt;hash&gt;
-</code></pre><p>To get either the has or the HEAD number, you can check the reflog:</p><pre><code>git reflog
-</code></pre><h3 id=tips>Tips</h3><p>Git is a decentralized version control, and before you start any rebase or merging activity you should make sure that
-you are up-to-date with the remote repository:</p><pre><code>git fetch
-</code></pre><p>Another</p></div><footer class="post-footer clearfix"><p class=post-tags><span>Tagged:</span>
+</code></pre><p>The &lsquo;-i&rsquo; flag means interactive. The rebase will look something like this:</p><pre><code>pick de10be7 chore: test commit 2
+pick 414978f chore: test commit 3
+
+# Rebase 46e90a5..414978f onto 46e90a5 (2 commands)
+
+#
+# Commands:
+# p, pick &lt;commit&gt; = use commit
+# r, reword &lt;commit&gt; = use commit, but edit the commit message
+# e, edit &lt;commit&gt; = use commit, but stop for amending
+# s, squash &lt;commit&gt; = use commit, but meld into previous commit
+# f, fixup [-C | -c] &lt;commit&gt; = like &quot;squash&quot; but keep only the previous
+#                    commit's log message, unless -C is used, in which case
+#                    keep only this commit's message; -c is same as -C but
+#                    opens the editor
+# x, exec &lt;command&gt; = run command (the rest of the line) using shell
+# b, break = stop here (continue rebase later with 'git rebase --continue')
+# d, drop &lt;commit&gt; = remove commit
+# l, label &lt;label&gt; = label current HEAD with a name
+# t, reset &lt;label&gt; = reset HEAD to a label
+# m, merge [-C &lt;commit&gt; | -c &lt;commit&gt;] &lt;label&gt; [# &lt;oneline&gt;]
+# .       create a merge commit using the original merge commit's
+# .       message (or the oneline, if no original merge commit was
+# .       specified); use -c &lt;commit&gt; to reword the commit message
+#
+# These lines can be re-ordered; they are executed from top to bottom.
+#
+# If you remove a line here THAT COMMIT WILL BE LOST.
+#
+# However, if you remove everything, the rebase will be aborted.
+#
+</code></pre><p>Notice that the order of the commits are from the oldest to the newest when you do the rebase. By default, all the commits
+have the pick command. The commit you rebase onto is not shown, because this is the target for the rebase. We rewrite the
+history from that commit and onwards. In order to squash the commits you can simply choose squash</p><pre><code>squash de10be7 chore: test commit 2
+squash 414978f chore: test commit 3
+</code></pre><p>But you can also edit the order of the commits, edit the commit messages, etc.</p><p>When you are done, you press &lsquo;Esc&rsquo; and &lsquo;:wq!&rsquo; and then &lsquo;Enter&rsquo;.</p><p>Here again, you have to force push your changes.</p><h3 id=tips>Tips</h3><p>It&rsquo;s always good practice to rebase and clean up your git history as you go. If you keep your branch living for too
+long without rebasing and cleaning up, you may be in for a nasty surprise when the main branch has changed dramatically.</p><p>Also, make sure to use <a href=https://www.conventionalcommits.org/en/v1.0.0/>Conventional Commits</a>, and make sure that your
+messages are clear and concise.</p><p>Happy coding! 😃</p></div><footer class="post-footer clearfix"><p class=post-tags><span>Tagged:</span>
 <a href=/tags/git/>git</a>,
 <a href=/tags/teamwork/>teamwork</a></p><div class=share><a class=icon-twitter href="https://twitter.com/share?text=This%20is%20how%20you%20get%20a%20clean%20git%20history&url=https%3a%2f%2fwww.daehli.no%2f2022%2f10%2f31%2f2022-10-31-clean-git-history%2f" onclick='return window.open(this.href,"twitter-share","width=550,height=235"),!1' aria-label="Share on Twitter"><i class="fa fa-twitter" aria-hidden=true></i></a>
 <a class=icon-facebook href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fwww.daehli.no%2f2022%2f10%2f31%2f2022-10-31-clean-git-history%2f" onclick='return window.open(this.href,"facebook-share","width=580,height=296"),!1' aria-label="Share on Facebook"><i class="fa fa-facebook" aria-hidden=true></i></a>
