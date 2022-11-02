@@ -134,7 +134,7 @@ The difference is that you do not edit the commit message, and it will look like
 
 Remember to do a forced git push in order to push to the remote.
 
-### Squash your commits
+### Rebase (squash) your commits - The ultimate git superpower!
 It is also possible to change the history of your own branch by rebasing, also known as squashing your own commits. By
 doing so, you will be able to edit, squash, remove and change the order of your commits. It is all done interactively.
 There are two ways of doing this. Either:
@@ -145,16 +145,59 @@ Where <X> is the number of commits you want to rebase. Or you can specifically t
 
     git rebase -i <hash>
 
-To get either the has or the HEAD number, you can check the reflog:
+The '-i' flag means interactive. The rebase will look something like this:
+    
+    pick de10be7 chore: test commit 2
+    pick 414978f chore: test commit 3
+    
+    # Rebase 46e90a5..414978f onto 46e90a5 (2 commands)
+    
+    #
+    # Commands:
+    # p, pick <commit> = use commit
+    # r, reword <commit> = use commit, but edit the commit message
+    # e, edit <commit> = use commit, but stop for amending
+    # s, squash <commit> = use commit, but meld into previous commit
+    # f, fixup [-C | -c] <commit> = like "squash" but keep only the previous
+    #                    commit's log message, unless -C is used, in which case
+    #                    keep only this commit's message; -c is same as -C but
+    #                    opens the editor
+    # x, exec <command> = run command (the rest of the line) using shell
+    # b, break = stop here (continue rebase later with 'git rebase --continue')
+    # d, drop <commit> = remove commit
+    # l, label <label> = label current HEAD with a name
+    # t, reset <label> = reset HEAD to a label
+    # m, merge [-C <commit> | -c <commit>] <label> [# <oneline>]
+    # .       create a merge commit using the original merge commit's
+    # .       message (or the oneline, if no original merge commit was
+    # .       specified); use -c <commit> to reword the commit message
+    #
+    # These lines can be re-ordered; they are executed from top to bottom.
+    #
+    # If you remove a line here THAT COMMIT WILL BE LOST.
+    #
+    # However, if you remove everything, the rebase will be aborted.
+    #
 
-    git reflog
+Notice that the order of the commits are from the oldest to the newest when you do the rebase. By default, all the commits
+have the pick command. The commit you rebase onto is not shown, because this is the target for the rebase. We rewrite the
+history from that commit and onwards. In order to squash the commits you can simply choose squash
 
+    squash de10be7 chore: test commit 2
+    squash 414978f chore: test commit 3
+
+But you can also edit the order of the commits, edit the commit messages, etc.
+
+When you are done, you press 'Esc' and ':wq!' and then 'Enter'.
+
+Here again, you have to force push your changes.
 
 ### Tips
 
-Git is a decentralized version control, and before you start any rebase or merging activity you should make sure that
-you are up-to-date with the remote repository:
+It's always good practice to rebase and clean up your git history as you go. If you keep your branch living for too
+long without rebasing and cleaning up, you may be in for a nasty surprise when the main branch has changed dramatically.
 
-    git fetch
+Also, make sure to use [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/), and make sure that your
+messages are clear and concise.
 
-Anotherrrr
+Happy coding! 😃
