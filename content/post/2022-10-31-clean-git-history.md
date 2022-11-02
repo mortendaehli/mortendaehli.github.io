@@ -119,11 +119,35 @@ request.
 
     git commit --amend
 
-All you have to do is to add or remove the stuff that you want to amend before you run the command. You can also
-change the commit message by using
+All you have to do is to add or remove the stuff that you want to amend before you run the command. This will open
+a prompt for you to write a commit message. If you want to change the commit message directly without a prompt, you
+can do it like so:
 
     git commit --amend -m "my new commit message"
 
+To change committed files. Let say you forgot to add a file, you can simply add the changes to the last commit by
+staging the additional changes before running:
+
+    git commit --amend --no-edit
+
+The difference is that you do not edit the commit message, and it will look like you did the commit in a single go.
+
+Remember to do a forced git push in order to push to the remote.
+
+### Squash your commits
+It is also possible to change the history of your own branch by rebasing, also known as squashing your own commits. By
+doing so, you will be able to edit, squash, remove and change the order of your commits. It is all done interactively.
+There are two ways of doing this. Either:
+
+    git rebase -i HEAD~<X>
+
+Where <X> is the number of commits you want to rebase. Or you can specifically target a commit has:
+
+    git rebase -i <hash>
+
+To get either the has or the HEAD number, you can check the reflog:
+
+    git reflog
 
 
 ### Tips
@@ -133,4 +157,4 @@ you are up-to-date with the remote repository:
 
     git fetch
 
-Ano
+Another
