@@ -10,13 +10,15 @@ draft = false
 This is a curated list of reading material and code projects that I enjoy and recommend to others:
 
 ### Coding philosophy
-
 - [Twelve-factor app](https://12factor.net/)
 - [Architecture Patterns with Python by Harry Percival, Bob Gregory](https://www.cosmicpython.com/book/preface.html)
 - [Test-Driven Web Development with Python by Harry Percival](https://www.obeythetestinggoat.com/pages/book.html#toc)
 - [Python: Functional programming HOWTO by A. M. Kuchling](https://docs.python.org/3/howto/functional.html)
 - [Awesome scalability](https://github.com/binhnguyennus/awesome-scalability) An updated and organized reading list for illustrating the patterns of scalable, reliable, and performant large-scale systems.
 - [The C4 model for visualising software architecture - Context, Containers, Components, and Code](https://c4model.com/)
+- [Design Patterns: Elements of Reusable Object-Oriented Software](https://www.oreilly.com/library/view/design-patterns-elements/0201633612/)
+- [Domain-Driven Design: Tackling Complexity in the Heart of Software](https://www.oreilly.com/library/view/domain-driven-design-tackling/0321125215/)
+
 ### General tech
 
 - [Stop Emailing Like A Rube - Jeffery Paul](https://sneak.berlin/20201029/stop-emailing-like-a-rube/)
@@ -47,6 +49,10 @@ This is a curated list of reading material and code projects that I enjoy and re
 - [The DevOps handbook](https://www.oreilly.com/library/view/the-devops-handbook/9781457191381/)
 - [The Phoenix Project: A Novel about IT, DevOps, and Helping Your Business Win](https://www.amazon.com/Phoenix-Project-DevOps-Helping-Business/dp/0988262592)
 - [Clean Code: A Handbook of Agile Software Craftsmanship](https://www.amazon.com/Clean-Code-Handbook-Software-Craftsmanship/dp/0132350882)
+
+## Project Management
+- [team topologies: organizing business and technology teams for fast flow](https://teamtopologies.com/)
+
 
 ## Random:
 - [Quant finance](https://github.com/wilsonfreitas/awesome-quant)
