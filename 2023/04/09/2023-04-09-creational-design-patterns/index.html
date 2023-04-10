@@ -1,0 +1,318 @@
+<!doctype html><html prefix="og: http://ogp.me/ns#"><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge"><title>Object oriented design patterns - Creational patterns (Part 1) &#183; Morten Dæhli Aslesen</title><meta name=description content="The Gang of Four's classic creational design patterns."><meta name=HandheldFriendly content="True"><meta name=MobileOptimized content="320"><meta name=generator content="Hugo 0.111.3"><meta name=robots content="index,follow"><meta name=viewport content="width=device-width,initial-scale=1"><meta property="og:title" content="Object oriented design patterns - Creational patterns (Part 1)"><meta property="og:description" content="The Gang of Four's classic creational design patterns."><meta property="og:type" content="article"><meta property="og:url" content="https://www.daehli.no/2023/04/09/2023-04-09-creational-design-patterns/"><link rel=stylesheet href=https://www.daehli.no/dist/site.css><link rel=stylesheet href=https://www.daehli.no/dist/syntax.css><link rel=stylesheet href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,600,700,300&subset=latin,cyrillic-ext,latin-ext,cyrillic"><link rel=stylesheet href=https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css integrity=sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN crossorigin=anonymous><link rel=icon type=image/x-icon href=/img/favicon.png></head><body><div id=wrapper><header class=site-header><div class=container><div class=site-title-wrapper><h1 class=site-title><a href=https://www.daehli.no/>Morten Dæhli Aslesen</a></h1><a class=button-square href=https://www.daehli.no/index.xml aria-label=RSS><i class="fa fa-rss" aria-hidden=true></i></a>
+<a class="button-square button-social hint--top" data-hint=Facebook aria-label=Facebook href=https://www.facebook.com/morten.aslesen/ rel=me><i class="fa fa-facebook" aria-hidden=true></i></a>
+<a class="button-square button-social hint--top" data-hint=Github aria-label=Github href=https://github.com/mortendaehli/ rel=me><i class="fa fa-github-alt" aria-hidden=true></i></a>
+<a class="button-square button-social hint--top" data-hint=LinkedIn aria-label=LinkedIn href=https://www.linkedin.com/in/morten-d%C3%A6hli-aslesen-50765164/ rel=me><i class="fa fa-linkedin" aria-hidden=true></i></a>
+<a class="button-square button-social hint--top" data-hint=Email aria-label="Send an Email" href=mailto:mortendaehli@gmail.com><i class="fa fa-envelope" aria-hidden=true></i></a></div><ul class=site-nav><li class=site-nav-item><a href=/>Blog</a></li><li class=site-nav-item><a href=/project/>Projects</a></li><li class=site-nav-item><a href=/page/reading-list/>Reading list</a></li><li class=site-nav-item><a href=/page/contact/>Contact</a></li><li class=site-nav-item><a href=/page/about/>About</a></li></ul></div></header><div id=container><div class=container><article class=post-container itemscope itemtype=http://schema.org/BlogPosting><header class=post-header><h1 class=post-title itemprop="name headline">Object oriented design patterns - Creational patterns (Part 1)</h1><p class=post-description itemprop=description>The Gang of Four's classic creational design patterns.</p><p class=post-date><span>Published <time datetime=2023-04-09 itemprop=datePublished>Sun, Apr 9, 2023</time></span>
+<span>by</span>
+<span itemscope itemprop=author itemtype=https://schema.org/Person><span itemprop=name><a href=%f0%9f%91%8b%20Hi,%20I%e2%80%99m%20Morten%20D%c3%a6hli%20Aslesen,%20and%20I%27m%20currently%20working%20as%20an%20IT-consultant%20at%20Bouvet%20Norway%20ASA itemprop=url rel=author>Morten Dæhli Aslesen</a></span></span></p><p class="post-reading post-line"><span>Estimated reading time: 8 min</span></p></header><div class="post-content clearfix" itemprop=articleBody><p>This is the first part in a series of 3 blog post summarizing the classic book
+<a href=https://www.oreilly.com/library/view/design-patterns-elements/0201633612/>&ldquo;Design Patterns: Elements of Reusable Object-Oriented Software&rdquo;</a>
+by Gamma, Helm, Johnson and Vlissides, collectively known as the Gang of Four (GoF).
+The book is widely regarded as a seminal work in the field of software engineering and is
+frequently cited as one of the most influential books in the industry.</p><p>The book focuses on the concept of software design patterns, which are reusable solutions to common programming
+problems. The authors identify 23 design patterns, which are divided into three categories: creational, structural,
+and behavioral patterns.</p><p>I&rsquo;m, admittingly, not a huge fan of OOP design patterns, since they ofter create unnecessary complexity. Nonetheless,
+I think they are a good source to understand object-oriented heavy code bases, it&rsquo;s good to understand the terminology,
+and they are really powerful when used correctly.</p><h2 id=overview>Overview</h2><p>In this blog post we will look into the creational patterns only, but here is a complete overview of the patterns
+you will find in the book:</p><table><thead><tr><th>Purpose</th><th>Design pattern</th><th>Varying aspect they help solve</th></tr></thead><tbody><tr><td>Creational</td><td>Abstract factory</td><td>Families of objects</td></tr><tr><td></td><td>Builder</td><td>Composite object creation</td></tr><tr><td></td><td>Factory method</td><td>Subclass of objects</td></tr><tr><td></td><td>Prototype</td><td>Class of object</td></tr><tr><td></td><td>Singleton</td><td>Sole instance of a object</td></tr><tr><td>Structural</td><td>Adapter</td><td>Interface between objects</td></tr><tr><td></td><td>Bridge</td><td>Implementation of objects</td></tr><tr><td></td><td>Composite</td><td>Composition and structure</td></tr><tr><td></td><td>Decorator</td><td>Responsibility</td></tr><tr><td></td><td>Facade</td><td>Interface to a system</td></tr><tr><td></td><td>Flyweight</td><td>Storage cost</td></tr><tr><td></td><td>Proxy</td><td>Location of object</td></tr><tr><td>Behavioral</td><td>Chain of responsibility</td><td>Object that can fulfill a responsibility</td></tr><tr><td></td><td>Command</td><td>How a request is handled</td></tr><tr><td></td><td>Interpreter</td><td>Interpretation or grammar</td></tr><tr><td></td><td>Iterator</td><td>How an object is traversed</td></tr><tr><td></td><td>Mediator</td><td>Object interactions</td></tr><tr><td></td><td>Memento</td><td>Sharing of private information</td></tr><tr><td></td><td>Observer</td><td>Object depending on other objects</td></tr><tr><td></td><td>State</td><td>State of and object</td></tr><tr><td></td><td>Strategy</td><td>Algorithms</td></tr><tr><td></td><td>Template method</td><td>Algorithm steps</td></tr><tr><td></td><td>Visitor</td><td>Operations that can be applied</td></tr></tbody></table><h2 id=creational-patterns>Creational Patterns</h2><p>Creational patterns are a type of design pattern that deal with object creation mechanisms.
+Creational patterns provide various ways to create objects while hiding the creation logic,
+making the code more flexible and reusable.</p><p>We will now look into the Abstract factory, Builder, Factory method, Prototype and the Singleton patterns
+with examples using Python.</p><h3 id=abstract-factory-pattern>Abstract Factory Pattern</h3><p>Abstract Factory provides an interface for creating families of related or dependent
+objects without specifying their concrete classes. This pattern is useful when we need to create multiple objects that
+work together in a specific way, but the actual implementation of each object is not known before run-time. E.g. the
+factory used depends on environmental variables or input from the user.</p><p>The Abstract Factory pattern consists of four main components:</p><ul><li><strong>Abstract Factory</strong>: an interface that defines methods for creating the related products.</li><li><strong>Concrete Factory</strong>: a class that implements the Abstract Factory interface to create concrete products.</li><li><strong>Abstract Product</strong>: an interface that defines the methods that concrete products must implement.</li><li><strong>Concrete Product</strong>: a class that implements the Abstract Product interface.</li></ul><div class=highlight><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=kn>from</span> <span class=nn>__future__</span> <span class=kn>import</span> <span class=n>annotations</span>
+</span></span><span class=line><span class=cl><span class=kn>from</span> <span class=nn>abc</span> <span class=kn>import</span> <span class=n>ABC</span><span class=p>,</span> <span class=n>abstractmethod</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>class</span> <span class=nc>AbstractFactory</span><span class=p>(</span><span class=n>ABC</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>    <span class=nd>@abstractmethod</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>create_product_a</span><span class=p>(</span><span class=bp>self</span><span class=p>)</span> <span class=o>-&gt;</span> <span class=n>AbstractProductA</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>        <span class=k>pass</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=nd>@abstractmethod</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>create_product_b</span><span class=p>(</span><span class=bp>self</span><span class=p>)</span> <span class=o>-&gt;</span> <span class=n>AbstractProductB</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>        <span class=k>pass</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>class</span> <span class=nc>ConcreteFactory1</span><span class=p>(</span><span class=n>AbstractFactory</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>create_product_a</span><span class=p>(</span><span class=bp>self</span><span class=p>)</span> <span class=o>-&gt;</span> <span class=n>AbstractProductA</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=n>ConcreteProductA1</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>create_product_b</span><span class=p>(</span><span class=bp>self</span><span class=p>)</span> <span class=o>-&gt;</span> <span class=n>AbstractProductB</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=n>ConcreteProductB1</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>class</span> <span class=nc>ConcreteFactory2</span><span class=p>(</span><span class=n>AbstractFactory</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>create_product_a</span><span class=p>(</span><span class=bp>self</span><span class=p>)</span> <span class=o>-&gt;</span> <span class=n>AbstractProductA</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=n>ConcreteProductA2</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>create_product_b</span><span class=p>(</span><span class=bp>self</span><span class=p>)</span> <span class=o>-&gt;</span> <span class=n>AbstractProductB</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=n>ConcreteProductB2</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>class</span> <span class=nc>AbstractProductA</span><span class=p>(</span><span class=n>ABC</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>    <span class=nd>@abstractmethod</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>do_something</span><span class=p>(</span><span class=bp>self</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=o>...</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>class</span> <span class=nc>AbstractProductB</span><span class=p>(</span><span class=n>ABC</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>    <span class=nd>@abstractmethod</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>do_something_else</span><span class=p>(</span><span class=bp>self</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=o>...</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>class</span> <span class=nc>ConcreteProductA1</span><span class=p>(</span><span class=n>AbstractProductA</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>do_something</span><span class=p>(</span><span class=bp>self</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=nb>print</span><span class=p>(</span><span class=s2>&#34;ConcreteProductA1 does something&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>class</span> <span class=nc>ConcreteProductA2</span><span class=p>(</span><span class=n>AbstractProductA</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>do_something</span><span class=p>(</span><span class=bp>self</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=nb>print</span><span class=p>(</span><span class=s2>&#34;ConcreteProductA2 does something&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>class</span> <span class=nc>ConcreteProductB1</span><span class=p>(</span><span class=n>AbstractProductB</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>do_something_else</span><span class=p>(</span><span class=bp>self</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=nb>print</span><span class=p>(</span><span class=s2>&#34;ConcreteProductB1 does something else&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>class</span> <span class=nc>ConcreteProductB2</span><span class=p>(</span><span class=n>AbstractProductB</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>do_something_else</span><span class=p>(</span><span class=bp>self</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=nb>print</span><span class=p>(</span><span class=s2>&#34;ConcreteProductB2 does something else&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>def</span> <span class=nf>client</span><span class=p>(</span><span class=n>factory</span><span class=p>:</span> <span class=n>AbstractFactory</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>    <span class=nb>print</span><span class=p>(</span><span class=sa>f</span><span class=s2>&#34;Client Using factory: </span><span class=si>{</span><span class=n>factory</span><span class=o>.</span><span class=vm>__class__</span><span class=o>.</span><span class=vm>__name__</span><span class=si>}</span><span class=s2>&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=n>product_a</span> <span class=o>=</span> <span class=n>factory</span><span class=o>.</span><span class=n>create_product_a</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>    <span class=n>product_b</span> <span class=o>=</span> <span class=n>factory</span><span class=o>.</span><span class=n>create_product_b</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>    <span class=n>product_a</span><span class=o>.</span><span class=n>do_something</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>    <span class=n>product_b</span><span class=o>.</span><span class=n>do_something_else</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>def</span> <span class=nf>main</span><span class=p>():</span>
+</span></span><span class=line><span class=cl>    <span class=n>client</span><span class=p>(</span><span class=n>ConcreteFactory1</span><span class=p>())</span>
+</span></span><span class=line><span class=cl>    <span class=n>client</span><span class=p>(</span><span class=n>ConcreteFactory2</span><span class=p>())</span>
+</span></span><span class=line><span class=cl>    
+</span></span><span class=line><span class=cl><span class=k>if</span> <span class=vm>__name__</span> <span class=o>==</span> <span class=s2>&#34;__main__&#34;</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>    <span class=n>main</span><span class=p>()</span>
+</span></span></code></pre></div><p>This will output</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-text data-lang=text><span class=line><span class=cl>Client Using factory: ConcreteFactory1
+</span></span><span class=line><span class=cl>ConcreteProductA1 does something
+</span></span><span class=line><span class=cl>ConcreteProductB1 does something else
+</span></span><span class=line><span class=cl>Client Using factory: ConcreteFactory2
+</span></span><span class=line><span class=cl>ConcreteProductA2 does something
+</span></span><span class=line><span class=cl>ConcreteProductB2 does something else
+</span></span></code></pre></div><h3 id=builder-pattern>Builder Pattern</h3><p>The Builder Pattern separates the construction of a complex object from its representation, allowing the same
+construction process to create different representations. It allows you to construct complex objects step by step,
+and gives you control over the individual steps of the construction process. An example of this would be for example
+parsing Rich Text Format (RFT) to different text formats such as ASCII, LaTeX, text widget, etc.</p><p>The Builder Pattern consists of several components:</p><ul><li><strong>Builder</strong>: an abstract interface that defines the steps for constructing a complex object.</li><li><strong>Concrete Builder</strong>: a concrete class that implements the Builder interface to build a specific type of complex object.</li><li><strong>Product</strong>: the complex object being built.</li><li><strong>Director</strong>: a class that constructs an object using the Builder interface.</li></ul><div class=highlight><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=kn>from</span> <span class=nn>__future__</span> <span class=kn>import</span> <span class=n>annotations</span>
+</span></span><span class=line><span class=cl><span class=kn>from</span> <span class=nn>abc</span> <span class=kn>import</span> <span class=n>ABC</span><span class=p>,</span> <span class=n>abstractmethod</span>
+</span></span><span class=line><span class=cl><span class=kn>from</span> <span class=nn>typing</span> <span class=kn>import</span> <span class=n>List</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>class</span> <span class=nc>Builder</span><span class=p>(</span><span class=n>ABC</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>    <span class=nd>@abstractmethod</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>add_part_a</span><span class=p>(</span><span class=bp>self</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=k>pass</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=nd>@abstractmethod</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>add_part_b</span><span class=p>(</span><span class=bp>self</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=k>pass</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=nd>@abstractmethod</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>get_product</span><span class=p>(</span><span class=bp>self</span><span class=p>)</span> <span class=o>-&gt;</span> <span class=n>Product</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>        <span class=k>pass</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>class</span> <span class=nc>ConcreteBuilder1</span><span class=p>(</span><span class=n>Builder</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=fm>__init__</span><span class=p>(</span><span class=bp>self</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=bp>self</span><span class=o>.</span><span class=n>product</span><span class=p>:</span> <span class=n>Product</span> <span class=o>=</span> <span class=n>Product</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>add_part_a</span><span class=p>(</span><span class=bp>self</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=bp>self</span><span class=o>.</span><span class=n>product</span><span class=o>.</span><span class=n>add_part</span><span class=p>(</span><span class=s2>&#34;Part A1&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>add_part_b</span><span class=p>(</span><span class=bp>self</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=bp>self</span><span class=o>.</span><span class=n>product</span><span class=o>.</span><span class=n>add_part</span><span class=p>(</span><span class=s2>&#34;Part B1&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>get_product</span><span class=p>(</span><span class=bp>self</span><span class=p>)</span> <span class=o>-&gt;</span> <span class=n>Product</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=bp>self</span><span class=o>.</span><span class=n>product</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>class</span> <span class=nc>ConcreteBuilder2</span><span class=p>(</span><span class=n>Builder</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=fm>__init__</span><span class=p>(</span><span class=bp>self</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=bp>self</span><span class=o>.</span><span class=n>product</span><span class=p>:</span> <span class=n>Product</span> <span class=o>=</span> <span class=n>Product</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>add_part_a</span><span class=p>(</span><span class=bp>self</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=bp>self</span><span class=o>.</span><span class=n>product</span><span class=o>.</span><span class=n>add_part</span><span class=p>(</span><span class=s2>&#34;Part A2&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>add_part_b</span><span class=p>(</span><span class=bp>self</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=bp>self</span><span class=o>.</span><span class=n>product</span><span class=o>.</span><span class=n>add_part</span><span class=p>(</span><span class=s2>&#34;Part B2&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>get_product</span><span class=p>(</span><span class=bp>self</span><span class=p>)</span> <span class=o>-&gt;</span> <span class=n>Product</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=bp>self</span><span class=o>.</span><span class=n>product</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>class</span> <span class=nc>Product</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=fm>__init__</span><span class=p>(</span><span class=bp>self</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=bp>self</span><span class=o>.</span><span class=n>parts</span><span class=p>:</span> <span class=n>List</span><span class=p>[</span><span class=nb>str</span><span class=p>]</span> <span class=o>=</span> <span class=p>[]</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>add_part</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=n>part</span><span class=p>:</span> <span class=nb>str</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=bp>self</span><span class=o>.</span><span class=n>parts</span><span class=o>.</span><span class=n>append</span><span class=p>(</span><span class=n>part</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>list_parts</span><span class=p>(</span><span class=bp>self</span><span class=p>)</span> <span class=o>-&gt;</span> <span class=nb>str</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=sa>f</span><span class=s2>&#34;Product parts: </span><span class=si>{</span><span class=s1>&#39;, &#39;</span><span class=o>.</span><span class=n>join</span><span class=p>(</span><span class=bp>self</span><span class=o>.</span><span class=n>parts</span><span class=p>)</span><span class=si>}</span><span class=s2>&#34;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>class</span> <span class=nc>Director</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=fm>__init__</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=n>builder</span><span class=p>:</span> <span class=n>Builder</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=bp>self</span><span class=o>.</span><span class=n>builder</span><span class=p>:</span> <span class=n>Builder</span> <span class=o>=</span> <span class=n>builder</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>build_part_a</span><span class=p>(</span><span class=bp>self</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=bp>self</span><span class=o>.</span><span class=n>builder</span><span class=o>.</span><span class=n>add_part_a</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>build_part_b</span><span class=p>(</span><span class=bp>self</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=bp>self</span><span class=o>.</span><span class=n>builder</span><span class=o>.</span><span class=n>add_part_b</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>def</span> <span class=nf>client</span><span class=p>(</span><span class=n>builder</span><span class=p>:</span> <span class=n>Builder</span><span class=p>,</span> <span class=n>director</span><span class=p>:</span> <span class=n>Director</span><span class=p>)</span> <span class=o>-&gt;</span> <span class=kc>None</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=nb>print</span><span class=p>(</span><span class=sa>f</span><span class=s2>&#34;Using builder: </span><span class=si>{</span><span class=n>director</span><span class=o>.</span><span class=n>builder</span><span class=o>.</span><span class=vm>__class__</span><span class=o>.</span><span class=vm>__name__</span><span class=si>}</span><span class=s2>&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=n>director</span><span class=o>.</span><span class=n>build_part_a</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>    <span class=n>director</span><span class=o>.</span><span class=n>build_part_b</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>    <span class=nb>print</span><span class=p>(</span><span class=n>builder</span><span class=o>.</span><span class=n>get_product</span><span class=p>()</span><span class=o>.</span><span class=n>list_parts</span><span class=p>())</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>def</span> <span class=nf>main</span><span class=p>():</span>
+</span></span><span class=line><span class=cl>    <span class=n>builder1</span> <span class=o>=</span> <span class=n>ConcreteBuilder1</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>    <span class=n>director1</span> <span class=o>=</span> <span class=n>Director</span><span class=p>(</span><span class=n>builder1</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=n>client</span><span class=p>(</span><span class=n>builder</span><span class=o>=</span><span class=n>builder1</span><span class=p>,</span> <span class=n>director</span><span class=o>=</span><span class=n>director1</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=n>builder2</span> <span class=o>=</span> <span class=n>ConcreteBuilder2</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>    <span class=n>director2</span> <span class=o>=</span> <span class=n>Director</span><span class=p>(</span><span class=n>builder2</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=n>client</span><span class=p>(</span><span class=n>builder</span><span class=o>=</span><span class=n>builder2</span><span class=p>,</span> <span class=n>director</span><span class=o>=</span><span class=n>director2</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>if</span> <span class=vm>__name__</span> <span class=o>==</span> <span class=s2>&#34;__main__&#34;</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>    <span class=n>main</span><span class=p>()</span>
+</span></span></code></pre></div><p>This will output</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-text data-lang=text><span class=line><span class=cl>Using builder: ConcreteBuilder1
+</span></span><span class=line><span class=cl>Product parts: Part A1, Part B1
+</span></span><span class=line><span class=cl>Using builder: ConcreteBuilder2
+</span></span><span class=line><span class=cl>Product parts: Part A2, Part B2
+</span></span></code></pre></div><h3 id=factory-method-pattern>Factory Method Pattern</h3><p>The Factory Method Pattern provides an interface for creating objects, but allows subclasses to decide which class to
+instantiate. It is useful when you want to encapsulate object creation in a separate class or when you don&rsquo;t know what
+objects need to be created until runtime.</p><p>The Factory Method Pattern consists of several components:</p><ul><li><strong>Product</strong>: an abstract interface that defines the methods of the objects that the factory method creates.</li><li><strong>Concrete Products</strong>: concrete classes that implement the Product interface.</li><li><strong>Creator</strong>: an abstract interface that declares the factory method that returns an object of type Product.</li><li><strong>Concrete Creators</strong>: concrete classes that implement the Creator interface and define the factory method that returns an instance of the Concrete Product.</li></ul><div class=highlight><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=kn>from</span> <span class=nn>__future__</span> <span class=kn>import</span> <span class=n>annotations</span>
+</span></span><span class=line><span class=cl><span class=kn>from</span> <span class=nn>abc</span> <span class=kn>import</span> <span class=n>ABC</span><span class=p>,</span> <span class=n>abstractmethod</span>
+</span></span><span class=line><span class=cl><span class=kn>from</span> <span class=nn>typing</span> <span class=kn>import</span> <span class=n>TypeVar</span><span class=p>,</span> <span class=n>Generic</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=n>T</span> <span class=o>=</span> <span class=n>TypeVar</span><span class=p>(</span><span class=s1>&#39;T&#39;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>class</span> <span class=nc>Product</span><span class=p>(</span><span class=n>Generic</span><span class=p>[</span><span class=n>T</span><span class=p>],</span> <span class=n>ABC</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>    <span class=nd>@abstractmethod</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>operation</span><span class=p>(</span><span class=bp>self</span><span class=p>)</span> <span class=o>-&gt;</span> <span class=n>T</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>        <span class=k>pass</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>class</span> <span class=nc>ConcreteProduct1</span><span class=p>(</span><span class=n>Product</span><span class=p>[</span><span class=nb>int</span><span class=p>]):</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>operation</span><span class=p>(</span><span class=bp>self</span><span class=p>)</span> <span class=o>-&gt;</span> <span class=nb>int</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=mi>1</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>class</span> <span class=nc>ConcreteProduct2</span><span class=p>(</span><span class=n>Product</span><span class=p>[</span><span class=nb>str</span><span class=p>]):</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>operation</span><span class=p>(</span><span class=bp>self</span><span class=p>)</span> <span class=o>-&gt;</span> <span class=nb>str</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=s2>&#34;2&#34;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>class</span> <span class=nc>Creator</span><span class=p>(</span><span class=n>Generic</span><span class=p>[</span><span class=n>T</span><span class=p>],</span> <span class=n>ABC</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>    <span class=nd>@abstractmethod</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>factory_method</span><span class=p>(</span><span class=bp>self</span><span class=p>)</span> <span class=o>-&gt;</span> <span class=n>Product</span><span class=p>[</span><span class=n>T</span><span class=p>]:</span>
+</span></span><span class=line><span class=cl>        <span class=o>...</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>an_operation</span><span class=p>(</span><span class=bp>self</span><span class=p>)</span> <span class=o>-&gt;</span> <span class=nb>str</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>        <span class=n>product</span> <span class=o>=</span> <span class=bp>self</span><span class=o>.</span><span class=n>factory_method</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=n>product</span><span class=o>.</span><span class=n>operation</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>class</span> <span class=nc>ConcreteCreator1</span><span class=p>(</span><span class=n>Creator</span><span class=p>[</span><span class=nb>int</span><span class=p>]):</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>factory_method</span><span class=p>(</span><span class=bp>self</span><span class=p>)</span> <span class=o>-&gt;</span> <span class=n>ConcreteProduct1</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=n>ConcreteProduct1</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>class</span> <span class=nc>ConcreteCreator2</span><span class=p>(</span><span class=n>Creator</span><span class=p>[</span><span class=nb>str</span><span class=p>]):</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>factory_method</span><span class=p>(</span><span class=bp>self</span><span class=p>)</span> <span class=o>-&gt;</span> <span class=n>ConcreteProduct2</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=n>ConcreteProduct2</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>def</span> <span class=nf>client_code</span><span class=p>(</span><span class=n>creator</span><span class=p>:</span> <span class=n>Creator</span><span class=p>[</span><span class=n>T</span><span class=p>])</span> <span class=o>-&gt;</span> <span class=kc>None</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>    <span class=nb>print</span><span class=p>(</span><span class=sa>f</span><span class=s2>&#34;Using Creator: </span><span class=si>{</span><span class=n>creator</span><span class=o>.</span><span class=vm>__class__</span><span class=o>.</span><span class=vm>__name__</span><span class=si>}</span><span class=s2>&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=n>result</span> <span class=o>=</span> <span class=n>creator</span><span class=o>.</span><span class=n>an_operation</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>    <span class=nb>print</span><span class=p>(</span><span class=sa>f</span><span class=s2>&#34;Result of method creator.an_operation() is type: </span><span class=si>{</span><span class=nb>type</span><span class=p>(</span><span class=n>result</span><span class=p>)</span><span class=o>.</span><span class=vm>__name__</span><span class=si>}</span><span class=s2> and value: </span><span class=si>{</span><span class=n>result</span><span class=si>}</span><span class=s2>&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>def</span> <span class=nf>main</span><span class=p>():</span>
+</span></span><span class=line><span class=cl>    <span class=n>creator1</span> <span class=o>=</span> <span class=n>ConcreteCreator1</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>    <span class=n>creator2</span> <span class=o>=</span> <span class=n>ConcreteCreator2</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=n>client_code</span><span class=p>(</span><span class=n>creator1</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=n>client_code</span><span class=p>(</span><span class=n>creator2</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>if</span> <span class=vm>__name__</span> <span class=o>==</span> <span class=s2>&#34;__main__&#34;</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>    <span class=n>main</span><span class=p>()</span>
+</span></span></code></pre></div><p>This will output</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-text data-lang=text><span class=line><span class=cl>Using Creator: ConcreteCreator1
+</span></span><span class=line><span class=cl>Result of method creator.an_operation() is type: int and value: 1
+</span></span><span class=line><span class=cl>Using Creator: ConcreteCreator2
+</span></span><span class=line><span class=cl>Result of method creator.an_operation() is type: str and value: 2
+</span></span></code></pre></div><h3 id=prototype-pattern>Prototype Pattern</h3><p>The Prototype Pattern is used to create new objects by cloning existing ones. Instead of creating a new object from
+scratch, the prototype pattern allows the creation of new objects by copying an existing instance&rsquo;s properties.</p><p>The Prototype Pattern consists of several components:</p><ul><li><strong>Prototype</strong>: This is an abstract class or interface that defines the clone method.
+The clone method is responsible for creating and returning a copy of the object.</li><li><strong>Concrete Prototype</strong>: This is a concrete implementation of the Prototype class. It overrides the clone method to
+create and return a copy of itself.</li><li><strong>Client</strong>: This is the class or object that creates new objects by cloning existing ones. The client can use the
+clone method to create new objects without having to know the details of how the objects are created.</li></ul><div class=highlight><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=kn>from</span> <span class=nn>__future__</span> <span class=kn>import</span> <span class=n>annotations</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kn>from</span> <span class=nn>abc</span> <span class=kn>import</span> <span class=n>abstractmethod</span><span class=p>,</span> <span class=n>ABC</span>
+</span></span><span class=line><span class=cl><span class=kn>from</span> <span class=nn>copy</span> <span class=kn>import</span> <span class=n>deepcopy</span>
+</span></span><span class=line><span class=cl><span class=kn>from</span> <span class=nn>typing</span> <span class=kn>import</span> <span class=n>Any</span><span class=p>,</span> <span class=n>Optional</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>class</span> <span class=nc>Prototype</span><span class=p>(</span><span class=n>ABC</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=nd>@abstractmethod</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>clone</span><span class=p>(</span><span class=bp>self</span><span class=p>)</span> <span class=o>-&gt;</span> <span class=n>Any</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>        <span class=k>pass</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>class</span> <span class=nc>ConcretePrototype</span><span class=p>(</span><span class=n>Prototype</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=fm>__init__</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=n>a</span><span class=p>:</span> <span class=nb>int</span><span class=p>,</span> <span class=n>b</span><span class=p>:</span> <span class=nb>str</span><span class=p>)</span> <span class=o>-&gt;</span> <span class=kc>None</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>        <span class=nb>super</span><span class=p>()</span><span class=o>.</span><span class=fm>__init__</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>        <span class=bp>self</span><span class=o>.</span><span class=n>a</span> <span class=o>=</span> <span class=n>a</span>
+</span></span><span class=line><span class=cl>        <span class=bp>self</span><span class=o>.</span><span class=n>b</span> <span class=o>=</span> <span class=n>b</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>clone</span><span class=p>(</span><span class=bp>self</span><span class=p>)</span> <span class=o>-&gt;</span> <span class=n>ConcretePrototype</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=n>deepcopy</span><span class=p>(</span><span class=bp>self</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>def</span> <span class=nf>client_code</span><span class=p>():</span>
+</span></span><span class=line><span class=cl>    <span class=n>my_object</span> <span class=o>=</span> <span class=n>ConcretePrototype</span><span class=p>(</span><span class=n>a</span><span class=o>=</span><span class=mi>42</span><span class=p>,</span> <span class=n>b</span><span class=o>=</span><span class=s2>&#34;My prototype string&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=n>my_clone</span> <span class=o>=</span> <span class=n>my_object</span><span class=o>.</span><span class=n>clone</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>    <span class=n>my_clone</span><span class=o>.</span><span class=n>a</span> <span class=o>=</span> <span class=mi>24</span>
+</span></span><span class=line><span class=cl>    <span class=n>my_clone</span><span class=o>.</span><span class=n>b</span> <span class=o>=</span> <span class=s2>&#34;My custom string&#34;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=nb>print</span><span class=p>(</span><span class=sa>f</span><span class=s2>&#34;Original: a=</span><span class=si>{</span><span class=n>my_object</span><span class=o>.</span><span class=n>a</span><span class=si>}</span><span class=s2>, b=</span><span class=si>{</span><span class=n>my_object</span><span class=o>.</span><span class=n>b</span><span class=si>}</span><span class=s2>, id=</span><span class=si>{</span><span class=nb>id</span><span class=p>(</span><span class=n>my_object</span><span class=p>)</span><span class=si>}</span><span class=s2>&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=nb>print</span><span class=p>(</span><span class=sa>f</span><span class=s2>&#34;Clone: a=</span><span class=si>{</span><span class=n>my_clone</span><span class=o>.</span><span class=n>a</span><span class=si>}</span><span class=s2>, b=</span><span class=si>{</span><span class=n>my_clone</span><span class=o>.</span><span class=n>b</span><span class=si>}</span><span class=s2>, id=</span><span class=si>{</span><span class=nb>id</span><span class=p>(</span><span class=n>my_clone</span><span class=p>)</span><span class=si>}</span><span class=s2>&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>if</span> <span class=vm>__name__</span> <span class=o>==</span> <span class=s2>&#34;__main__&#34;</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>    <span class=n>client_code</span><span class=p>()</span>
+</span></span></code></pre></div><p>This will output</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-text data-lang=text><span class=line><span class=cl>Original: a=42, b=My prototype string, id=4437581968
+</span></span><span class=line><span class=cl>Clone: a=24, b=My custom string, id=4437581008
+</span></span></code></pre></div><h3 id=singleton-pattern>Singleton Pattern</h3><p>The Singleton Pattern ensures a class has only one instance and provides a global point of access to it.
+It is useful when there is a need to restrict the number of instances of a class, such as when a shared resource needs
+to be accessed by multiple objects.</p><p>The Singleton Pattern consists of only one component:</p><ul><li><strong>Singleton</strong>: a class that can have only one instance, provides a global point of access to it, and ensures that
+the instance is created only once.</li></ul><div class=highlight><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=kn>from</span> <span class=nn>__future__</span> <span class=kn>import</span> <span class=n>annotations</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>class</span> <span class=nc>Singleton</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>    <span class=n>_instance</span> <span class=o>=</span> <span class=kc>None</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=fm>__new__</span><span class=p>(</span><span class=bp>cls</span><span class=p>)</span> <span class=o>-&gt;</span> <span class=n>Singleton</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>        <span class=k>if</span> <span class=ow>not</span> <span class=bp>cls</span><span class=o>.</span><span class=n>_instance</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>            <span class=bp>cls</span><span class=o>.</span><span class=n>_instance</span> <span class=o>=</span> <span class=nb>super</span><span class=p>()</span><span class=o>.</span><span class=fm>__new__</span><span class=p>(</span><span class=bp>cls</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=bp>cls</span><span class=o>.</span><span class=n>_instance</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>some_operation</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=n>message</span><span class=p>:</span> <span class=nb>str</span><span class=p>)</span> <span class=o>-&gt;</span> <span class=nb>str</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=sa>f</span><span class=s2>&#34;My object ID is </span><span class=si>{</span><span class=nb>id</span><span class=p>(</span><span class=bp>self</span><span class=p>)</span><span class=si>}</span><span class=s2> My message is: </span><span class=si>{</span><span class=n>message</span><span class=si>}</span><span class=s2>&#34;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>def</span> <span class=nf>main</span><span class=p>()</span> <span class=o>-&gt;</span> <span class=kc>None</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>    <span class=n>s1</span> <span class=o>=</span> <span class=n>Singleton</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>    <span class=n>s2</span> <span class=o>=</span> <span class=n>Singleton</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=nb>print</span><span class=p>(</span><span class=sa>f</span><span class=s2>&#34;s1.some_operation returns: </span><span class=si>{</span><span class=n>s1</span><span class=o>.</span><span class=n>some_operation</span><span class=p>(</span><span class=s1>&#39;s1&#39;</span><span class=p>)</span><span class=si>}</span><span class=s2>&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=nb>print</span><span class=p>(</span><span class=sa>f</span><span class=s2>&#34;s2.some_operation returns: </span><span class=si>{</span><span class=n>s1</span><span class=o>.</span><span class=n>some_operation</span><span class=p>(</span><span class=s1>&#39;s1&#39;</span><span class=p>)</span><span class=si>}</span><span class=s2>&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=k>if</span> <span class=n>s1</span> <span class=ow>is</span> <span class=n>s2</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>        <span class=nb>print</span><span class=p>(</span><span class=s2>&#34;I&#39;m a single instance, also known as a Singleton&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=k>else</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>        <span class=nb>print</span><span class=p>(</span><span class=s2>&#34;Ohh my... this shouldn&#39;t be possible!&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>if</span> <span class=vm>__name__</span> <span class=o>==</span> <span class=s2>&#34;__main__&#34;</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>    <span class=n>main</span><span class=p>()</span>
+</span></span></code></pre></div><p>This will output something like this:</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-text data-lang=text><span class=line><span class=cl>s1.some_operation returns: My object ID is 4515700304 My message is: s1
+</span></span><span class=line><span class=cl>s2.some_operation returns: My object ID is 4515700304 My message is: s1
+</span></span><span class=line><span class=cl>I&#39;m a single instance, also known as a Singleton
+</span></span></code></pre></div><p>That&rsquo;s it! I hope you learned something 🧑‍🏫⭐</p><p>Stay tuned for the next part on structural patterns 👋</p></div><footer class="post-footer clearfix"><p class=post-tags><span>Tagged:</span>
+<a href=/tags/software-design/>software design</a>,
+<a href=/tags/object-oriented-programming/>object-oriented programming</a></p><div class=share><a class=icon-twitter href="https://twitter.com/share?text=Object%20oriented%20design%20patterns%20-%20Creational%20patterns%20%28Part%201%29&url=https%3a%2f%2fwww.daehli.no%2f2023%2f04%2f09%2f2023-04-09-creational-design-patterns%2f" onclick='return window.open(this.href,"twitter-share","width=550,height=235"),!1' aria-label="Share on Twitter"><i class="fa fa-twitter" aria-hidden=true></i></a>
+<a class=icon-facebook href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fwww.daehli.no%2f2023%2f04%2f09%2f2023-04-09-creational-design-patterns%2f" onclick='return window.open(this.href,"facebook-share","width=580,height=296"),!1' aria-label="Share on Facebook"><i class="fa fa-facebook" aria-hidden=true></i></a>
+<a class=icon-linkedin href="https://www.linkedin.com/shareArticle?mini=true&title=Object%20oriented%20design%20patterns%20-%20Creational%20patterns%20%28Part%201%29&url=https%3a%2f%2fwww.daehli.no%2f2023%2f04%2f09%2f2023-04-09-creational-design-patterns%2f&summary=The%20Gang%20of%20Four%27s%20classic%20creational%20design%20patterns." onclick='return window.open(this.href,"linkedin-share","width=554,height=481"),!1' aria-label="Share on LinkedIn"><i class="fa fa-linkedin" aria-hidden=true></i></a></div></footer></article></div></div></div><footer class=footer><div class=container><div class=site-title-wrapper><h1 class=site-title><a href=https://www.daehli.no/>Morten Dæhli Aslesen</a></h1><a class="button-square button-jump-top js-jump-top" href=# aria-label="Back to Top"><i class="fa fa-angle-up" aria-hidden=true></i></a></div><p class=footer-copyright><span>&copy; 2023 / Powered by <a href=https://gohugo.io/>Hugo</a></span></p><p class=footer-copyright><span><a href=https://github.com/roryg/ghostwriter>Ghostwriter theme</a> By <a href=http://jollygoodthemes.com>JollyGoodThemes</a></span>
+<span>/ <a href=https://github.com/jbub/ghostwriter>Ported</a> to Hugo By <a href=https://github.com/jbub>jbub</a></span></p></div></footer><script src=https://www.daehli.no/js/jquery-1.11.3.min.js></script>
+<script src=https://www.daehli.no/js/jquery.fitvids.js></script>
+<script src=https://www.daehli.no/js/scripts.js></script></body></html>
