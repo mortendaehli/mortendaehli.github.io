@@ -188,7 +188,7 @@ Receiver doing something else complex with variable b
 ```
 
 ### Interpreter Pattern
-The Interpreter pattern is a behavioral design pattern that defines a grammar for a language and provides an interpreter
+The Interpreter pattern defines a grammar for a language and provides an interpreter
 to interpret and execute expressions in that language. The pattern is useful when there is a need to evaluate
 expressions or parse complex grammars.
 
@@ -247,7 +247,7 @@ class Add(AbstractExpression):
         return result
 
     def __repr__(self):
-        return f"({self.left} Add {self.right})"
+        return f"{self.left} + {self.right}"
 
 class Subtract(AbstractExpression):
     # Non-Terminal Expression
@@ -264,7 +264,7 @@ class Subtract(AbstractExpression):
         return result
 
     def __repr__(self):
-        return f"({self.left} Subtract {self.right})"
+        return f"{self.left} - {self.right}"
 
 
 def main():
@@ -280,7 +280,7 @@ def main():
 
     for expression in expressions:
         result = expression.interpret(context)
-        print(f"Expression: {expression} returns:", result)
+        print(f"Expression: {expression} evaluates to ", result)
 
 if __name__ == "__main__":
     main()
@@ -288,11 +288,11 @@ if __name__ == "__main__":
 
 This will output:
 ```text
-Expression: 7 returns: 7
-Expression: 5 returns: 5
-Expression: (3 Add 2) returns: 5
-Expression: (7 Subtract 5) returns: 2
-Expression: (3 Add (2 Subtract 1)) returns: 4
+Expression: 7 evaluates to  7
+Expression: 5 evaluates to  5
+Expression: 3 + 2 evaluates to  5
+Expression: 7 - 5 evaluates to  2
+Expression: 3 + 2 - 1 evaluates to  4
 ```
 
 ### Iterator Pattern
