@@ -10,9 +10,6 @@ draft = false
 This is the second part in a series of 3 blog post summarizing the famous 
 by Gamma, Helm, Johnson and Vlissides, also known as the Gang of Four.
 
-See the first post for an overview:
-- [Creational Patters - Part 1](2023-04-09-creational-design-patterns.md)
-
 
 ## Structural Patterns
 Structural patterns are design patterns that deal with object composition to form larger structures, such as class
@@ -542,14 +539,75 @@ ConcreteFlyweight: (['Pear', 'Yellow', 'Round']), (['My', 'Unique', 'state', '6'
 ```
 
 ### Proxy Pattern
+The Proxy Pattern provides a surrogate or placeholder for another object to control access to it. This allows you to
+perform actions before and/or after the request to the actual subject. The Proxy object forwards requests to the real
+object only when necessary and can add additional functionality to the request handling process.
 
 The Proxy Pattern consists of the following components:
+- **Subject**: This is an interface that defines the methods that the real subject and the proxy must implement.
+- **Real Subject**: This is the real object that the proxy represents. It implements the methods defined in the
+  Subject interface.
+- **Proxy**: This is the object that acts as a surrogate or placeholder for the real subject. It implements the methods
+  defined in the Subject interface and forwards requests to the real subject only when necessary. It can also add
+  additional functionality to the request handling process.
 
 ```python
+from abc import ABC, abstractmethod
 
+
+class Subject(ABC):
+
+    @abstractmethod
+    def request(self, url: str) -> str:
+        ...
+
+class RealSubject(Subject):
+
+    def request(self, url: str) -> str:
+        return "RealSubject.request"
+
+
+class Proxy(Subject):
+
+    def __init__(self, real_subject: RealSubject) -> None:
+        self._real_subject = real_subject
+        self._subject_cache = {}
+
+    def request(self, url: str) -> str:
+        if url not in self._subject_cache:
+            self._subject_cache[url] = self._real_subject.request(url)
+        else:
+            print("Request is cached by the proxy.")
+        return self._subject_cache[url]
+
+
+def main() -> None:
+    print("Client: Executing the client code with a real subject:")
+    real_subject = RealSubject()
+    real_subject.request("some-url")
+
+    print("Client: Executing the same client code with a proxy:")
+    proxy = Proxy(real_subject)
+    proxy.request("some-url")
+    proxy.request("some-url")  # Second identical request will be cached.
+
+
+if __name__ == "__main__":
+    main()
 ```
 
 This will output:
 ```text
-
+Client: Executing the client code with a real subject:
+Client: Executing the same client code with a proxy:
+Request is cached by the proxy.
 ```
+
+Stay tuned for the last part on design patters - behavioral patterns 👋
+
+Happy coding!
+
+## See also
+- [Design Patters Part 1 - Creational Patters]( {{< relref "2023-04-09-creational-design-patterns.md" >}})
+- [Design Patters Part 2 - Structural Patters](#)
+- [Design Patters Part 3 - Behavioral Patters]( {{< relref "2023-04-11-behavioral-design-patterns.md" >}})

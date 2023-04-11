@@ -437,3 +437,8 @@ I'm a single instance, also known as a Singleton
 That's it! I hope you learned something 🧑‍🏫⭐
 
 Stay tuned for the next part on structural patterns 👋
+
+## See also
+- [Design Patters Part 1 - Creational Patters](#)
+- [Design Patters Part 2 - Structural Patters]( {{< relref "2023-04-10-structural-design-patterns.md" >}})
+- [Design Patters Part 3 - Behavioral Patters]( {{< relref "2023-04-11-behavioral-design-patterns.md" >}})
