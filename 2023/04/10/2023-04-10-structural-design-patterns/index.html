@@ -1,0 +1,437 @@
+<!doctype html><html prefix="og: http://ogp.me/ns#"><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge"><title>Object oriented design patterns - Structural patterns (Part 2) &#183; Morten Dæhli Aslesen</title><meta name=description content="The Gang of Four's classic structural design patterns."><meta name=HandheldFriendly content="True"><meta name=MobileOptimized content="320"><meta name=generator content="Hugo 0.111.3"><meta name=robots content="index,follow"><meta name=viewport content="width=device-width,initial-scale=1"><meta property="og:title" content="Object oriented design patterns - Structural patterns (Part 2)"><meta property="og:description" content="The Gang of Four's classic structural design patterns."><meta property="og:type" content="article"><meta property="og:url" content="https://www.daehli.no/2023/04/10/2023-04-10-structural-design-patterns/"><link rel=stylesheet href=https://www.daehli.no/dist/site.css><link rel=stylesheet href=https://www.daehli.no/dist/syntax.css><link rel=stylesheet href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,600,700,300&subset=latin,cyrillic-ext,latin-ext,cyrillic"><link rel=stylesheet href=https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css integrity=sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN crossorigin=anonymous><link rel=icon type=image/x-icon href=/img/favicon.png></head><body><div id=wrapper><header class=site-header><div class=container><div class=site-title-wrapper><h1 class=site-title><a href=https://www.daehli.no/>Morten Dæhli Aslesen</a></h1><a class=button-square href=https://www.daehli.no/index.xml aria-label=RSS><i class="fa fa-rss" aria-hidden=true></i></a>
+<a class="button-square button-social hint--top" data-hint=Facebook aria-label=Facebook href=https://www.facebook.com/morten.aslesen/ rel=me><i class="fa fa-facebook" aria-hidden=true></i></a>
+<a class="button-square button-social hint--top" data-hint=Github aria-label=Github href=https://github.com/mortendaehli/ rel=me><i class="fa fa-github-alt" aria-hidden=true></i></a>
+<a class="button-square button-social hint--top" data-hint=LinkedIn aria-label=LinkedIn href=https://www.linkedin.com/in/morten-d%C3%A6hli-aslesen-50765164/ rel=me><i class="fa fa-linkedin" aria-hidden=true></i></a>
+<a class="button-square button-social hint--top" data-hint=Email aria-label="Send an Email" href=mailto:mortendaehli@gmail.com><i class="fa fa-envelope" aria-hidden=true></i></a></div><ul class=site-nav><li class=site-nav-item><a href=/>Blog</a></li><li class=site-nav-item><a href=/project/>Projects</a></li><li class=site-nav-item><a href=/page/reading-list/>Reading list</a></li><li class=site-nav-item><a href=/page/contact/>Contact</a></li><li class=site-nav-item><a href=/page/about/>About</a></li></ul></div></header><div id=container><div class=container><article class=post-container itemscope itemtype=http://schema.org/BlogPosting><header class=post-header><h1 class=post-title itemprop="name headline">Object oriented design patterns - Structural patterns (Part 2)</h1><p class=post-description itemprop=description>The Gang of Four's classic structural design patterns.</p><p class=post-date><span>Published <time datetime=2023-04-10 itemprop=datePublished>Mon, Apr 10, 2023</time></span>
+<span>by</span>
+<span itemscope itemprop=author itemtype=https://schema.org/Person><span itemprop=name><a href=%f0%9f%91%8b%20Hi,%20I%e2%80%99m%20Morten%20D%c3%a6hli%20Aslesen,%20and%20I%27m%20currently%20working%20as%20an%20IT-consultant%20at%20Bouvet%20Norway%20ASA itemprop=url rel=author>Morten Dæhli Aslesen</a></span></span></p><p class="post-reading post-line"><span>Estimated reading time: 10 min</span></p></header><div class="post-content clearfix" itemprop=articleBody><p>This is the second part in a series of 3 blog post summarizing the famous
+by Gamma, Helm, Johnson and Vlissides, also known as the Gang of Four.</p><p>See the first post for an overview:</p><ul><li><a href=2023-04-09-creational-design-patterns.md>Creational Patters - Part 1</a></li></ul><h2 id=structural-patterns>Structural Patterns</h2><p>Structural patterns are design patterns that deal with object composition to form larger structures, such as class
+and object relationships, to simplify the design and implementation of complex systems. They focus on how objects are
+composed to form larger structures and provide solutions for designing systems that are flexible and easy to maintain.</p><h3 id=adapter-pattern>Adapter Pattern</h3><p>The Adapter Pattern allows the interface of an existing class to be used as another interface. It is useful when two
+incompatible interfaces need to work together.</p><p>The Adapter Pattern consists of the following components:</p><ul><li><strong>Target</strong>: the interface that the client code uses.</li><li><strong>Adaptee</strong>: the interface that needs to be adapted.</li><li><strong>Adapter</strong>: the class that adapts the Adaptee interface to the Target interface.</li></ul><div class=highlight><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=kn>from</span> <span class=nn>abc</span> <span class=kn>import</span> <span class=n>ABC</span><span class=p>,</span> <span class=n>abstractmethod</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>class</span> <span class=nc>Target</span><span class=p>(</span><span class=n>ABC</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>    <span class=nd>@property</span>
+</span></span><span class=line><span class=cl>    <span class=nd>@abstractmethod</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>width</span><span class=p>(</span><span class=bp>self</span><span class=p>)</span> <span class=o>-&gt;</span> <span class=nb>float</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>        <span class=o>...</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=nd>@property</span>
+</span></span><span class=line><span class=cl>    <span class=nd>@abstractmethod</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>height</span><span class=p>(</span><span class=bp>self</span><span class=p>)</span> <span class=o>-&gt;</span> <span class=nb>float</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>        <span class=o>...</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>class</span> <span class=nc>Adaptee</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=fm>__init__</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=n>side_length</span><span class=p>:</span> <span class=nb>float</span><span class=p>)</span> <span class=o>-&gt;</span> <span class=kc>None</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>        <span class=bp>self</span><span class=o>.</span><span class=n>side_length</span> <span class=o>=</span> <span class=n>side_length</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>area</span><span class=p>(</span><span class=bp>self</span><span class=p>)</span> <span class=o>-&gt;</span> <span class=nb>float</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=bp>self</span><span class=o>.</span><span class=n>side_length</span> <span class=o>**</span> <span class=mi>2</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>class</span> <span class=nc>Adapter</span><span class=p>(</span><span class=n>Target</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=fm>__init__</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=n>square</span><span class=p>:</span> <span class=n>Adaptee</span><span class=p>)</span> <span class=o>-&gt;</span> <span class=kc>None</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>        <span class=bp>self</span><span class=o>.</span><span class=n>square</span> <span class=o>=</span> <span class=n>square</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=nd>@property</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>width</span><span class=p>(</span><span class=bp>self</span><span class=p>)</span> <span class=o>-&gt;</span> <span class=nb>float</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=bp>self</span><span class=o>.</span><span class=n>square</span><span class=o>.</span><span class=n>side_length</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=nd>@property</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>height</span><span class=p>(</span><span class=bp>self</span><span class=p>)</span> <span class=o>-&gt;</span> <span class=nb>float</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=bp>self</span><span class=o>.</span><span class=n>square</span><span class=o>.</span><span class=n>side_length</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>def</span> <span class=nf>client_code</span><span class=p>()</span> <span class=o>-&gt;</span> <span class=kc>None</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>    <span class=nb>print</span><span class=p>(</span><span class=s2>&#34;Adapting a Square to a Rectangle using an Adapter&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=n>square</span> <span class=o>=</span> <span class=n>Adaptee</span><span class=p>(</span><span class=mf>3.14</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=n>adapter</span> <span class=o>=</span> <span class=n>Adapter</span><span class=p>(</span><span class=n>square</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=nb>print</span><span class=p>(</span><span class=sa>f</span><span class=s2>&#34;Area of square: </span><span class=si>{</span><span class=n>square</span><span class=o>.</span><span class=n>area</span><span class=p>()</span><span class=si>}</span><span class=s2>&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=nb>print</span><span class=p>(</span><span class=sa>f</span><span class=s2>&#34;Width of adapter: </span><span class=si>{</span><span class=n>adapter</span><span class=o>.</span><span class=n>width</span><span class=si>}</span><span class=s2>&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=nb>print</span><span class=p>(</span><span class=sa>f</span><span class=s2>&#34;Height of adapter: </span><span class=si>{</span><span class=n>adapter</span><span class=o>.</span><span class=n>height</span><span class=si>}</span><span class=s2>&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>if</span> <span class=vm>__name__</span> <span class=o>==</span> <span class=s2>&#34;__main__&#34;</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>    <span class=n>client_code</span><span class=p>()</span>
+</span></span></code></pre></div><p>This will output:</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-text data-lang=text><span class=line><span class=cl>Adapting a Square to a Rectangle using an Adapter
+</span></span><span class=line><span class=cl>Area of square: 9.8596
+</span></span><span class=line><span class=cl>Width of adapter: 3.14
+</span></span><span class=line><span class=cl>Height of adapter: 3.14
+</span></span></code></pre></div><h3 id=bridge-pattern>Bridge Pattern</h3><p>The Bridge Pattern decouples an abstraction from its implementation, allowing the two to vary independently.
+It involves creating two separate hierarchies, one for the abstraction and one for the implementation,
+and using composition to tie them together.</p><p>The Bridge Pattern consists of the following components:</p><ul><li><strong>Abstraction</strong>: This is an abstract class that defines the interface or the abstraction layer. It has a reference
+to an implementation object and delegates the implementation-specific operations to that object.</li><li><strong>Refined Abstraction</strong>: This is a subclass of the Abstraction class that provides additional methods and
+functionality that are not available in the base Abstraction class.</li><li><strong>Implementation</strong>: This is an interface that defines the implementation methods. The implementation classes implement
+this interface to provide the actual implementation of the abstraction methods.</li><li><strong>Concrete Implementation</strong>: This is a concrete class that implements the Implementation interface. It provides the
+actual implementation of the abstraction methods.</li></ul><div class=highlight><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=kn>from</span> <span class=nn>__future__</span> <span class=kn>import</span> <span class=n>annotations</span>
+</span></span><span class=line><span class=cl><span class=kn>from</span> <span class=nn>abc</span> <span class=kn>import</span> <span class=n>ABC</span><span class=p>,</span> <span class=n>abstractmethod</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>class</span> <span class=nc>Abstraction</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=fm>__init__</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=n>implementation</span><span class=p>:</span> <span class=n>Implementation</span><span class=p>)</span> <span class=o>-&gt;</span> <span class=kc>None</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>        <span class=bp>self</span><span class=o>.</span><span class=n>implementation</span> <span class=o>=</span> <span class=n>implementation</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>operation</span><span class=p>(</span><span class=bp>self</span><span class=p>)</span> <span class=o>-&gt;</span> <span class=nb>str</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=sa>f</span><span class=s2>&#34;Abstraction: </span><span class=si>{</span><span class=bp>self</span><span class=o>.</span><span class=n>implementation</span><span class=o>.</span><span class=n>operation_implementation</span><span class=p>()</span><span class=si>}</span><span class=s2>&#34;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>class</span> <span class=nc>RefinedAbstraction</span><span class=p>(</span><span class=n>Abstraction</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>operation</span><span class=p>(</span><span class=bp>self</span><span class=p>)</span> <span class=o>-&gt;</span> <span class=nb>str</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=sa>f</span><span class=s2>&#34;ExtendedAbstraction: </span><span class=si>{</span><span class=bp>self</span><span class=o>.</span><span class=n>implementation</span><span class=o>.</span><span class=n>operation_implementation</span><span class=p>()</span><span class=si>}</span><span class=s2>&#34;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>class</span> <span class=nc>Implementation</span><span class=p>(</span><span class=n>ABC</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>    <span class=nd>@abstractmethod</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>operation_implementation</span><span class=p>(</span><span class=bp>self</span><span class=p>)</span> <span class=o>-&gt;</span> <span class=nb>str</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>        <span class=k>pass</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>class</span> <span class=nc>ConcreteImplementationA</span><span class=p>(</span><span class=n>Implementation</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>operation_implementation</span><span class=p>(</span><span class=bp>self</span><span class=p>)</span> <span class=o>-&gt;</span> <span class=nb>str</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=s2>&#34;Concrete Implementation A&#34;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>class</span> <span class=nc>ConcreteImplementationB</span><span class=p>(</span><span class=n>Implementation</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>operation_implementation</span><span class=p>(</span><span class=bp>self</span><span class=p>)</span> <span class=o>-&gt;</span> <span class=nb>str</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=s2>&#34;Concrete Implementation B&#34;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>def</span> <span class=nf>client_code</span><span class=p>()</span> <span class=o>-&gt;</span> <span class=kc>None</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>    <span class=n>implementation</span> <span class=o>=</span> <span class=n>ConcreteImplementationA</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>    <span class=n>abstraction</span> <span class=o>=</span> <span class=n>Abstraction</span><span class=p>(</span><span class=n>implementation</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=nb>print</span><span class=p>(</span><span class=n>abstraction</span><span class=o>.</span><span class=n>operation</span><span class=p>())</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=n>implementation</span> <span class=o>=</span> <span class=n>ConcreteImplementationB</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>    <span class=n>abstraction</span> <span class=o>=</span> <span class=n>RefinedAbstraction</span><span class=p>(</span><span class=n>implementation</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=nb>print</span><span class=p>(</span><span class=n>abstraction</span><span class=o>.</span><span class=n>operation</span><span class=p>())</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>if</span> <span class=vm>__name__</span> <span class=o>==</span> <span class=s2>&#34;__main__&#34;</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>    <span class=n>client_code</span><span class=p>()</span>
+</span></span></code></pre></div><p>This will output:</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-text data-lang=text><span class=line><span class=cl>Abstraction: Concrete Implementation A
+</span></span><span class=line><span class=cl>ExtendedAbstraction: Concrete Implementation B
+</span></span></code></pre></div><h3 id=composite-pattern>Composite Pattern</h3><p>The Composite pattern allows you to treat groups of objects in the same way as you would treat a single instance
+of an object. The pattern creates a tree-like structure where objects can be grouped together in a parent-child
+relationship, forming a composite object.</p><p>The main idea behind the Composite pattern is to create a unified interface for individual objects and groups of
+objects. In other words, you can treat a single object and a group of objects as if they were the same thing, by
+defining a common interface that they all implement.</p><p>The Composite Pattern consists of the following components:</p><ul><li><strong>Component</strong>: This is the abstract base class that defines the common interface for both leaf and composite objects.
+The Component class usually has a set of operations that all components should implement, regardless of
+whether they are leaf or composite objects.</li><li><strong>Leaf</strong>: This represents the individual objects that form the &ldquo;leaf&rdquo; nodes in the composite structure.
+Leaf objects cannot have children.</li><li><strong>Composite</strong>: This represents the composite objects that have children. Composite objects have a list of child
+components, and they forward operations to all their child components.</li></ul><p>It&rsquo;s a good idea to use a pre-build graph framework with a DAG instead of &ldquo;reinventing the wheel&rdquo;.
+But as always, you should have a good idea about the underlying implementation.</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=kn>from</span> <span class=nn>__future__</span> <span class=kn>import</span> <span class=n>annotations</span>
+</span></span><span class=line><span class=cl><span class=kn>from</span> <span class=nn>abc</span> <span class=kn>import</span> <span class=n>ABC</span><span class=p>,</span> <span class=n>abstractmethod</span>
+</span></span><span class=line><span class=cl><span class=kn>from</span> <span class=nn>typing</span> <span class=kn>import</span> <span class=n>List</span><span class=p>,</span> <span class=n>Iterator</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>class</span> <span class=nc>Component</span><span class=p>(</span><span class=n>ABC</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=fm>__init__</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=n>name</span><span class=p>:</span> <span class=nb>str</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=bp>self</span><span class=o>.</span><span class=n>name</span> <span class=o>=</span> <span class=n>name</span>
+</span></span><span class=line><span class=cl>        <span class=bp>self</span><span class=o>.</span><span class=n>_children</span><span class=p>:</span> <span class=n>List</span><span class=p>[</span><span class=n>Component</span><span class=p>]</span> <span class=o>=</span> <span class=p>[]</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=nd>@property</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>children</span><span class=p>(</span><span class=bp>self</span><span class=p>)</span> <span class=o>-&gt;</span> <span class=n>Iterator</span><span class=p>[</span><span class=n>Component</span><span class=p>]:</span>
+</span></span><span class=line><span class=cl>        <span class=k>for</span> <span class=n>child</span> <span class=ow>in</span> <span class=bp>self</span><span class=o>.</span><span class=n>_children</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>            <span class=k>yield</span> <span class=n>child</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=nd>@abstractmethod</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>add</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=n>component</span><span class=p>:</span> <span class=n>Component</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=o>...</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=nd>@abstractmethod</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>remove</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=n>component</span><span class=p>:</span> <span class=n>Component</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=o>...</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=nd>@abstractmethod</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>operation</span><span class=p>(</span><span class=bp>self</span><span class=p>)</span> <span class=o>-&gt;</span> <span class=nb>str</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>        <span class=o>...</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=nd>@property</span>
+</span></span><span class=line><span class=cl>    <span class=nd>@abstractmethod</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>_is_composite</span><span class=p>(</span><span class=bp>self</span><span class=p>)</span> <span class=o>-&gt;</span> <span class=nb>bool</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>        <span class=o>...</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>class</span> <span class=nc>Leaf</span><span class=p>(</span><span class=n>Component</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>add</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=n>component</span><span class=p>:</span> <span class=n>Component</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=k>pass</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>remove</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=n>component</span><span class=p>:</span> <span class=n>Component</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=k>pass</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>operation</span><span class=p>(</span><span class=bp>self</span><span class=p>)</span> <span class=o>-&gt;</span> <span class=nb>str</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=bp>self</span><span class=o>.</span><span class=n>name</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=nd>@property</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>_is_composite</span><span class=p>(</span><span class=bp>self</span><span class=p>)</span> <span class=o>-&gt;</span> <span class=nb>bool</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=kc>False</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>class</span> <span class=nc>Composite</span><span class=p>(</span><span class=n>Component</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=fm>__init__</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=n>name</span><span class=p>:</span> <span class=nb>str</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=nb>super</span><span class=p>()</span><span class=o>.</span><span class=fm>__init__</span><span class=p>(</span><span class=n>name</span><span class=o>=</span><span class=n>name</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>        <span class=bp>self</span><span class=o>.</span><span class=n>_children</span> <span class=o>=</span> <span class=p>[]</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>add</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=n>component</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=bp>self</span><span class=o>.</span><span class=n>_children</span><span class=o>.</span><span class=n>append</span><span class=p>(</span><span class=n>component</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>remove</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=n>component</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=bp>self</span><span class=o>.</span><span class=n>_children</span><span class=o>.</span><span class=n>remove</span><span class=p>(</span><span class=n>component</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>operation</span><span class=p>(</span><span class=bp>self</span><span class=p>)</span> <span class=o>-&gt;</span> <span class=nb>str</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=sa>f</span><span class=s2>&#34;Branch(</span><span class=si>{</span><span class=s1>&#39;+&#39;</span><span class=o>.</span><span class=n>join</span><span class=p>([</span><span class=n>child</span><span class=o>.</span><span class=n>operation</span><span class=p>()</span> <span class=k>for</span> <span class=n>child</span> <span class=ow>in</span> <span class=bp>self</span><span class=o>.</span><span class=n>children</span><span class=p>])</span><span class=si>}</span><span class=s2>)&#34;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=nd>@property</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>_is_composite</span><span class=p>(</span><span class=bp>self</span><span class=p>)</span> <span class=o>-&gt;</span> <span class=nb>bool</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=kc>True</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>def</span> <span class=nf>client_code</span><span class=p>():</span>
+</span></span><span class=line><span class=cl>    <span class=c1># Single leaf</span>
+</span></span><span class=line><span class=cl>    <span class=n>leaf</span> <span class=o>=</span> <span class=n>Leaf</span><span class=p>(</span><span class=s2>&#34;Single Leaf&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=nb>print</span><span class=p>(</span><span class=sa>f</span><span class=s2>&#34;Leaf operation: </span><span class=si>{</span><span class=n>leaf</span><span class=o>.</span><span class=n>operation</span><span class=p>()</span><span class=si>}</span><span class=s2>&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=c1># Composite tree</span>
+</span></span><span class=line><span class=cl>    <span class=n>tree</span> <span class=o>=</span> <span class=n>Composite</span><span class=p>(</span><span class=s2>&#34;Tree&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=n>branch1</span> <span class=o>=</span> <span class=n>Composite</span><span class=p>(</span><span class=s2>&#34;Branch 1&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=n>branch2</span> <span class=o>=</span> <span class=n>Composite</span><span class=p>(</span><span class=s2>&#34;Branch 2&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=n>leaf1</span> <span class=o>=</span> <span class=n>Leaf</span><span class=p>(</span><span class=s2>&#34;Leaf 1&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=n>leaf2</span> <span class=o>=</span> <span class=n>Leaf</span><span class=p>(</span><span class=s2>&#34;Leaf 2&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=n>leaf3</span> <span class=o>=</span> <span class=n>Leaf</span><span class=p>(</span><span class=s2>&#34;Leaf 3&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=n>branch2</span><span class=o>.</span><span class=n>add</span><span class=p>(</span><span class=n>leaf1</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=n>branch2</span><span class=o>.</span><span class=n>add</span><span class=p>(</span><span class=n>leaf2</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=n>tree</span><span class=o>.</span><span class=n>add</span><span class=p>(</span><span class=n>branch1</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=n>tree</span><span class=o>.</span><span class=n>add</span><span class=p>(</span><span class=n>branch2</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=n>tree</span><span class=o>.</span><span class=n>add</span><span class=p>(</span><span class=n>leaf3</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=nb>print</span><span class=p>(</span><span class=sa>f</span><span class=s2>&#34;Composite operation: </span><span class=si>{</span><span class=n>tree</span><span class=o>.</span><span class=n>operation</span><span class=p>()</span><span class=si>}</span><span class=s2>&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>if</span> <span class=vm>__name__</span> <span class=o>==</span> <span class=s2>&#34;__main__&#34;</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>    <span class=n>client_code</span><span class=p>()</span>
+</span></span></code></pre></div><p>This will output:</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-text data-lang=text><span class=line><span class=cl>Leaf operation: Single Leaf
+</span></span><span class=line><span class=cl>Composite operation: Branch(Branch()+Branch(Leaf 1+Leaf 2)+Leaf 3)
+</span></span></code></pre></div><h3 id=decorator-pattern>Decorator Pattern</h3><p>With the Decorator pattern, you can add new behavior to an object by wrapping it with one or more decorators.
+Each decorator adds new behavior to the object, and the object can have multiple decorators.
+The object&rsquo;s behavior can be modified dynamically at runtime by adding or removing decorators.</p><p>When you call an operation on a decorated object, the operation is forwarded to the base object, which may then be
+forwarded to one or more decorators before finally being executed. Each decorator may modify the behavior of the
+operation before forwarding it to the next decorator or to the base object.</p><p>The Decorator pattern is often used when you want to add behavior to an object, but you don&rsquo;t want to modify the
+object&rsquo;s class or create a new subclass. Instead, you can wrap the object with one or more decorators that add new
+behavior. This approach allows you to modify the behavior of an object at runtime, without affecting other objects
+of the same class.</p><p>The Decorator Pattern consists of the following components:</p><ul><li><strong>Component</strong>: This is the abstract base class that defines the interface for objects that can be decorated.
+The Component class usually has a set of operations that all components should implement.</li><li><strong>ConcreteComponent</strong>: This represents the base object that can be decorated. It implements the Component interface
+and provides the default behavior.</li><li><strong>Decorator</strong>: This is the abstract base class for all decorators. The Decorator class can hve a reference to a
+Component object, which it wraps and decorates. The Decorator class also implements the Component interface and
+forwards requests to the wrapped component.</li><li><strong>ConcreteDecorator</strong>: This represents the actual decorator that adds new behavior to the base object.
+The ConcreteDecorator class extends the Decorator class and adds new behavior to the wrapped component.</li></ul><div class=highlight><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=kn>from</span> <span class=nn>abc</span> <span class=kn>import</span> <span class=n>ABC</span><span class=p>,</span> <span class=n>abstractmethod</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>class</span> <span class=nc>Component</span><span class=p>(</span><span class=n>ABC</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>    <span class=nd>@abstractmethod</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>operation</span><span class=p>(</span><span class=bp>self</span><span class=p>)</span> <span class=o>-&gt;</span> <span class=kc>None</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>        <span class=o>...</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>class</span> <span class=nc>ConcreteComponent</span><span class=p>(</span><span class=n>Component</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>operation</span><span class=p>(</span><span class=bp>self</span><span class=p>)</span> <span class=o>-&gt;</span> <span class=kc>None</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>        <span class=nb>print</span><span class=p>(</span><span class=s2>&#34;ConcreteComponent.operation&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>class</span> <span class=nc>Decorator</span><span class=p>(</span><span class=n>ABC</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=fm>__init__</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=n>component</span><span class=p>:</span> <span class=n>Component</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=bp>self</span><span class=o>.</span><span class=n>component</span> <span class=o>=</span> <span class=n>component</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=nd>@abstractmethod</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>operation</span><span class=p>(</span><span class=bp>self</span><span class=p>)</span> <span class=o>-&gt;</span> <span class=kc>None</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>        <span class=o>...</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=fm>__call__</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=bp>self</span><span class=o>.</span><span class=n>operation</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>        <span class=bp>self</span><span class=o>.</span><span class=n>component</span><span class=o>.</span><span class=n>operation</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>class</span> <span class=nc>ConcreteDecoratorA</span><span class=p>(</span><span class=n>Decorator</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>operation</span><span class=p>(</span><span class=bp>self</span><span class=p>)</span> <span class=o>-&gt;</span> <span class=kc>None</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>        <span class=nb>print</span><span class=p>(</span><span class=s2>&#34;I got decorated by ConcreteDecoratorA&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>class</span> <span class=nc>ConcreteDecoratorB</span><span class=p>(</span><span class=n>Decorator</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>operation</span><span class=p>(</span><span class=bp>self</span><span class=p>)</span> <span class=o>-&gt;</span> <span class=kc>None</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>        <span class=nb>print</span><span class=p>(</span><span class=s2>&#34;I got decorated by ConcreteDecoratorB&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>def</span> <span class=nf>client_code</span><span class=p>():</span>
+</span></span><span class=line><span class=cl>    <span class=n>simple</span> <span class=o>=</span> <span class=n>ConcreteComponent</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>    <span class=nb>print</span><span class=p>(</span><span class=s2>&#34;Simple ConcreteComponent.operation&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=n>simple</span><span class=o>.</span><span class=n>operation</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=nb>print</span><span class=p>(</span><span class=s2>&#34;Decorated: ConcreteComponent.operation&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=n>simple_decorated_a</span> <span class=o>=</span> <span class=n>ConcreteDecoratorA</span><span class=p>(</span><span class=n>simple</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=n>simple_decorated_b</span> <span class=o>=</span> <span class=n>ConcreteDecoratorB</span><span class=p>(</span><span class=n>simple</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=n>simple_decorated_a</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>    <span class=n>simple_decorated_b</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>if</span> <span class=vm>__name__</span> <span class=o>==</span> <span class=s2>&#34;__main__&#34;</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>    <span class=n>client_code</span><span class=p>()</span>
+</span></span></code></pre></div><p>This will output:</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-text data-lang=text><span class=line><span class=cl>Simple ConcreteComponent.operation
+</span></span><span class=line><span class=cl>ConcreteComponent.operation
+</span></span><span class=line><span class=cl>Decorated: ConcreteComponent.operation
+</span></span><span class=line><span class=cl>I got decorated by ConcreteDecoratorA
+</span></span><span class=line><span class=cl>ConcreteComponent.operation
+</span></span><span class=line><span class=cl>I got decorated by ConcreteDecoratorB
+</span></span><span class=line><span class=cl>ConcreteComponent.operation
+</span></span></code></pre></div><h3 id=facade-pattern>Facade Pattern</h3><p>The Facade pattern provides a simple and unified interface to a complex system.It encapsulates the complexity of the
+system and presents a simplified interface to the client. This pattern is used to provide a higher-level interface that
+makes it easier for clients to use the system.</p><p>The Facade Pattern consists of the following components:</p><ul><li><strong>Facade</strong>: This is the central class that provides a simple and unified interface to a complex subsystem.
+The Facade class provides methods that encapsulate the interactions between the client and the subsystem.</li><li><strong>Subsystem</strong>: This is the collection of classes that implement the functionality of the system. The Subsystem
+classes are not visible to the client and are accessed only through the Facade class.</li><li><strong>Client</strong>: This is the class that uses the Facade class to interact with the system. The client does not need to
+know the details of the subsystem, as it interacts only with the Facade class.</li></ul><div class=highlight><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=kn>from</span> <span class=nn>__future__</span> <span class=kn>import</span> <span class=n>annotations</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>class</span> <span class=nc>Facade</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=fm>__init__</span><span class=p>(</span><span class=bp>self</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=bp>self</span><span class=o>.</span><span class=n>subsystem_a</span> <span class=o>=</span> <span class=n>SubsystemA</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>        <span class=bp>self</span><span class=o>.</span><span class=n>subsystem_b</span> <span class=o>=</span> <span class=n>SubsystemB</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>        <span class=bp>self</span><span class=o>.</span><span class=n>subsystem_c</span> <span class=o>=</span> <span class=n>SubsystemC</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>operation</span><span class=p>(</span><span class=bp>self</span><span class=p>)</span> <span class=o>-&gt;</span> <span class=nb>str</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>        <span class=n>results</span> <span class=o>=</span> <span class=nb>list</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>        <span class=n>results</span><span class=o>.</span><span class=n>append</span><span class=p>(</span><span class=s2>&#34;Facade initializes subsystems:&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>        <span class=n>results</span><span class=o>.</span><span class=n>append</span><span class=p>(</span><span class=bp>self</span><span class=o>.</span><span class=n>subsystem_a</span><span class=o>.</span><span class=n>operation_a</span><span class=p>())</span>
+</span></span><span class=line><span class=cl>        <span class=n>results</span><span class=o>.</span><span class=n>append</span><span class=p>(</span><span class=bp>self</span><span class=o>.</span><span class=n>subsystem_b</span><span class=o>.</span><span class=n>operation_b</span><span class=p>())</span>
+</span></span><span class=line><span class=cl>        <span class=n>results</span><span class=o>.</span><span class=n>append</span><span class=p>(</span><span class=bp>self</span><span class=o>.</span><span class=n>subsystem_c</span><span class=o>.</span><span class=n>operation_c</span><span class=p>())</span>
+</span></span><span class=line><span class=cl>        <span class=n>results</span><span class=o>.</span><span class=n>append</span><span class=p>(</span><span class=s2>&#34;Facade orders subsystems to perform the action:&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>        <span class=n>results</span><span class=o>.</span><span class=n>append</span><span class=p>(</span><span class=bp>self</span><span class=o>.</span><span class=n>subsystem_a</span><span class=o>.</span><span class=n>action_a</span><span class=p>())</span>
+</span></span><span class=line><span class=cl>        <span class=n>results</span><span class=o>.</span><span class=n>append</span><span class=p>(</span><span class=bp>self</span><span class=o>.</span><span class=n>subsystem_b</span><span class=o>.</span><span class=n>action_b</span><span class=p>())</span>
+</span></span><span class=line><span class=cl>        <span class=n>results</span><span class=o>.</span><span class=n>append</span><span class=p>(</span><span class=bp>self</span><span class=o>.</span><span class=n>subsystem_c</span><span class=o>.</span><span class=n>action_c</span><span class=p>())</span>
+</span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=s2>&#34;</span><span class=se>\n</span><span class=s2>&#34;</span><span class=o>.</span><span class=n>join</span><span class=p>(</span><span class=n>results</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>class</span> <span class=nc>SubsystemA</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>    <span class=nd>@staticmethod</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>operation_a</span><span class=p>()</span> <span class=o>-&gt;</span> <span class=nb>str</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=s2>&#34;Subsystem A: Ready!&#34;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=nd>@staticmethod</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>action_a</span><span class=p>()</span> <span class=o>-&gt;</span> <span class=nb>str</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=s2>&#34;Subsystem A: Action!&#34;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>class</span> <span class=nc>SubsystemB</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>    <span class=nd>@staticmethod</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>operation_b</span><span class=p>()</span> <span class=o>-&gt;</span> <span class=nb>str</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=s2>&#34;Subsystem B: Ready!&#34;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=nd>@staticmethod</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>action_b</span><span class=p>()</span> <span class=o>-&gt;</span> <span class=nb>str</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=s2>&#34;Subsystem B: Action!&#34;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>class</span> <span class=nc>SubsystemC</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>    <span class=nd>@staticmethod</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>operation_c</span><span class=p>()</span> <span class=o>-&gt;</span> <span class=nb>str</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=s2>&#34;Subsystem C: Ready!&#34;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=nd>@staticmethod</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>action_c</span><span class=p>()</span> <span class=o>-&gt;</span> <span class=nb>str</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=s2>&#34;Subsystem C: Action!&#34;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>def</span> <span class=nf>client_code</span><span class=p>():</span>
+</span></span><span class=line><span class=cl>    <span class=n>facade</span> <span class=o>=</span> <span class=n>Facade</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>    <span class=n>result</span> <span class=o>=</span> <span class=n>facade</span><span class=o>.</span><span class=n>operation</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>    <span class=nb>print</span><span class=p>(</span><span class=n>result</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>if</span> <span class=vm>__name__</span> <span class=o>==</span> <span class=s2>&#34;__main__&#34;</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>    <span class=n>client_code</span><span class=p>()</span>
+</span></span></code></pre></div><p>This will output:</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-text data-lang=text><span class=line><span class=cl>Facade initializes subsystems:
+</span></span><span class=line><span class=cl>Subsystem A: Ready!
+</span></span><span class=line><span class=cl>Subsystem B: Ready!
+</span></span><span class=line><span class=cl>Subsystem C: Ready!
+</span></span><span class=line><span class=cl>Facade orders subsystems to perform the action:
+</span></span><span class=line><span class=cl>Subsystem A: Action!
+</span></span><span class=line><span class=cl>Subsystem B: Action!
+</span></span><span class=line><span class=cl>Subsystem C: Action!
+</span></span></code></pre></div><h3 id=flyweight-pattern>Flyweight Pattern</h3><p>The Flyweight pattern is used to minimize memory usage by sharing data across multiple objects. The main idea behind
+the Flyweight pattern is to store commonly used data externally and reuse it among multiple objects to avoid
+unnecessary duplication. If the application doesn&rsquo;t struggle with shortage of RAM, then this pattern may not be a good
+idea.</p><p>The Flyweight Pattern consists of the following components:</p><ul><li><strong>Flyweight</strong>: This is an interface or abstract class that defines the methods that the concrete flyweights must
+implement. It specifies the intrinsic state that is shared among multiple objects.</li><li><strong>Concrete Flyweight</strong>: This is a concrete implementation of the Flyweight interface. It stores the intrinsic state that
+is shared among multiple objects.</li><li><strong>Flyweight Factory</strong>: This is a factory that creates and manages the flyweights. It ensures that flyweights are shared
+and reused properly. It maintains a pool of existing flyweights and returns an existing flyweight if one is available,
+or creates a new one if necessary.</li><li><strong>Client</strong>: This is the object that uses the flyweights. It maintains a reference to the flyweights and passes the
+extrinsic state to the flyweights when necessary.</li></ul><div class=highlight><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=kn>from</span> <span class=nn>abc</span> <span class=kn>import</span> <span class=n>ABC</span><span class=p>,</span> <span class=n>abstractmethod</span>
+</span></span><span class=line><span class=cl><span class=kn>from</span> <span class=nn>typing</span> <span class=kn>import</span> <span class=n>Dict</span><span class=p>,</span> <span class=n>List</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>class</span> <span class=nc>Flyweight</span><span class=p>(</span><span class=n>ABC</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=fm>__init__</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=n>shared_state</span><span class=p>:</span> <span class=n>List</span><span class=p>[</span><span class=nb>str</span><span class=p>])</span> <span class=o>-&gt;</span> <span class=kc>None</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>        <span class=bp>self</span><span class=o>.</span><span class=n>_shared_state</span> <span class=o>=</span> <span class=n>shared_state</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=nd>@abstractmethod</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>operation</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=n>unique_state</span><span class=p>:</span> <span class=n>List</span><span class=p>[</span><span class=nb>str</span><span class=p>])</span> <span class=o>-&gt;</span> <span class=kc>None</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>        <span class=o>...</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>class</span> <span class=nc>ConcreteFlyweight</span><span class=p>(</span><span class=n>Flyweight</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>operation</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=n>unique_state</span><span class=p>:</span> <span class=n>List</span><span class=p>[</span><span class=nb>str</span><span class=p>]):</span>
+</span></span><span class=line><span class=cl>        <span class=nb>print</span><span class=p>(</span><span class=sa>f</span><span class=s2>&#34;ConcreteFlyweight: (</span><span class=si>{</span><span class=bp>self</span><span class=o>.</span><span class=n>_shared_state</span><span class=si>}</span><span class=s2>), (</span><span class=si>{</span><span class=n>unique_state</span><span class=si>}</span><span class=s2>)&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>class</span> <span class=nc>FlyweightFactory</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>    <span class=n>_flyweights</span><span class=p>:</span> <span class=n>Dict</span><span class=p>[</span><span class=nb>str</span><span class=p>,</span> <span class=n>Flyweight</span><span class=p>]</span> <span class=o>=</span> <span class=p>{}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=fm>__init__</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=n>initial_flyweights</span><span class=p>:</span> <span class=n>List</span><span class=p>[</span><span class=n>List</span><span class=p>[</span><span class=nb>str</span><span class=p>]]):</span>
+</span></span><span class=line><span class=cl>        <span class=k>for</span> <span class=n>state</span> <span class=ow>in</span> <span class=n>initial_flyweights</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>            <span class=bp>self</span><span class=o>.</span><span class=n>_flyweights</span><span class=p>[</span><span class=bp>self</span><span class=o>.</span><span class=n>get_key</span><span class=p>(</span><span class=n>state</span><span class=p>)]</span> <span class=o>=</span> <span class=n>ConcreteFlyweight</span><span class=p>(</span><span class=n>state</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=nd>@staticmethod</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>get_key</span><span class=p>(</span><span class=n>state</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=s2>&#34;_&#34;</span><span class=o>.</span><span class=n>join</span><span class=p>(</span><span class=nb>sorted</span><span class=p>(</span><span class=n>state</span><span class=p>))</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>get_flyweight</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=n>shared_state</span><span class=p>:</span> <span class=n>List</span><span class=p>[</span><span class=nb>str</span><span class=p>])</span> <span class=o>-&gt;</span> <span class=n>Flyweight</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>        <span class=n>key</span> <span class=o>=</span> <span class=bp>self</span><span class=o>.</span><span class=n>get_key</span><span class=p>(</span><span class=n>shared_state</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>        <span class=k>if</span> <span class=n>key</span> <span class=ow>not</span> <span class=ow>in</span> <span class=bp>self</span><span class=o>.</span><span class=n>_flyweights</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>            <span class=nb>print</span><span class=p>(</span><span class=s2>&#34;FlyweightFactory: Does not exist, creating a new Flyweight.&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>            <span class=bp>self</span><span class=o>.</span><span class=n>_flyweights</span><span class=p>[</span><span class=n>key</span><span class=p>]</span> <span class=o>=</span> <span class=n>ConcreteFlyweight</span><span class=p>(</span><span class=n>shared_state</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>        <span class=k>else</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>            <span class=nb>print</span><span class=p>(</span><span class=s2>&#34;FlyweightFactory: Using existing Flyweight.&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=bp>self</span><span class=o>.</span><span class=n>_flyweights</span><span class=p>[</span><span class=n>key</span><span class=p>]</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>list_flyweights</span><span class=p>(</span><span class=bp>self</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=nb>print</span><span class=p>(</span><span class=sa>f</span><span class=s2>&#34;FlyweightFactory: I have </span><span class=si>{</span><span class=nb>len</span><span class=p>(</span><span class=bp>self</span><span class=o>.</span><span class=n>_flyweights</span><span class=p>)</span><span class=si>}</span><span class=s2> flyweights:&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>        <span class=nb>print</span><span class=p>(</span><span class=s2>&#34;, &#34;</span><span class=o>.</span><span class=n>join</span><span class=p>(</span><span class=nb>list</span><span class=p>(</span><span class=bp>self</span><span class=o>.</span><span class=n>_flyweights</span><span class=o>.</span><span class=n>keys</span><span class=p>())))</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>def</span> <span class=nf>client_code</span><span class=p>(</span><span class=n>factory</span><span class=p>:</span> <span class=n>FlyweightFactory</span><span class=p>,</span> <span class=n>shared_state</span><span class=p>:</span> <span class=n>List</span><span class=p>[</span><span class=nb>str</span><span class=p>],</span> <span class=n>unique_state</span><span class=p>:</span> <span class=n>List</span><span class=p>[</span><span class=nb>str</span><span class=p>]):</span>
+</span></span><span class=line><span class=cl>    <span class=n>flyweight</span> <span class=o>=</span> <span class=n>factory</span><span class=o>.</span><span class=n>get_flyweight</span><span class=p>(</span><span class=n>shared_state</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=n>flyweight</span><span class=o>.</span><span class=n>operation</span><span class=p>(</span><span class=n>unique_state</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>if</span> <span class=vm>__name__</span> <span class=o>==</span> <span class=s2>&#34;__main__&#34;</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>    <span class=n>factory</span> <span class=o>=</span> <span class=n>FlyweightFactory</span><span class=p>([</span>
+</span></span><span class=line><span class=cl>        <span class=p>[</span><span class=s2>&#34;Apple&#34;</span><span class=p>,</span> <span class=s2>&#34;Red&#34;</span><span class=p>,</span> <span class=s2>&#34;Round&#34;</span><span class=p>],</span>
+</span></span><span class=line><span class=cl>        <span class=p>[</span><span class=s2>&#34;Banana&#34;</span><span class=p>,</span> <span class=s2>&#34;Yellow&#34;</span><span class=p>,</span> <span class=s2>&#34;Curved&#34;</span><span class=p>],</span>
+</span></span><span class=line><span class=cl>        <span class=p>[</span><span class=s2>&#34;Grape&#34;</span><span class=p>,</span> <span class=s2>&#34;Purple&#34;</span><span class=p>,</span> <span class=s2>&#34;Round&#34;</span><span class=p>],</span>
+</span></span><span class=line><span class=cl>        <span class=p>[</span><span class=s2>&#34;Watermelon&#34;</span><span class=p>,</span> <span class=s2>&#34;Green&#34;</span><span class=p>,</span> <span class=s2>&#34;Oval&#34;</span><span class=p>]</span>
+</span></span><span class=line><span class=cl>    <span class=p>])</span>
+</span></span><span class=line><span class=cl>    <span class=n>factory</span><span class=o>.</span><span class=n>list_flyweights</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=n>client_code</span><span class=p>(</span><span class=n>factory</span><span class=p>,</span> <span class=p>[</span><span class=s2>&#34;Apple&#34;</span><span class=p>,</span> <span class=s2>&#34;Red&#34;</span><span class=p>,</span> <span class=s2>&#34;Round&#34;</span><span class=p>],</span> <span class=p>[</span><span class=s2>&#34;My&#34;</span><span class=p>,</span> <span class=s2>&#34;Unique&#34;</span><span class=p>,</span> <span class=s2>&#34;state&#34;</span><span class=p>,</span> <span class=s2>&#34;1&#34;</span><span class=p>])</span>
+</span></span><span class=line><span class=cl>    <span class=n>client_code</span><span class=p>(</span><span class=n>factory</span><span class=p>,</span> <span class=p>[</span><span class=s2>&#34;Banana&#34;</span><span class=p>,</span> <span class=s2>&#34;Yellow&#34;</span><span class=p>,</span> <span class=s2>&#34;Curved&#34;</span><span class=p>],</span> <span class=p>[</span><span class=s2>&#34;My&#34;</span><span class=p>,</span> <span class=s2>&#34;Unique&#34;</span><span class=p>,</span> <span class=s2>&#34;state&#34;</span><span class=p>,</span> <span class=s2>&#34;2&#34;</span><span class=p>])</span>
+</span></span><span class=line><span class=cl>    <span class=n>client_code</span><span class=p>(</span><span class=n>factory</span><span class=p>,</span> <span class=p>[</span><span class=s2>&#34;Grape&#34;</span><span class=p>,</span> <span class=s2>&#34;Purple&#34;</span><span class=p>,</span> <span class=s2>&#34;Round&#34;</span><span class=p>],</span> <span class=p>[</span><span class=s2>&#34;My&#34;</span><span class=p>,</span> <span class=s2>&#34;Unique&#34;</span><span class=p>,</span> <span class=s2>&#34;state&#34;</span><span class=p>,</span> <span class=s2>&#34;3&#34;</span><span class=p>])</span>
+</span></span><span class=line><span class=cl>    <span class=n>client_code</span><span class=p>(</span><span class=n>factory</span><span class=p>,</span> <span class=p>[</span><span class=s2>&#34;Watermelon&#34;</span><span class=p>,</span> <span class=s2>&#34;Green&#34;</span><span class=p>,</span> <span class=s2>&#34;Oval&#34;</span><span class=p>],</span> <span class=p>[</span><span class=s2>&#34;My&#34;</span><span class=p>,</span> <span class=s2>&#34;Unique&#34;</span><span class=p>,</span> <span class=s2>&#34;state&#34;</span><span class=p>,</span> <span class=s2>&#34;4&#34;</span><span class=p>])</span>
+</span></span><span class=line><span class=cl>    <span class=n>client_code</span><span class=p>(</span><span class=n>factory</span><span class=p>,</span> <span class=p>[</span><span class=s2>&#34;Apple&#34;</span><span class=p>,</span> <span class=s2>&#34;Red&#34;</span><span class=p>,</span> <span class=s2>&#34;Round&#34;</span><span class=p>],</span> <span class=p>[</span><span class=s2>&#34;My&#34;</span><span class=p>,</span> <span class=s2>&#34;Unique&#34;</span><span class=p>,</span> <span class=s2>&#34;state&#34;</span><span class=p>,</span> <span class=s2>&#34;5&#34;</span><span class=p>])</span>
+</span></span><span class=line><span class=cl>    <span class=n>client_code</span><span class=p>(</span><span class=n>factory</span><span class=p>,</span> <span class=p>[</span><span class=s2>&#34;Pear&#34;</span><span class=p>,</span> <span class=s2>&#34;Yellow&#34;</span><span class=p>,</span> <span class=s2>&#34;Round&#34;</span><span class=p>],</span> <span class=p>[</span><span class=s2>&#34;My&#34;</span><span class=p>,</span> <span class=s2>&#34;Unique&#34;</span><span class=p>,</span> <span class=s2>&#34;state&#34;</span><span class=p>,</span> <span class=s2>&#34;6&#34;</span><span class=p>])</span>
+</span></span></code></pre></div><p>This will output:</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-text data-lang=text><span class=line><span class=cl>FlyweightFactory: I have 4 flyweights:
+</span></span><span class=line><span class=cl>Apple_Red_Round, Banana_Curved_Yellow, Grape_Purple_Round, Green_Oval_Watermelon
+</span></span><span class=line><span class=cl>FlyweightFactory: Using existing Flyweight.
+</span></span><span class=line><span class=cl>ConcreteFlyweight: ([&#39;Apple&#39;, &#39;Red&#39;, &#39;Round&#39;]), ([&#39;My&#39;, &#39;Unique&#39;, &#39;state&#39;, &#39;1&#39;])
+</span></span><span class=line><span class=cl>FlyweightFactory: Using existing Flyweight.
+</span></span><span class=line><span class=cl>ConcreteFlyweight: ([&#39;Banana&#39;, &#39;Yellow&#39;, &#39;Curved&#39;]), ([&#39;My&#39;, &#39;Unique&#39;, &#39;state&#39;, &#39;2&#39;])
+</span></span><span class=line><span class=cl>FlyweightFactory: Using existing Flyweight.
+</span></span><span class=line><span class=cl>ConcreteFlyweight: ([&#39;Grape&#39;, &#39;Purple&#39;, &#39;Round&#39;]), ([&#39;My&#39;, &#39;Unique&#39;, &#39;state&#39;, &#39;3&#39;])
+</span></span><span class=line><span class=cl>FlyweightFactory: Using existing Flyweight.
+</span></span><span class=line><span class=cl>ConcreteFlyweight: ([&#39;Watermelon&#39;, &#39;Green&#39;, &#39;Oval&#39;]), ([&#39;My&#39;, &#39;Unique&#39;, &#39;state&#39;, &#39;4&#39;])
+</span></span><span class=line><span class=cl>FlyweightFactory: Using existing Flyweight.
+</span></span><span class=line><span class=cl>ConcreteFlyweight: ([&#39;Apple&#39;, &#39;Red&#39;, &#39;Round&#39;]), ([&#39;My&#39;, &#39;Unique&#39;, &#39;state&#39;, &#39;5&#39;])
+</span></span><span class=line><span class=cl>FlyweightFactory: Does not exist, creating a new Flyweight.
+</span></span><span class=line><span class=cl>ConcreteFlyweight: ([&#39;Pear&#39;, &#39;Yellow&#39;, &#39;Round&#39;]), ([&#39;My&#39;, &#39;Unique&#39;, &#39;state&#39;, &#39;6&#39;])
+</span></span></code></pre></div><h3 id=proxy-pattern>Proxy Pattern</h3><p>The Proxy Pattern consists of the following components:</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-python data-lang=python></code></pre></div><p>This will output:</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-text data-lang=text></code></pre></div></div><footer class="post-footer clearfix"><p class=post-tags><span>Tagged:</span>
+<a href=/tags/software-design/>software design</a>,
+<a href=/tags/object-oriented-programming/>object-oriented programming</a></p><div class=share><a class=icon-twitter href="https://twitter.com/share?text=Object%20oriented%20design%20patterns%20-%20Structural%20patterns%20%28Part%202%29&url=https%3a%2f%2fwww.daehli.no%2f2023%2f04%2f10%2f2023-04-10-structural-design-patterns%2f" onclick='return window.open(this.href,"twitter-share","width=550,height=235"),!1' aria-label="Share on Twitter"><i class="fa fa-twitter" aria-hidden=true></i></a>
+<a class=icon-facebook href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fwww.daehli.no%2f2023%2f04%2f10%2f2023-04-10-structural-design-patterns%2f" onclick='return window.open(this.href,"facebook-share","width=580,height=296"),!1' aria-label="Share on Facebook"><i class="fa fa-facebook" aria-hidden=true></i></a>
+<a class=icon-linkedin href="https://www.linkedin.com/shareArticle?mini=true&title=Object%20oriented%20design%20patterns%20-%20Structural%20patterns%20%28Part%202%29&url=https%3a%2f%2fwww.daehli.no%2f2023%2f04%2f10%2f2023-04-10-structural-design-patterns%2f&summary=The%20Gang%20of%20Four%27s%20classic%20structural%20design%20patterns." onclick='return window.open(this.href,"linkedin-share","width=554,height=481"),!1' aria-label="Share on LinkedIn"><i class="fa fa-linkedin" aria-hidden=true></i></a></div></footer></article></div></div></div><footer class=footer><div class=container><div class=site-title-wrapper><h1 class=site-title><a href=https://www.daehli.no/>Morten Dæhli Aslesen</a></h1><a class="button-square button-jump-top js-jump-top" href=# aria-label="Back to Top"><i class="fa fa-angle-up" aria-hidden=true></i></a></div><p class=footer-copyright><span>&copy; 2023 / Powered by <a href=https://gohugo.io/>Hugo</a></span></p><p class=footer-copyright><span><a href=https://github.com/roryg/ghostwriter>Ghostwriter theme</a> By <a href=http://jollygoodthemes.com>JollyGoodThemes</a></span>
+<span>/ <a href=https://github.com/jbub/ghostwriter>Ported</a> to Hugo By <a href=https://github.com/jbub>jbub</a></span></p></div></footer><script src=https://www.daehli.no/js/jquery-1.11.3.min.js></script>
+<script src=https://www.daehli.no/js/jquery.fitvids.js></script>
+<script src=https://www.daehli.no/js/scripts.js></script></body></html>
