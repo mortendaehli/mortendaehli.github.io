@@ -361,29 +361,135 @@ This will output:
 ```
 
 ### Strategy Pattern
+The Strategy pattern allows for selecting algorithms at runtime. It enables an object to change the selected algorithm
+at runtime, by using composition to store different strategies and allowing the client to choose between them.
 
 The Strategy Pattern consists of the following components:
+- **Context**: This is the class that contains a reference to a Strategy object and provides an interface to the client
+  to interact with the Strategy object.
+- **Strategy**: This is an interface or abstract class that defines the common interface for all the concrete
+  strategies.
+- **Concrete Strategies**: These are the implementations of the Strategy interface, where each concrete strategy
+  provides a different algorithm to solve the problem.
 
 ```python
+from abc import ABC, abstractmethod
 
+class Strategy(ABC):
+    @abstractmethod
+    def execute(self, data) -> None:
+        pass
+
+class StrategyA(Strategy):
+    def execute(self, data) -> None:
+        print("Executing Strategy A")
+
+class StrategyB(Strategy):
+    def execute(self, data) -> None:
+        print("Executing Strategy B")
+
+class Context:
+    def __init__(self, strategy: Strategy):
+        self._strategy = strategy
+
+    def execute_strategy(self, data) -> None:
+        print("Context is getting data and delegates the execution to the strategy.")
+        self._strategy.execute(data)
+
+
+def main():
+    context = Context(StrategyA())
+    context.execute_strategy("Some data")
+
+    context = Context(StrategyB())
+    context.execute_strategy("Some more data")
+
+if __name__ == "__main__":
+    main()
 ```
 
 This will output:
 ```text
+Context is getting some data and delegates the execution to the strategy.
+Executing Strategy A
+Context is getting some data and delegates the execution to the strategy.
+Executing Strategy B
 
 ```
 
-### Template method	 Pattern
+### Template method	Pattern
+The Template Method pattern defines the skeleton of an algorithm in a base class and lets subclasses override
+specific steps of the algorithm without changing its structure. The pattern is useful when multiple algorithms share
+similar steps, but have variations in how those steps are executed.
 
 The Template method	 Pattern consists of the following components:
+- **Abstract Class**: This is the base class that defines the template method which contains a series of method calls
+  that define the algorithm's structure. It also defines abstract methods that subclasses must implement to provide
+  their own implementation for specific steps of the algorithm.
+- **Concrete Classes**: These are the subclasses that inherit from the abstract class and provide their own
+  implementation for the abstract methods defined in the abstract class. They can also override the template method to
+  provide their own variations of the algorithm.
 
 ```python
+from abc import ABC, abstractmethod
 
+class AbstractClass(ABC):
+
+    def template_method(self):
+        self.step_one()
+        self.step_two()
+        self.step_three()
+
+    @abstractmethod
+    def step_one(self):
+        ...
+
+    @abstractmethod
+    def step_two(self):
+        ...
+
+    @abstractmethod
+    def step_three(self):
+        ...
+
+class ConcreteClassA(AbstractClass):
+
+    def step_one(self):
+        print("ConcreteClassA: Step 1")
+
+    def step_two(self):
+        print("ConcreteClassA: Step 2")
+
+    def step_three(self):
+        print("ConcreteClassA: Step 3")
+
+class ConcreteClassB(AbstractClass):
+
+    def step_one(self):
+        print("ConcreteClassB: Step 1")
+
+    def step_two(self):
+        print("ConcreteClassB: Step 2")
+
+    def step_three(self):
+        print("ConcreteClassB: Step 3")
+
+def main():
+    ConcreteClassA().template_method()
+    ConcreteClassB().template_method()
+
+if __name__ == "__main__":
+    main()
 ```
 
 This will output:
 ```text
-
+ConcreteClassA: Step 1
+ConcreteClassA: Step 2
+ConcreteClassA: Step 3
+ConcreteClassB: Step 1
+ConcreteClassB: Step 2
+ConcreteClassB: Step 3
 ```
 
 ### Visitor Pattern
