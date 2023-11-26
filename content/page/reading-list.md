@@ -7,7 +7,9 @@ tags = ["tech", "reading"]
 draft = false
 +++
 
-This is a curated list of reading material and code projects that I enjoy and recommend to others:
+Welcome to my treasure trove of resources! In this curated list, I share the reading materials and code projects that
+have not only enriched my understanding but also shaped my approach in the tech world. Each item here is more than just
+a recommendation — it's a reflection of the philosophies and practices I believe in.
 
 ### Coding philosophy
 - [Twelve-factor app](https://12factor.net/)
