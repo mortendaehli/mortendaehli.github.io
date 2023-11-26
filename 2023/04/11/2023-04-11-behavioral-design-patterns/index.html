@@ -1,10 +1,11 @@
-<!doctype html><html prefix="og: http://ogp.me/ns#"><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge"><title>Object oriented design patterns - Behavioral patterns (Part 3) &#183; Morten Dæhli Aslesen</title><meta name=description content="The Gang of Four's classic behavioral design patterns."><meta name=HandheldFriendly content="True"><meta name=MobileOptimized content="320"><meta name=generator content="Hugo 0.111.3"><meta name=robots content="index,follow"><meta name=viewport content="width=device-width,initial-scale=1"><meta property="og:title" content="Object oriented design patterns - Behavioral patterns (Part 3)"><meta property="og:description" content="The Gang of Four's classic behavioral design patterns."><meta property="og:type" content="article"><meta property="og:url" content="https://www.daehli.no/2023/04/11/2023-04-11-behavioral-design-patterns/"><link rel=stylesheet href=https://www.daehli.no/dist/site.css><link rel=stylesheet href=https://www.daehli.no/dist/syntax.css><link rel=stylesheet href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,600,700,300&subset=latin,cyrillic-ext,latin-ext,cyrillic"><link rel=stylesheet href=https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css integrity=sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN crossorigin=anonymous><link rel=icon type=image/x-icon href=/img/favicon.png></head><body><div id=wrapper><header class=site-header><div class=container><div class=site-title-wrapper><h1 class=site-title><a href=https://www.daehli.no/>Morten Dæhli Aslesen</a></h1><a class=button-square href=https://www.daehli.no/index.xml aria-label=RSS><i class="fa fa-rss" aria-hidden=true></i></a>
-<a class="button-square button-social hint--top" data-hint=Facebook aria-label=Facebook href=https://www.facebook.com/morten.aslesen/ rel=me><i class="fa fa-facebook" aria-hidden=true></i></a>
-<a class="button-square button-social hint--top" data-hint=Github aria-label=Github href=https://github.com/mortendaehli/ rel=me><i class="fa fa-github-alt" aria-hidden=true></i></a>
-<a class="button-square button-social hint--top" data-hint=LinkedIn aria-label=LinkedIn href=https://www.linkedin.com/in/morten-d%C3%A6hli-aslesen-50765164/ rel=me><i class="fa fa-linkedin" aria-hidden=true></i></a>
-<a class="button-square button-social hint--top" data-hint=Email aria-label="Send an Email" href=mailto:mortendaehli@gmail.com><i class="fa fa-envelope" aria-hidden=true></i></a></div><ul class=site-nav><li class=site-nav-item><a href=/>Blog</a></li><li class=site-nav-item><a href=/project/>Projects</a></li><li class=site-nav-item><a href=/page/reading-list/>Reading list</a></li><li class=site-nav-item><a href=/page/contact/>Contact</a></li><li class=site-nav-item><a href=/page/about/>About</a></li></ul></div></header><div id=container><div class=container><article class=post-container itemscope itemtype=http://schema.org/BlogPosting><header class=post-header><h1 class=post-title itemprop="name headline">Object oriented design patterns - Behavioral patterns (Part 3)</h1><p class=post-description itemprop=description>The Gang of Four's classic behavioral design patterns.</p><p class=post-date><span>Published <time datetime=2023-04-11 itemprop=datePublished>Tue, Apr 11, 2023</time></span>
+<!doctype html><html prefix="og: http://ogp.me/ns#"><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><title>Object oriented design patterns - Behavioral patterns (Part 3) &#183; Morten Dæhli Aslesen</title>
+<meta name=description content="The Gang of Four's classic behavioral design patterns."><meta name=HandheldFriendly content="True"><meta name=MobileOptimized content="320"><meta name=generator content="Hugo 0.120.4"><meta name=robots content="index,follow"><meta name=viewport content="width=device-width,initial-scale=1"><meta property="og:title" content="Object oriented design patterns - Behavioral patterns (Part 3)"><meta property="og:description" content="The Gang of Four's classic behavioral design patterns."><meta property="og:type" content="article"><meta property="og:url" content="https://www.daehli.no/2023/04/11/2023-04-11-behavioral-design-patterns/"><link rel=stylesheet href=https://www.daehli.no/dist/site.css><link rel=stylesheet href=https://www.daehli.no/dist/syntax.css><link rel=stylesheet href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,600,700,300&subset=latin,cyrillic-ext,latin-ext,cyrillic"><link rel=stylesheet href=https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css integrity=sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN crossorigin=anonymous><link rel=icon type=image/x-icon href=/img/favicon.png></head><body><div id=wrapper><header class=site-header><div class=container><div class=site-title-wrapper><h1 class=site-title><a href=https://www.daehli.no/>Morten Dæhli Aslesen</a></h1><a class=button-square href=https://www.daehli.no/index.xml aria-label=RSS><i class="fa fa-rss" aria-hidden=true></i></a>
+<a class="button-square button-social hint--top" data-hint=Facebook aria-label=Facebook href=https://www.facebook.com/morten.aslesen/ rel=me><i class="fa fa-facebook" aria-hidden=true></i>
+</a><a class="button-square button-social hint--top" data-hint=Github aria-label=Github href=https://github.com/mortendaehli/ rel=me><i class="fa fa-github-alt" aria-hidden=true></i>
+</a><a class="button-square button-social hint--top" data-hint=LinkedIn aria-label=LinkedIn href=https://www.linkedin.com/in/morten-d%C3%A6hli-aslesen-50765164/ rel=me><i class="fa fa-linkedin" aria-hidden=true></i>
+</a><a class="button-square button-social hint--top" data-hint=Email aria-label="Send an Email" href=mailto:mortendaehli@gmail.com><i class="fa fa-envelope" aria-hidden=true></i></a></div><ul class=site-nav><li class=site-nav-item><a href=/>Blog</a></li><li class=site-nav-item><a href=/project/>Projects</a></li><li class=site-nav-item><a href=/page/reading-list/>Reading list</a></li><li class=site-nav-item><a href=/page/contact/>Contact</a></li><li class=site-nav-item><a href=/page/about/>About</a></li></ul></div></header><div id=container><div class=container><article class=post-container itemscope itemtype=http://schema.org/BlogPosting><header class=post-header><h1 class=post-title itemprop="name headline">Object oriented design patterns - Behavioral patterns (Part 3)</h1><p class=post-description itemprop=description>The Gang of Four's classic behavioral design patterns.</p><p class=post-date><span>Published <time datetime=2023-04-11 itemprop=datePublished>Tue, Apr 11, 2023</time></span>
 <span>by</span>
-<span itemscope itemprop=author itemtype=https://schema.org/Person><span itemprop=name><a href=%f0%9f%91%8b%20Hi,%20I%e2%80%99m%20Morten%20D%c3%a6hli%20Aslesen,%20and%20I%27m%20currently%20working%20as%20an%20IT-consultant%20at%20Bouvet%20Norway%20ASA itemprop=url rel=author>Morten Dæhli Aslesen</a></span></span></p><p class="post-reading post-line"><span>Estimated reading time: 8 min</span></p></header><div class="post-content clearfix" itemprop=articleBody><p>This is the third and last part in a series of 3 blog post summarizing the famous
+<span itemscope itemprop=author itemtype=https://schema.org/Person><span itemprop=name><a href=%f0%9f%91%8b%20Hi,%20I%e2%80%99m%20Morten%20D%c3%a6hli%20Aslesen,%20and%20I%27m%20currently%20working%20as%20an%20IT-consultant%20at%20Bouvet%20Norway%20ASA itemprop=url rel=author>Morten Dæhli Aslesen</a></span></span></p><p class="post-reading post-line"><span>Estimated reading time: 15 min</span></p></header><div class="post-content clearfix" itemprop=articleBody><p>This is the third and last part in a series of 3 blog post summarizing the famous
 by Gamma, Helm, Johnson and Vlissides, also known as the Gang of Four.</p><h2 id=behavioral-pattern>Behavioral Pattern</h2><p>Behavioral design patterns in software development are design patterns that focus on the communication between objects
 and how they interact to achieve a specific behavior or functionality. These patterns are concerned with the
 interactions and responsibilities of objects, and how they work together to accomplish a common goal.</p><h3 id=chain-of-responsibility-pattern>Chain of Responsibility Pattern</h3><p>The Chain of Responsibility pattern allows a group of objects to handle a request in a chain-like sequence.
@@ -240,7 +241,300 @@ the grammar.</li><li><strong>Context</strong>: Contains information that is glob
 </span></span><span class=line><span class=cl>Expression: 3 + 2 evaluates to  5
 </span></span><span class=line><span class=cl>Expression: 7 - 5 evaluates to  2
 </span></span><span class=line><span class=cl>Expression: 3 + 2 - 1 evaluates to  4
-</span></span></code></pre></div><h3 id=iterator-pattern>Iterator Pattern</h3><p>The Iterator Pattern consists of the following components:</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-python data-lang=python></code></pre></div><p>This will output:</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-text data-lang=text></code></pre></div><h3 id=mediator-pattern>Mediator Pattern</h3><p>The Mediator Pattern consists of the following components:</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-python data-lang=python></code></pre></div><p>This will output:</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-text data-lang=text></code></pre></div><h3 id=memento-pattern>Memento Pattern</h3><p>The Memento Pattern consists of the following components:</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-python data-lang=python></code></pre></div><p>This will output:</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-text data-lang=text></code></pre></div><h3 id=observer-pattern>Observer Pattern</h3><p>The Observer Pattern consists of the following components:</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-python data-lang=python></code></pre></div><p>This will output:</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-text data-lang=text></code></pre></div><h3 id=state-pattern>State Pattern</h3><p>The State Pattern consists of the following components:</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-python data-lang=python></code></pre></div><p>This will output:</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-text data-lang=text></code></pre></div><h3 id=strategy-pattern>Strategy Pattern</h3><p>The Strategy pattern allows for selecting algorithms at runtime. It enables an object to change the selected algorithm
+</span></span></code></pre></div><h3 id=iterator-pattern>Iterator Pattern</h3><p>The Iterator pattern is a behavioral design pattern that provides a way to access the elements of an aggregate object
+sequentially without exposing its underlying representation. This pattern decouples the collection from the traversal
+logic and offers a standardized way to cycle through elements of the collection without needing to understand its
+internal structure. It&rsquo;s especially useful in cases where a collection has a complex structure, but you want to hide
+this complexity from the client. Note that this is already a built in feature in Python classes by if you define
+<strong>next</strong> and <strong>iter</strong> methods.</p><p>The Iterator Pattern consists of the following components:</p><ul><li><strong>Iterator</strong>: An interface or abstract class that specifies methods for accessing and traversing elements.</li><li><strong>Concrete Iterator</strong>: Implements the Iterator interface and keeps track of the current position in the traversal of the aggregate object.</li><li><strong>Aggregate</strong>: An interface which declares the creation of the iterator object.</li><li><strong>Concrete Aggregate</strong>: Implements the Aggregate interface and returns an instance of the Concrete Iterator.</li></ul><div class=highlight><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=kn>from</span> <span class=nn>abc</span> <span class=kn>import</span> <span class=n>ABC</span>
+</span></span><span class=line><span class=cl><span class=kn>from</span> <span class=nn>typing</span> <span class=kn>import</span> <span class=n>Any</span><span class=p>,</span> <span class=n>Sequence</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>class</span> <span class=nc>Iterator</span><span class=p>(</span><span class=n>ABC</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>next</span><span class=p>(</span><span class=bp>self</span><span class=p>)</span> <span class=o>-&gt;</span> <span class=n>Any</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>        <span class=k>pass</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>has_next</span><span class=p>(</span><span class=bp>self</span><span class=p>)</span> <span class=o>-&gt;</span> <span class=nb>bool</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>        <span class=k>pass</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>class</span> <span class=nc>ConcreteIterator</span><span class=p>(</span><span class=n>Iterator</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=fm>__init__</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=n>collection</span><span class=p>:</span> <span class=n>Sequence</span><span class=p>)</span> <span class=o>-&gt;</span> <span class=kc>None</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>        <span class=bp>self</span><span class=o>.</span><span class=n>_collection</span> <span class=o>=</span> <span class=n>collection</span>
+</span></span><span class=line><span class=cl>        <span class=bp>self</span><span class=o>.</span><span class=n>_index</span> <span class=o>=</span> <span class=mi>0</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>next</span><span class=p>(</span><span class=bp>self</span><span class=p>)</span> <span class=o>-&gt;</span> <span class=n>Any</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>        <span class=k>if</span> <span class=bp>self</span><span class=o>.</span><span class=n>has_next</span><span class=p>():</span>
+</span></span><span class=line><span class=cl>            <span class=n>item</span> <span class=o>=</span> <span class=bp>self</span><span class=o>.</span><span class=n>_collection</span><span class=p>[</span><span class=bp>self</span><span class=o>.</span><span class=n>_index</span><span class=p>]</span>
+</span></span><span class=line><span class=cl>            <span class=bp>self</span><span class=o>.</span><span class=n>_index</span> <span class=o>+=</span> <span class=mi>1</span>
+</span></span><span class=line><span class=cl>            <span class=k>return</span> <span class=n>item</span>
+</span></span><span class=line><span class=cl>        <span class=k>raise</span> <span class=ne>StopIteration</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>has_next</span><span class=p>(</span><span class=bp>self</span><span class=p>)</span> <span class=o>-&gt;</span> <span class=nb>bool</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=bp>self</span><span class=o>.</span><span class=n>_index</span> <span class=o>&lt;</span> <span class=nb>len</span><span class=p>(</span><span class=bp>self</span><span class=o>.</span><span class=n>_collection</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>class</span> <span class=nc>Aggregate</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>create_iterator</span><span class=p>(</span><span class=bp>self</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=k>pass</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>class</span> <span class=nc>ConcreteAggregate</span><span class=p>(</span><span class=n>Aggregate</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=fm>__init__</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=n>collection</span><span class=p>)</span> <span class=o>-&gt;</span> <span class=kc>None</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>        <span class=bp>self</span><span class=o>.</span><span class=n>_collection</span> <span class=o>=</span> <span class=n>collection</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>create_iterator</span><span class=p>(</span><span class=bp>self</span><span class=p>)</span> <span class=o>-&gt;</span> <span class=n>ConcreteIterator</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=n>ConcreteIterator</span><span class=p>(</span><span class=bp>self</span><span class=o>.</span><span class=n>_collection</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>if</span> <span class=vm>__name__</span> <span class=o>==</span> <span class=s2>&#34;__main__&#34;</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>    <span class=n>collection</span> <span class=o>=</span> <span class=n>ConcreteAggregate</span><span class=p>([</span><span class=s1>&#39;Item 1&#39;</span><span class=p>,</span> <span class=s1>&#39;Item 2&#39;</span><span class=p>,</span> <span class=s1>&#39;Item 3&#39;</span><span class=p>])</span>
+</span></span><span class=line><span class=cl>    <span class=n>iterator</span> <span class=o>=</span> <span class=n>collection</span><span class=o>.</span><span class=n>create_iterator</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=k>while</span> <span class=n>iterator</span><span class=o>.</span><span class=n>has_next</span><span class=p>():</span>
+</span></span><span class=line><span class=cl>        <span class=nb>print</span><span class=p>(</span><span class=n>iterator</span><span class=o>.</span><span class=n>next</span><span class=p>())</span>
+</span></span></code></pre></div><p>This will output:</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-text data-lang=text><span class=line><span class=cl>Item 1
+</span></span><span class=line><span class=cl>Item 2
+</span></span><span class=line><span class=cl>Item 3
+</span></span></code></pre></div><h3 id=mediator-pattern>Mediator Pattern</h3><p>The Mediator pattern is a behavioral design pattern that enables a set of objects to communicate with each other
+through a mediator object. This pattern reduces direct communications between objects and makes their interaction
+easier to manage and extend. It&rsquo;s particularly useful in scenarios where multiple objects need to work together,
+but direct references between them would lead to a tightly-coupled system that&rsquo;s hard to maintain and understand.
+The mediator acts as a central hub for interaction, facilitating the exchange of messages or data between objects.</p><p>The Mediator Pattern consists of the following components:</p><ul><li><strong>Mediator</strong>: An interface that defines the methods used for communication between various components.</li><li><strong>Concrete Mediator</strong>: Implements the Mediator interface and coordinates communication between various components.
+It knows all the components and acts as a router of messages.</li><li><strong>Component</strong>: A class that communicates with other components through the mediator instead of direct references.</li></ul><div class=highlight><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=k>class</span> <span class=nc>Mediator</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>notify</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=n>sender</span><span class=p>,</span> <span class=n>event</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=k>pass</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>class</span> <span class=nc>ConcreteMediator</span><span class=p>(</span><span class=n>Mediator</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=fm>__init__</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=n>component1</span><span class=p>,</span> <span class=n>component2</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=bp>self</span><span class=o>.</span><span class=n>_component1</span> <span class=o>=</span> <span class=n>component1</span>
+</span></span><span class=line><span class=cl>        <span class=bp>self</span><span class=o>.</span><span class=n>_component1</span><span class=o>.</span><span class=n>mediator</span> <span class=o>=</span> <span class=bp>self</span>
+</span></span><span class=line><span class=cl>        <span class=bp>self</span><span class=o>.</span><span class=n>_component2</span> <span class=o>=</span> <span class=n>component2</span>
+</span></span><span class=line><span class=cl>        <span class=bp>self</span><span class=o>.</span><span class=n>_component2</span><span class=o>.</span><span class=n>mediator</span> <span class=o>=</span> <span class=bp>self</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>notify</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=n>sender</span><span class=p>,</span> <span class=n>event</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=k>if</span> <span class=n>event</span> <span class=o>==</span> <span class=s2>&#34;A&#34;</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>            <span class=nb>print</span><span class=p>(</span><span class=s2>&#34;Mediator reacts on A and triggers following operations:&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>            <span class=bp>self</span><span class=o>.</span><span class=n>_component2</span><span class=o>.</span><span class=n>do_c</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>        <span class=k>elif</span> <span class=n>event</span> <span class=o>==</span> <span class=s2>&#34;D&#34;</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>            <span class=nb>print</span><span class=p>(</span><span class=s2>&#34;Mediator reacts on D and triggers following operations:&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>            <span class=bp>self</span><span class=o>.</span><span class=n>_component1</span><span class=o>.</span><span class=n>do_b</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>class</span> <span class=nc>BaseComponent</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=fm>__init__</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=n>mediator</span><span class=o>=</span><span class=kc>None</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=bp>self</span><span class=o>.</span><span class=n>_mediator</span> <span class=o>=</span> <span class=n>mediator</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=nd>@property</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>mediator</span><span class=p>(</span><span class=bp>self</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=bp>self</span><span class=o>.</span><span class=n>_mediator</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=nd>@mediator.setter</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>mediator</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=n>mediator</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=bp>self</span><span class=o>.</span><span class=n>_mediator</span> <span class=o>=</span> <span class=n>mediator</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>class</span> <span class=nc>Component1</span><span class=p>(</span><span class=n>BaseComponent</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>do_a</span><span class=p>(</span><span class=bp>self</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=nb>print</span><span class=p>(</span><span class=s2>&#34;Component 1 does A.&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>        <span class=bp>self</span><span class=o>.</span><span class=n>mediator</span><span class=o>.</span><span class=n>notify</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=s2>&#34;A&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>do_b</span><span class=p>(</span><span class=bp>self</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=nb>print</span><span class=p>(</span><span class=s2>&#34;Component 1 does B.&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>class</span> <span class=nc>Component2</span><span class=p>(</span><span class=n>BaseComponent</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>do_c</span><span class=p>(</span><span class=bp>self</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=nb>print</span><span class=p>(</span><span class=s2>&#34;Component 2 does C.&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>do_d</span><span class=p>(</span><span class=bp>self</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=nb>print</span><span class=p>(</span><span class=s2>&#34;Component 2 does D.&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>        <span class=bp>self</span><span class=o>.</span><span class=n>mediator</span><span class=o>.</span><span class=n>notify</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=s2>&#34;D&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>if</span> <span class=vm>__name__</span> <span class=o>==</span> <span class=s2>&#34;__main__&#34;</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>    <span class=n>c1</span> <span class=o>=</span> <span class=n>Component1</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>    <span class=n>c2</span> <span class=o>=</span> <span class=n>Component2</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>    <span class=n>mediator</span> <span class=o>=</span> <span class=n>ConcreteMediator</span><span class=p>(</span><span class=n>c1</span><span class=p>,</span> <span class=n>c2</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=nb>print</span><span class=p>(</span><span class=s2>&#34;Client triggers operation A.&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=n>c1</span><span class=o>.</span><span class=n>do_a</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=nb>print</span><span class=p>(</span><span class=s2>&#34;</span><span class=se>\n</span><span class=s2>Client triggers operation D.&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=n>c2</span><span class=o>.</span><span class=n>do_d</span><span class=p>()</span>
+</span></span></code></pre></div><p>This will output:</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-text data-lang=text><span class=line><span class=cl>Client triggers operation A.
+</span></span><span class=line><span class=cl>Component 1 does A.
+</span></span><span class=line><span class=cl>Mediator reacts on A and triggers following operations:
+</span></span><span class=line><span class=cl>Component 2 does C.
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>Client triggers operation D.
+</span></span><span class=line><span class=cl>Component 2 does D.
+</span></span><span class=line><span class=cl>Mediator reacts on D and triggers following operations:
+</span></span><span class=line><span class=cl>Component 1 does B.
+</span></span></code></pre></div><h3 id=memento-pattern>Memento Pattern</h3><p>The Memento pattern is a behavioral design pattern that allows an object to save its state and restore it later,
+without revealing the details of its implementation. This pattern is particularly useful for implementing features like
+undo mechanisms or for saving and restoring the state of an object at a particular point in time. It helps in
+maintaining high encapsulation levels as the internal state of an object is not exposed outside, yet can be saved externally.</p><p>The Memento Pattern consists of the following components:</p><ul><li><strong>Memento</strong>: A class that stores the internal state of the Originator object. It should have two interfaces; one for
+the caretaker (which is usually wide) and one for the originator (which is narrow and allows the originator to access
+any necessary properties).</li><li><strong>Originator</strong>: The class of which the state is to be saved. It creates a memento containing a snapshot of its current
+internal state and can also use the memento to restore its internal state.</li><li><strong>Caretaker</strong>: Responsible for the safekeeping of the memento. It can request a memento from the originator and store
+it for future use. The caretaker, however, must not modify or operate on the contents of the memento.</li></ul><div class=highlight><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=k>class</span> <span class=nc>Memento</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=fm>__init__</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=n>state</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=bp>self</span><span class=o>.</span><span class=n>_state</span> <span class=o>=</span> <span class=n>state</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>get_saved_state</span><span class=p>(</span><span class=bp>self</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=bp>self</span><span class=o>.</span><span class=n>_state</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>class</span> <span class=nc>Originator</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>    <span class=n>_state</span> <span class=o>=</span> <span class=s2>&#34;&#34;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>set</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=n>state</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=nb>print</span><span class=p>(</span><span class=sa>f</span><span class=s2>&#34;Originator: Setting state to </span><span class=si>{</span><span class=n>state</span><span class=si>}</span><span class=s2>&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>        <span class=bp>self</span><span class=o>.</span><span class=n>_state</span> <span class=o>=</span> <span class=n>state</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>save_to_memento</span><span class=p>(</span><span class=bp>self</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=nb>print</span><span class=p>(</span><span class=s2>&#34;Originator: Saving to Memento.&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=n>Memento</span><span class=p>(</span><span class=bp>self</span><span class=o>.</span><span class=n>_state</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>restore_from_memento</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=n>memento</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=bp>self</span><span class=o>.</span><span class=n>_state</span> <span class=o>=</span> <span class=n>memento</span><span class=o>.</span><span class=n>get_saved_state</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>        <span class=nb>print</span><span class=p>(</span><span class=sa>f</span><span class=s2>&#34;Originator: State after restoring from Memento: </span><span class=si>{</span><span class=bp>self</span><span class=o>.</span><span class=n>_state</span><span class=si>}</span><span class=s2>&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>class</span> <span class=nc>Caretaker</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>    <span class=n>_saved_states</span> <span class=o>=</span> <span class=p>[]</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>add_memento</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=n>memento</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=bp>self</span><span class=o>.</span><span class=n>_saved_states</span><span class=o>.</span><span class=n>append</span><span class=p>(</span><span class=n>memento</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>get_memento</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=n>index</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=bp>self</span><span class=o>.</span><span class=n>_saved_states</span><span class=p>[</span><span class=n>index</span><span class=p>]</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>if</span> <span class=vm>__name__</span> <span class=o>==</span> <span class=s2>&#34;__main__&#34;</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>    <span class=n>originator</span> <span class=o>=</span> <span class=n>Originator</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>    <span class=n>caretaker</span> <span class=o>=</span> <span class=n>Caretaker</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=n>originator</span><span class=o>.</span><span class=n>set</span><span class=p>(</span><span class=s2>&#34;State1&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=n>caretaker</span><span class=o>.</span><span class=n>add_memento</span><span class=p>(</span><span class=n>originator</span><span class=o>.</span><span class=n>save_to_memento</span><span class=p>())</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=n>originator</span><span class=o>.</span><span class=n>set</span><span class=p>(</span><span class=s2>&#34;State2&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=n>caretaker</span><span class=o>.</span><span class=n>add_memento</span><span class=p>(</span><span class=n>originator</span><span class=o>.</span><span class=n>save_to_memento</span><span class=p>())</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=n>originator</span><span class=o>.</span><span class=n>set</span><span class=p>(</span><span class=s2>&#34;State3&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=n>caretaker</span><span class=o>.</span><span class=n>add_memento</span><span class=p>(</span><span class=n>originator</span><span class=o>.</span><span class=n>save_to_memento</span><span class=p>())</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=n>originator</span><span class=o>.</span><span class=n>restore_from_memento</span><span class=p>(</span><span class=n>caretaker</span><span class=o>.</span><span class=n>get_memento</span><span class=p>(</span><span class=mi>1</span><span class=p>))</span>
+</span></span></code></pre></div><p>This will output:</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-text data-lang=text><span class=line><span class=cl>Originator: Setting state to State1
+</span></span><span class=line><span class=cl>Originator: Saving to Memento.
+</span></span><span class=line><span class=cl>Originator: Setting state to State2
+</span></span><span class=line><span class=cl>Originator: Saving to Memento.
+</span></span><span class=line><span class=cl>Originator: Setting state to State3
+</span></span><span class=line><span class=cl>Originator: Saving to Memento.
+</span></span><span class=line><span class=cl>Originator: State after restoring from Memento: State2
+</span></span></code></pre></div><h3 id=observer-pattern>Observer Pattern</h3><p>The Observer pattern is a fundamental behavioral design pattern that establishes a one-to-many relationship between
+objects. It allows an object, known as the subject, to notify a set of observers about any changes in its state.
+This pattern is essential in scenarios where a change in one object requires changing others, and it particularly
+shines in cases where the number of dependent objects is unknown or dynamic. It ensures a high degree of separation and
+decoupling between the subject and observers, promoting modular code.</p><p>The Observer Pattern consists of the following components:</p><ul><li><strong>Subject</strong>: Maintains a list of observers and provides methods to attach or detach observers to it. It notifies the
+observers about any state changes.</li><li><strong>Observer</strong>: An interface or abstract class with a method to update the observer, which gets called by the subject
+it is observing.</li><li><strong>Concrete Observer</strong>: Implements the Observer interface and maintains a reference to a concrete subject. It
+implements the update method to react to state changes in the subject.</li></ul><div class=highlight><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=k>class</span> <span class=nc>Subject</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=fm>__init__</span><span class=p>(</span><span class=bp>self</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=bp>self</span><span class=o>.</span><span class=n>_observers</span> <span class=o>=</span> <span class=p>[]</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>attach</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=n>observer</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=k>if</span> <span class=n>observer</span> <span class=ow>not</span> <span class=ow>in</span> <span class=bp>self</span><span class=o>.</span><span class=n>_observers</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>            <span class=bp>self</span><span class=o>.</span><span class=n>_observers</span><span class=o>.</span><span class=n>append</span><span class=p>(</span><span class=n>observer</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>detach</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=n>observer</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=k>try</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>            <span class=bp>self</span><span class=o>.</span><span class=n>_observers</span><span class=o>.</span><span class=n>remove</span><span class=p>(</span><span class=n>observer</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>        <span class=k>except</span> <span class=ne>ValueError</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>            <span class=k>pass</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>notify</span><span class=p>(</span><span class=bp>self</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=k>for</span> <span class=n>observer</span> <span class=ow>in</span> <span class=bp>self</span><span class=o>.</span><span class=n>_observers</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>            <span class=n>observer</span><span class=o>.</span><span class=n>update</span><span class=p>(</span><span class=bp>self</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>            
+</span></span><span class=line><span class=cl><span class=k>class</span> <span class=nc>Observer</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>update</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=n>subject</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=k>pass</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    
+</span></span><span class=line><span class=cl><span class=k>class</span> <span class=nc>ConcreteObserverA</span><span class=p>(</span><span class=n>Observer</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>update</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=n>subject</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=k>if</span> <span class=n>subject</span><span class=o>.</span><span class=n>state</span> <span class=o>&lt;</span> <span class=mi>3</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>            <span class=nb>print</span><span class=p>(</span><span class=s2>&#34;ConcreteObserverA: Reacted to the event&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>            
+</span></span><span class=line><span class=cl><span class=k>class</span> <span class=nc>ConcreteObserverB</span><span class=p>(</span><span class=n>Observer</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>update</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=n>subject</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=k>if</span> <span class=n>subject</span><span class=o>.</span><span class=n>state</span> <span class=o>&gt;=</span> <span class=mi>3</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>            <span class=nb>print</span><span class=p>(</span><span class=s2>&#34;ConcreteObserverB: Reacted to the event&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>            
+</span></span><span class=line><span class=cl><span class=k>class</span> <span class=nc>ConcreteSubject</span><span class=p>(</span><span class=n>Subject</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>    <span class=n>_state</span> <span class=o>=</span> <span class=mi>0</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=nd>@property</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>state</span><span class=p>(</span><span class=bp>self</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=bp>self</span><span class=o>.</span><span class=n>_state</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=nd>@state.setter</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>state</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=n>val</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=bp>self</span><span class=o>.</span><span class=n>_state</span> <span class=o>=</span> <span class=n>val</span>
+</span></span><span class=line><span class=cl>        <span class=bp>self</span><span class=o>.</span><span class=n>notify</span><span class=p>()</span>
+</span></span></code></pre></div><p>This will output:</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-text data-lang=text><span class=line><span class=cl>ConcreteObserverA: Reacted to the event
+</span></span><span class=line><span class=cl>ConcreteObserverB: Reacted to the event
+</span></span></code></pre></div><h3 id=state-pattern>State Pattern</h3><p>The State pattern is a behavioral design pattern that allows an object to alter its behavior when its internal state
+changes. This pattern is used to encapsulate varying behavior for the same routine, based on the object&rsquo;s state. It&rsquo;s
+like having a class change its class. This pattern is particularly useful in scenarios where an object needs to change
+its behavior at runtime without changing its class. It helps in organizing the code related to particular state-related
+behaviors and allows for adding new states without changing existing state classes or the context.</p><p>The State Pattern consists of the following components:</p><ul><li><strong>Context</strong>: Holds a reference to a state object that defines the current state. The context delegates state-specific
+behavior to the current state object.</li><li><strong>State</strong>: An interface or abstract class defining the state-specific behavior.</li><li><strong>Concrete States</strong>: Implement the State interface and provide the implementation for the state-specific behavior.</li></ul><div class=highlight><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=k>class</span> <span class=nc>State</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>handle</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=n>context</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=k>pass</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>class</span> <span class=nc>ConcreteStateA</span><span class=p>(</span><span class=n>State</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>handle</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=n>context</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=nb>print</span><span class=p>(</span><span class=s2>&#34;State A handling and switching to State B&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>        <span class=n>context</span><span class=o>.</span><span class=n>state</span> <span class=o>=</span> <span class=n>ConcreteStateB</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>class</span> <span class=nc>ConcreteStateB</span><span class=p>(</span><span class=n>State</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>handle</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=n>context</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=nb>print</span><span class=p>(</span><span class=s2>&#34;State B handling and switching to State A&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>        <span class=n>context</span><span class=o>.</span><span class=n>state</span> <span class=o>=</span> <span class=n>ConcreteStateA</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>class</span> <span class=nc>Context</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=fm>__init__</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=n>state</span><span class=p>:</span> <span class=n>State</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=bp>self</span><span class=o>.</span><span class=n>_state</span> <span class=o>=</span> <span class=n>state</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=nd>@property</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>state</span><span class=p>(</span><span class=bp>self</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=bp>self</span><span class=o>.</span><span class=n>_state</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=nd>@state.setter</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>state</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=n>state</span><span class=p>:</span> <span class=n>State</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=bp>self</span><span class=o>.</span><span class=n>_state</span> <span class=o>=</span> <span class=n>state</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>request</span><span class=p>(</span><span class=bp>self</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=bp>self</span><span class=o>.</span><span class=n>_state</span><span class=o>.</span><span class=n>handle</span><span class=p>(</span><span class=bp>self</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>if</span> <span class=vm>__name__</span> <span class=o>==</span> <span class=s2>&#34;__main__&#34;</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>    <span class=n>context</span> <span class=o>=</span> <span class=n>Context</span><span class=p>(</span><span class=n>ConcreteStateA</span><span class=p>())</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=n>context</span><span class=o>.</span><span class=n>request</span><span class=p>()</span>  <span class=c1># Handling in State A</span>
+</span></span><span class=line><span class=cl>    <span class=n>context</span><span class=o>.</span><span class=n>request</span><span class=p>()</span>  <span class=c1># Handling in State B</span>
+</span></span></code></pre></div><p>This will output:</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-text data-lang=text><span class=line><span class=cl>State A handling and switching to State B
+</span></span><span class=line><span class=cl>State B handling and switching to State A
+</span></span></code></pre></div><h3 id=strategy-pattern>Strategy Pattern</h3><p>The Strategy pattern allows for selecting algorithms at runtime. It enables an object to change the selected algorithm
 at runtime, by using composition to store different strategies and allowing the client to choose between them.</p><p>The Strategy Pattern consists of the following components:</p><ul><li><strong>Context</strong>: This is the class that contains a reference to a Strategy object and provides an interface to the client
 to interact with the Strategy object.</li><li><strong>Strategy</strong>: This is an interface or abstract class that defines the common interface for all the concrete
 strategies.</li><li><strong>Concrete Strategies</strong>: These are the implementations of the Strategy interface, where each concrete strategy
@@ -342,11 +636,52 @@ provide their own variations of the algorithm.</li></ul><div class=highlight><pr
 </span></span><span class=line><span class=cl>ConcreteClassB: Step 1
 </span></span><span class=line><span class=cl>ConcreteClassB: Step 2
 </span></span><span class=line><span class=cl>ConcreteClassB: Step 3
-</span></span></code></pre></div><h3 id=visitor-pattern>Visitor Pattern</h3><p>The Visitor Pattern consists of the following components:</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-python data-lang=python></code></pre></div><p>This will output:</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-text data-lang=text></code></pre></div><h2 id=see-also>See also</h2><ul><li><a href=/2023/04/09/2023-04-09-creational-design-patterns/>Design Patters Part 1 - Creational Patters</a></li><li><a href=/2023/04/10/2023-04-10-structural-design-patterns/>Design Patters Part 2 - Structural Patters</a></li><li><a href=#>Design Patters Part 3 - Behavioral Patters</a></li></ul></div><footer class="post-footer clearfix"><p class=post-tags><span>Tagged:</span>
+</span></span></code></pre></div><h3 id=visitor-pattern>Visitor Pattern</h3><p>The Visitor pattern is a behavioral design pattern that allows adding new operations to existing object structures
+without modifying them. This pattern is particularly useful when dealing with a complex object structure, such as a
+composite object. It allows one to separate an algorithm from the object structure on which it operates, providing a
+way to add new operations without altering the structures of the objects. It&rsquo;s especially helpful in cases where most
+of the functionality in a system is dependent on the concrete classes of objects.</p><p>The Visitor Pattern consists of the following components:</p><ul><li><strong>Visitor</strong>: An interface or abstract class defining the visit() methods for each type of concrete element.</li><li><strong>Concrete Visitor</strong>: Implements the Visitor interface and defines the operation to be performed on each type of concrete element.</li><li><strong>Element</strong>: An interface or abstract class with a method accept() that takes a visitor as an argument.</li><li><strong>Concrete Element</strong>: Implements the Element interface and defines the accept() method such that it calls the visit() method on the visitor object.</li></ul><div class=highlight><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=k>class</span> <span class=nc>Visitor</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>visit_element_a</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=n>element</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=k>pass</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>visit_element_b</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=n>element</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=k>pass</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>class</span> <span class=nc>ConcreteVisitor</span><span class=p>(</span><span class=n>Visitor</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>visit_element_a</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=n>element</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=nb>print</span><span class=p>(</span><span class=s2>&#34;ConcreteVisitor: Visiting Element A&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>visit_element_b</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=n>element</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=nb>print</span><span class=p>(</span><span class=s2>&#34;ConcreteVisitor: Visiting Element B&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>class</span> <span class=nc>Element</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>accept</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=n>visitor</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=k>pass</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>class</span> <span class=nc>ConcreteElementA</span><span class=p>(</span><span class=n>Element</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>accept</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=n>visitor</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=n>visitor</span><span class=o>.</span><span class=n>visit_element_a</span><span class=p>(</span><span class=bp>self</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>class</span> <span class=nc>ConcreteElementB</span><span class=p>(</span><span class=n>Element</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>accept</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=n>visitor</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=n>visitor</span><span class=o>.</span><span class=n>visit_element_b</span><span class=p>(</span><span class=bp>self</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>if</span> <span class=vm>__name__</span> <span class=o>==</span> <span class=s2>&#34;__main__&#34;</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>    <span class=n>elements</span> <span class=o>=</span> <span class=p>[</span><span class=n>ConcreteElementA</span><span class=p>(),</span> <span class=n>ConcreteElementB</span><span class=p>()]</span>
+</span></span><span class=line><span class=cl>    <span class=n>visitor</span> <span class=o>=</span> <span class=n>ConcreteVisitor</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=k>for</span> <span class=n>element</span> <span class=ow>in</span> <span class=n>elements</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>        <span class=n>element</span><span class=o>.</span><span class=n>accept</span><span class=p>(</span><span class=n>visitor</span><span class=p>)</span>
+</span></span></code></pre></div><p>This will output:</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-text data-lang=text><span class=line><span class=cl>ConcreteVisitor: Visiting Element A
+</span></span><span class=line><span class=cl>ConcreteVisitor: Visiting Element B
+</span></span></code></pre></div><h2 id=see-also>See also</h2><ul><li><a href=/2023/04/09/2023-04-09-creational-design-patterns/>Design Patters Part 1 - Creational Patters</a></li><li><a href=/2023/04/10/2023-04-10-structural-design-patterns/>Design Patters Part 2 - Structural Patters</a></li><li><a href=#>Design Patters Part 3 - Behavioral Patters</a></li></ul></div><footer class="post-footer clearfix"><p class=post-tags><span>Tagged:</span>
 <a href=/tags/software-design/>software design</a>,
-<a href=/tags/object-oriented-programming/>object-oriented programming</a></p><div class=share><a class=icon-twitter href="https://twitter.com/share?text=Object%20oriented%20design%20patterns%20-%20Behavioral%20patterns%20%28Part%203%29&url=https%3a%2f%2fwww.daehli.no%2f2023%2f04%2f11%2f2023-04-11-behavioral-design-patterns%2f" onclick='return window.open(this.href,"twitter-share","width=550,height=235"),!1' aria-label="Share on Twitter"><i class="fa fa-twitter" aria-hidden=true></i></a>
-<a class=icon-facebook href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fwww.daehli.no%2f2023%2f04%2f11%2f2023-04-11-behavioral-design-patterns%2f" onclick='return window.open(this.href,"facebook-share","width=580,height=296"),!1' aria-label="Share on Facebook"><i class="fa fa-facebook" aria-hidden=true></i></a>
-<a class=icon-linkedin href="https://www.linkedin.com/shareArticle?mini=true&title=Object%20oriented%20design%20patterns%20-%20Behavioral%20patterns%20%28Part%203%29&url=https%3a%2f%2fwww.daehli.no%2f2023%2f04%2f11%2f2023-04-11-behavioral-design-patterns%2f&summary=The%20Gang%20of%20Four%27s%20classic%20behavioral%20design%20patterns." onclick='return window.open(this.href,"linkedin-share","width=554,height=481"),!1' aria-label="Share on LinkedIn"><i class="fa fa-linkedin" aria-hidden=true></i></a></div></footer></article></div></div></div><footer class=footer><div class=container><div class=site-title-wrapper><h1 class=site-title><a href=https://www.daehli.no/>Morten Dæhli Aslesen</a></h1><a class="button-square button-jump-top js-jump-top" href=# aria-label="Back to Top"><i class="fa fa-angle-up" aria-hidden=true></i></a></div><p class=footer-copyright><span>&copy; 2023 / Powered by <a href=https://gohugo.io/>Hugo</a></span></p><p class=footer-copyright><span><a href=https://github.com/roryg/ghostwriter>Ghostwriter theme</a> By <a href=http://jollygoodthemes.com>JollyGoodThemes</a></span>
-<span>/ <a href=https://github.com/jbub/ghostwriter>Ported</a> to Hugo By <a href=https://github.com/jbub>jbub</a></span></p></div></footer><script src=https://www.daehli.no/js/jquery-1.11.3.min.js></script>
-<script src=https://www.daehli.no/js/jquery.fitvids.js></script>
-<script src=https://www.daehli.no/js/scripts.js></script></body></html>
+<a href=/tags/object-oriented-programming/>object-oriented programming</a></p><div class=share><a class=icon-twitter href="https://twitter.com/share?text=Object%20oriented%20design%20patterns%20-%20Behavioral%20patterns%20%28Part%203%29&url=https%3a%2f%2fwww.daehli.no%2f2023%2f04%2f11%2f2023-04-11-behavioral-design-patterns%2f" onclick='return window.open(this.href,"twitter-share","width=550,height=235"),!1' aria-label="Share on Twitter"><i class="fa fa-twitter" aria-hidden=true></i>
+</a><a class=icon-facebook href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fwww.daehli.no%2f2023%2f04%2f11%2f2023-04-11-behavioral-design-patterns%2f" onclick='return window.open(this.href,"facebook-share","width=580,height=296"),!1' aria-label="Share on Facebook"><i class="fa fa-facebook" aria-hidden=true></i>
+</a><a class=icon-linkedin href="https://www.linkedin.com/shareArticle?mini=true&title=Object%20oriented%20design%20patterns%20-%20Behavioral%20patterns%20%28Part%203%29&url=https%3a%2f%2fwww.daehli.no%2f2023%2f04%2f11%2f2023-04-11-behavioral-design-patterns%2f&summary=The%20Gang%20of%20Four%27s%20classic%20behavioral%20design%20patterns." onclick='return window.open(this.href,"linkedin-share","width=554,height=481"),!1' aria-label="Share on LinkedIn"><i class="fa fa-linkedin" aria-hidden=true></i></a></div></footer></article></div></div></div><footer class=footer><div class=container><div class=site-title-wrapper><h1 class=site-title><a href=https://www.daehli.no/>Morten Dæhli Aslesen</a></h1><a class="button-square button-jump-top js-jump-top" href=# aria-label="Back to Top"><i class="fa fa-angle-up" aria-hidden=true></i></a></div><p class=footer-copyright><span>&copy; 2023 / Powered by <a href=https://gohugo.io/>Hugo</a></span></p><p class=footer-copyright><span><a href=https://github.com/roryg/ghostwriter>Ghostwriter theme</a> By <a href=http://jollygoodthemes.com>JollyGoodThemes</a></span>
+<span>/ <a href=https://github.com/jbub/ghostwriter>Ported</a> to Hugo By <a href=https://github.com/jbub>jbub</a></span></p></div></footer><script src=https://www.daehli.no/js/jquery-1.11.3.min.js></script><script src=https://www.daehli.no/js/jquery.fitvids.js></script><script src=https://www.daehli.no/js/scripts.js></script></body></html>
