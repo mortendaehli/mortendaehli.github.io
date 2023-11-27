@@ -52,6 +52,7 @@ a recommendation — it's a reflection of the philosophies and practices I belie
 - [GPT-4 Technical Report](https://arxiv.org/pdf/2303.08774.pdf)
 - [GPT-4 System Card](https://cdn.openai.com/papers/gpt-4-system-card.pdf) 
 - MiniGPT-4 [Research Paper](https://arxiv.org/pdf/2304.10592.pdf)[Home Page](https://minigpt-4.github.io/) Enhancing Vision-language Understanding with Advanced Large Language Models
+- [LangChain](https://python.langchain.com/) is a framework for developing applications powered by language models
 
 ## Books
 - [The DevOps handbook](https://www.oreilly.com/library/view/the-devops-handbook/9781457191381/)
